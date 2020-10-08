@@ -1,9 +1,9 @@
 <?php 
 
-namespace application\controllers; 
+namespace Application\controllers; 
 
-use application\core\Controller; 
-use application\lib\Db; 
+use Application\core\Controller; 
+use Application\lib\Db; 
 
 class MainController extends  Controller{
 	

@@ -1,8 +1,8 @@
 <?php 
 
-namespace application\core;
+namespace Application\core;
 
-use application\core\View;
+use Application\core\View;
 class Router {
 
 	protected $routes = [];
@@ -11,7 +11,7 @@ class Router {
 
 		
 	public function __construct(){
-		$arr = require 'application/config/routes.php';
+		$arr = require 'Application/config/routes.php';
 		foreach ($arr as $key => $val) {
 			$this->addRegEXP($key,$val);
 		}

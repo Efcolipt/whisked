@@ -1,6 +1,6 @@
 <?php 
 
-namespace application\core; 
+namespace Application\core; 
 
 class View {
 	
@@ -17,12 +17,12 @@ public function __construct($route)
  
  public function render($title,$vars = []){
  	//extract($vars); Output
- 	$path = 'application/views/'.$this->path.'.php';
+ 	$path = 'Application/views/'.$this->path.'.php';
  	if (file_exists($path)) {
  		ob_start();
  		require $path;
  		$content = ob_get_clean();
- 		require 'application/views/layouts/'.$this->layout.'.php';
+ 		require 'Application/views/layouts/'.$this->layout.'.php';
  	} else{
  		View::errorCode(404);
  	}
@@ -30,7 +30,7 @@ public function __construct($route)
  }
 	public static function errorCode($code){
 		http_response_code($code);
-		$path = 'application/views/errors/'.$code.'.php';
+		$path = 'Application/views/errors/'.$code.'.php';
 		if (file_exists($path)) {
 				require $path ;
 			}	
