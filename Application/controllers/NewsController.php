@@ -5,7 +5,7 @@ namespace application\controllers;
 use application\core\Controller; 
 use application\lib\Db; 
 
-class MainController extends  Controller{
+class NewsController extends  Controller{
 	
 	public function indexAction()
 	{	$vars = [
@@ -24,11 +24,11 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 
-	$this->view->render('Главная страница',$vars );
+	$this->view->render('Новости',$vars );
 
 	}
 
-	public function contactAction()
+	public function articleAction()
 	{	$vars = [
 			'name'=>'Вася',
 			'Age'=> '88',
@@ -45,31 +45,11 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 
-	$this->view->render('Контакты',$vars);
+	$this->view->render('Статья',$vars );
 
 	}
 
-	public function contact1Action()
-	{	$vars = [
-			'name'=>'Вася',
-			'Age'=> '88',
-			'array'=>[1,2,3],
-		];
-		
-		$db = new Db;
-		$params =[];
-
-		//$data = $db->column('SELECT name FROM users  WHERE id = :id',$params);
-		//echo $data;
-		
-		//$data = $db->row('SELECT * FROM users',$params);
-
-		//debug($data[1]['name']);
-
-	$this->view->render('Контакты',$vars );
-
-	}
-
+	
 
 }
  ?>
