@@ -1,2 +1,2 @@
-<?php var_dump($vars); ?>
+<?php debug($vars); ?>
 контакты
