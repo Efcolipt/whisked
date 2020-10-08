@@ -1,0 +1,35 @@
+/*// For uloaded img
+$("").each(function(key, item) {
+	$(item).on("error", function() {
+		showDefaultImage(this);
+	}).attr('src', $(item).attr('src'));
+});
+
+$("").each(function(key, item) {
+	$(item).on("error", function() {
+		showDefaultImage(this);
+	}).attr('src', $(item).attr('src'));
+});
+
+function showDefaultImage(img) {
+	$(img).attr('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/public/images/no-img/no-img.jpg');
+	$(img).off("error");
+}
+// Header , show and fade 
+let scrollTop = 0;
+let header = $('header');
+$(window).scroll(function(event){
+	let currentScrollTop = $(this).scrollTop();
+	if (window.pageYOffset <= 0) {
+		
+	}else{
+		if (scrollTop > currentScrollTop) {
+
+		}else{
+
+		}
+		
+	}
+
+	scrollTop = currentScrollTop;
+}); */

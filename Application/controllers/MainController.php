@@ -8,11 +8,13 @@ use Application\lib\Db;
 class MainController extends  Controller{
 	
 	public function indexAction()
-	{	$vars = [
-			'name'=>'Вася',
-			'Age'=> '88',
-			'array'=>[1,2,3],
-		];
+	{	
+
+		// $vars = [
+		// 	'name'=>'Вася',
+		// 	'Age'=> '88',
+		// 	'array'=>[1,2,3],
+		// ];
 		
 		$db = new Db;
 		$params =[];
@@ -24,51 +26,10 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 
-	$this->view->render('Главная страница',$vars );
+	$this->view->render('Главная',$vars );
 
 	}
 
-	public function contactAction()
-	{	$vars = [
-			'name'=>'Вася',
-			'Age'=> '88',
-			'array'=>[1,2,3],
-		];
-		
-		$db = new Db;
-		$params =[];
-
-		//$data = $db->column('SELECT name FROM users  WHERE id = :id',$params);
-		//echo $data;
-		
-		//$data = $db->row('SELECT * FROM users',$params);
-
-		//debug($data[1]['name']);
-
-	$this->view->render('Контакты',$vars);
-
-	}
-
-	public function contact1Action()
-	{	$vars = [
-			'name'=>'Вася',
-			'Age'=> '88',
-			'array'=>[1,2,3],
-		];
-		
-		$db = new Db;
-		$params =[];
-
-		//$data = $db->column('SELECT name FROM users  WHERE id = :id',$params);
-		//echo $data;
-		
-		//$data = $db->row('SELECT * FROM users',$params);
-
-		//debug($data[1]['name']);
-
-	$this->view->render('Контакты',$vars );
-
-	}
 
 
 }
