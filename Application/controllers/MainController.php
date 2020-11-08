@@ -10,11 +10,11 @@ class MainController extends  Controller{
 	public function indexAction()
 	{	
 
-		// $vars = [
-		// 	'name'=>'Вася',
-		// 	'Age'=> '88',
-		// 	'array'=>[1,2,3],
-		// ];
+		$vars = [
+			'name'=>'Вася',
+			'Age'=> '88',
+			'array'=>[1,2,3],
+		];
 		
 		$db = new Db;
 		$params =[];
@@ -28,6 +28,28 @@ class MainController extends  Controller{
 		
 		$upcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
 		$topMovies = 'https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
+		
+		$topMovies = @file_get_contents($topMovies);
+		$upcomingMovies = @file_get_contents($upcomingMovies);
+
+		$dataTopMovies = json_decode($topMovies);
+		$dataUpcomingMovies = json_decode($upcomingMovies);
+
+
+		// if( $topMovies != false && !is_null($dataTopMovies)){
+		//     foreach($dataTopMovies as $k => $e){
+		//         echo '<p>'  . $e . '</p>';
+		//     }
+		// }
+		
+		// if( $upcomingMovies != false && !is_null($dataUpcomingMovies)){
+		//     foreach($dataUpcomingMovies as $k => $e){
+		//         echo '<p>'  . $e . '</p>';
+		//     }
+		// }
+		
+		// debug($dataUpcomingMovies);
+		// debug($dataTopMovies);
 		
 		$this->view->render('Главная',$vars );
 
