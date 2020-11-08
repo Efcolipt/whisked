@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700|Comfortaa:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700|Montserrat|Comfortaa:wght@400;500&display=swap');
 *{
 	margin: 0;
 	padding: 0;
@@ -19,6 +19,16 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'PT Sans',sans-serif;
 	font-weight: bold;
 }
+a{
+	transition: color .3s ease-in;
+	color:#fff;
+}
+a:hover{
+	color:#3cafaad6;
+}
+.text_mont{
+	font-family:"Montserrat",serif;
+}
 .container{
 	max-width: 1280px;
 	margin: 0 auto;
@@ -27,7 +37,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 header{
-	padding: 20px;
+	padding: 35px 0;
 }
 
 .header_icon_burger{
@@ -54,23 +64,24 @@ header{
 .list_header_menu_desktop_item{
 	margin: 0 10px;
 }
-.list_header_menu_desktop_item:hover a{
-	color:#ccc;
+.list_header_menu_desktop_item:hover .list_header_menu_desktop_link{
+	color:#3cafaad6;
 }
 
 .list_header_menu_desktop_link{
+	transition: color .3s ease;
 	color:#fff;
 	font-size: 18px;
 }
 
 .header_search  input { 
-	padding: 10px 30px 10px 39px;
+	padding: 12px 39px 12px 39px;
     border: 0;
     background: #272727;
     border-radius: 4px;
     color: #d8d8d8;
     font-size: 15px;
-    width: 100%;
+    width: 250px;
 }
 .header_search form{
 	position: relative;
@@ -96,6 +107,15 @@ header{
 	display: flex;
 	align-items: center;
 }
+.header_account_avatar span:first-child{
+	width:32px;
+	height:32px;
+}
+.header_account_avatar span:last-child{
+	width:14px;
+	height:14px;
+	margin-left: 8px;
+}
 .header_account_avatar span svg{
 	fill:#fff;
 	cursor: pointer;
@@ -107,7 +127,6 @@ header{
 .header_account_avatar span:last-child svg{
 	width:14px;
 	height:14px;
-	margin-left: 8px;
 }
 .header_account_info{
 	display: none;
@@ -138,7 +157,7 @@ header{
 .list_header_account_info_link{
 	font-size: 14px;
     display: block;
-    color: #fff;
+    color: #fff!important;
     padding: 12px 30px 13px 22px;
     transition: background .2s ease-in, color .1s ease-in;
 }
@@ -148,12 +167,44 @@ header{
 .list_header_account_link_to_item_logout a svg{
 	width:18px;
 	height:18px;
-	fill:#7f7f7f;
+	fill: #3d3d3d;
 	margin-right: 10px;
 }
 .list_header_account_link_to_item:not(.list_header_account_info_item):hover a{
-	background: #ccc;
+	background: #3cafaad6;
 	border-radius:3px;
 
 }  
 
+
+
+/*Footer*/
+footer{
+	padding: 35px 0;
+	background: #23232340;
+}
+.inner_footer,.list_footer_menu_desktop{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list_footer_menu_desktop_item:first-child{
+	margin-left: 0 !important;
+}
+.list_footer_menu_desktop_item{
+	margin-left: 35px;
+}
+.list_footer_menu_desktop_link{
+	transition: color .3s ease;
+    color: #fff;
+    font-size: 18px;
+}
+.list_header_menu_desktop,.footer_info_site{
+	display: flex;
+}
+.footer_info_site{
+	color: #b5b5b5;
+}
+.footer_info_site_release{
+	margin-right: 30px;
+}

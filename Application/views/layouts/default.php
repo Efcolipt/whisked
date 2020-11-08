@@ -73,7 +73,7 @@
 					</div>
 					<div class="header_search">
 						<form action="#" method="post">
-							<input type="text" placeholder="Найти ?" required="Для поиска введите название фильма или сериала.">
+							<input type="text" placeholder="Найти ?" required>
 							<button class="header_search_icon">
 								<svg viewBox="0 0 18 18">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.9499 12.4702C15.9598 9.71455 15.6403 5.74064 13.048 3.14826C10.193 0.293337 5.66259 0.195039 2.92892 2.92871C0.195246 5.66238 0.293543 10.1928 3.14847 13.0478C5.74081 15.6401 9.71462 15.9596 12.4703 13.9498C12.5259 14.1145 12.6194 14.2692 12.7506 14.4004L15.4212 17.071C15.8768 17.5266 16.6155 17.5266 17.0711 17.071C17.5267 16.6154 17.5267 15.8767 17.0711 15.4211L14.4005 12.7505C14.2693 12.6193 14.1146 12.5259 13.9499 12.4702ZM11.7161 11.7166C13.6296 9.80299 13.5608 6.63167 11.5624 4.63322C9.56394 2.63478 6.39262 2.56597 4.47905 4.47954C2.56548 6.39311 2.63429 9.56442 4.63274 11.5629C6.63119 13.5613 9.8025 13.6301 11.7161 11.7166Z"></path>
@@ -100,7 +100,7 @@
 
 						<div class="header_account_info">
 							<!-- For Guest -->
-							<!-- <ul class="list_header_account_info">
+							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">Гость</a>
 								</li>
@@ -110,10 +110,10 @@
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Зарегистрироваться</a>
 								</li>
-							</ul> -->
+							</ul>
 							<!-- For Auth user -->
 							
-							<ul class="list_header_account_info">
+							<!-- <ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">example@example.com</a>
 								</li>
@@ -132,7 +132,7 @@
 									</a>
 								</li>
 							</ul> 
-						</div>
+						</div> -->
 
 
 					</div>
@@ -149,17 +149,17 @@
 				<div class="inner_footer">
 					<div class="footer_menu_desktop">
 						<ul class="list_footer_menu_desktop">
-							<li class="list_footer_menu_desktop_item"><a href="#">Контакты</a></li>
-							<li class="list_footer_menu_desktop_item"><a href="#">Помощь</a></li>
-							<li class="list_footer_menu_desktop_item"><a href="#">Правообладателям</a></li>
+							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Контакты</a></li>
+							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Помощь</a></li>
+							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Правообладателям</a></li>
 						</ul>
 					</div>
 					<div class="footer_info_site">
 						<div class="footer_info_site_release">
-							<p>Release <span>v1.0.0</span></p>
+							<p>Release <span  class="text_mont">v1.0</span></p>
 						</div>
 						<div class="footer_info_site_copyright">
-							<p>© 2018-<?=date("Y");?> <span>Fast Film</span></p>
+							<p><span class="text_mont">© 2018-<?=date("Y");?></span> <span>Fast Film</span></p>
 						</div>
 					</div>
 				</div>

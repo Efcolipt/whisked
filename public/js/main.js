@@ -33,3 +33,16 @@ $(window).scroll(function(event){
 
 	scrollTop = currentScrollTop;
 }); */
+
+jQuery(document).ready(function($) {
+	let showBlockAuth = true;
+	$('.header_account_avatar').click(function (e) {
+		if (showBlockAuth) {
+			$('.header_account_info').stop().slideDown('slow');
+			showBlockAuth = false;
+		}else{
+			$('.header_account_info').stop().slideUp('slow');
+			showBlockAuth = true;
+		}
+	});
+});
