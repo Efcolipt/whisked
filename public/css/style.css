@@ -21,12 +21,9 @@ h1,h2,h3,h4,h5,h6{
 	font-weight: bold;
 }
 a{
-	transition: color .3s ease-in;
 	color:#fff;
 }
-a:hover{
-	color:#3cafaad6;
-}
+
 .wrapper{
 	display: flex;
     flex-direction: column;
@@ -163,6 +160,9 @@ header{
 .list_header_account_info_about{
 	border-bottom: 1px solid #3b3b3b;
 }
+.list_header_account_info_about .list_header_account_info_link{
+	font-size: 15px;
+}
 .list_header_account_info_link{
 	font-size: 14px;
     display: block;
@@ -182,7 +182,6 @@ header{
 .list_header_account_link_to_item:not(.list_header_account_info_item):hover a{
 	background: #3cafaad6;
 	border-radius:3px;
-
 }  
 
 
@@ -208,6 +207,7 @@ footer{
 	transition: color .3s ease;
     color: #fff;
     font-size: 18px;
+    transition:color .3s ease;
 }
 .list_header_menu_desktop,.footer_info_site{
 	display: flex;
@@ -217,4 +217,39 @@ footer{
 }
 .footer_info_site_release{
 	margin-right: 30px;
+}
+
+
+.list_footer_menu_desktop_item:hover .list_footer_menu_desktop_link{
+	color:#3cafaad6;
+}
+
+
+
+
+
+
+
+
+/*Scroll*/
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-button {
+	background: #333;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #6d6d6d;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #3cafaad6;
+}
+::-webkit-scrollbar-track {
+	background: #333;
+}
+::selection {
+	background: #3cafaad6;
+	color: #e7ebee;
 }
