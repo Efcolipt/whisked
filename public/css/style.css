@@ -43,7 +43,8 @@ main{
 }
 
 header{
-	padding: 35px 0;
+	padding: 25px 0;
+	background: #23232340;
 }
 
 .header_icon_burger{
@@ -61,8 +62,11 @@ header{
 	font-size: 32px;
 	font-family:'PT Sans',sans-serif;
 	color:#fff;
+	transition: color .3s ease;
 }
-
+.header_navbar_link:hover{
+	color:#3cafaad6;
+}
 .list_header_menu_desktop{
 	display: flex;
 }
