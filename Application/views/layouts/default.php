@@ -54,13 +54,13 @@
 					<div class="header_menu_desktop">
 						<ul class="list_header_menu_desktop">
 							<li class="list_header_menu_desktop_item">
-								<a href="#" class="list_header_menu_desktop_link">Главная</a>
+								<a href="/" class="list_header_menu_desktop_link">Главная</a>
 							</li>
 							<li class="list_header_menu_desktop_item">
-								<a href="#" class="list_header_menu_desktop_link">Фильмы</a>
+								<a href="/movies" class="list_header_menu_desktop_link">Фильмы</a>
 							</li>
 							<li class="list_header_menu_desktop_item">
-								<a href="#" class="list_header_menu_desktop_link">Сериалы</a>
+								<a href="/serials" class="list_header_menu_desktop_link">Сериалы</a>
 							</li>
 							<li class="list_header_menu_desktop_item">
 								<a href="#" class="list_header_menu_desktop_link">О нас</a>

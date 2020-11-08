@@ -25,8 +25,11 @@ class MainController extends  Controller{
 		//$data = $db->row('SELECT * FROM users',$params);
 
 		//debug($data[1]['name']);
-
-	$this->view->render('Главная',$vars );
+		
+		$upcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
+		$topMovies = 'https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
+		
+		$this->view->render('Главная',$vars );
 
 	}
 

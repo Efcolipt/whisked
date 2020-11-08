@@ -8,6 +8,8 @@ abstract class Controller {
 	
 	public $route;
 	public $view;
+	const apiToken = "a74fc0e2e97b235f41c374ac30a95209";
+
 
 	public function __construct($route){
 		$this->route = $route;
