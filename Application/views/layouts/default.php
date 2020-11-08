@@ -42,6 +42,9 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div class="waitingSpin" >
+			<div class="spinner"></div>
+		</div>
 		<header>
 			<div class="container">
 				<div class="inner_header">

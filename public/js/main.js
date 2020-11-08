@@ -35,6 +35,7 @@ $(window).scroll(function(event){
 }); */
 
 jQuery(document).ready(function($) {
+	$('.waitingSpin').stop().fadeOut(1500);
 	let showBlockAuth = true;
 	$('.header_account_avatar').click(function (e) {
 		if (showBlockAuth) {
