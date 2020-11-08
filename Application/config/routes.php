@@ -5,7 +5,7 @@ return [
 		'controller'=>'main',
 		'action'=>'index',
 	],
-	'contact' => [
+	'contact/{id:\s+}' => [
 		'controller'=>'main',
 		'action'=>'contact',
 	],

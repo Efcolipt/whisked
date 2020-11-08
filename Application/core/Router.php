@@ -18,20 +18,28 @@ class Router {
 	}
 
 	 public function addRegEXP($route,$params){
+	 	$route = preg_replace('/{([a-z]+):([^\}]+)}/', '(?P<\1>\2)', $route);
 		$route = '#^'.$route.'$#';
 		$this->routes[$route] = $params;
 	}
 
 	 public function matchRoute(){ 
 		$url = trim($_SERVER['REQUEST_URI'], '/');
-		$url = strtok($url, '?');
-		foreach ($this->routes as $route => $params) {
-			if (preg_match($route, $url,$matches)) {
-				$this->params = $params;
-				return true;
-			}
-		}
-		return false;
+        foreach ($this->routes as $route => $params) {
+            if (preg_match($route, $url, $matches)) {
+                foreach ($matches as $key => $match) {
+                    if (is_string($key)) {
+                        if (is_numeric($match)) {
+                            $match = (int) $match;
+                        }
+                        $params[$key] = $match;
+                    }
+                }
+                $this->params = $params;
+                return true;
+            }
+        }
+        return false;
 	}
 
 	 public function runRouter(){

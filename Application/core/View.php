@@ -38,7 +38,7 @@ public function __construct($route)
 	}
 
 	public function redirect($url){
-		header('Location:'.$url);
+		header('Location: /'.$url);
 		exit;
 	}
 
