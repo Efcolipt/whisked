@@ -56,21 +56,24 @@
 							<li class="list_header_menu_desktop_item">
 								<a href="#" class="list_header_menu_desktop_link">Главная</a>
 							</li>
-							<li class="list_menu_desktop_item">
+							<li class="list_header_menu_desktop_item">
 								<a href="#" class="list_header_menu_desktop_link">Фильмы</a>
 							</li>
-							<li class="list_menu_desktop_item">
+							<li class="list_header_menu_desktop_item">
 								<a href="#" class="list_header_menu_desktop_link">Сериалы</a>
 							</li>
+							<li class="list_header_menu_desktop_item">
+								<a href="#" class="list_header_menu_desktop_link">О нас</a>
+							</li>
                             <!-- 
-	                        <li class="list_menu_desktop_item">
+	                        <li class="list_header_menu_desktop_item">
 								<a href="#" class="list_menu_desktop_link">Мультфильмы</a>
 							</li> -->
 						</ul>
 					</div>
 					<div class="header_search">
 						<form action="#" method="post">
-							<input type="text" placeholder="Поиск" required="Для поиска введите название фильма или сериала.">
+							<input type="text" placeholder="Найти ?" required="Для поиска введите название фильма или сериала.">
 							<button class="header_search_icon">
 								<svg viewBox="0 0 18 18">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.9499 12.4702C15.9598 9.71455 15.6403 5.74064 13.048 3.14826C10.193 0.293337 5.66259 0.195039 2.92892 2.92871C0.195246 5.66238 0.293543 10.1928 3.14847 13.0478C5.74081 15.6401 9.71462 15.9596 12.4703 13.9498C12.5259 14.1145 12.6194 14.2692 12.7506 14.4004L15.4212 17.071C15.8768 17.5266 16.6155 17.5266 17.0711 17.071C17.5267 16.6154 17.5267 15.8767 17.0711 15.4211L14.4005 12.7505C14.2693 12.6193 14.1146 12.5259 13.9499 12.4702ZM11.7161 11.7166C13.6296 9.80299 13.5608 6.63167 11.5624 4.63322C9.56394 2.63478 6.39262 2.56597 4.47905 4.47954C2.56548 6.39311 2.63429 9.56442 4.63274 11.5629C6.63119 13.5613 9.8025 13.6301 11.7161 11.7166Z"></path>
@@ -97,30 +100,30 @@
 
 						<div class="header_account_info">
 							<!-- For Guest -->
-							<ul class="list_header_account_info">
+							<!-- <ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">Гость</a>
 								</li>
-								<li class="list_header_account_info_item">
+								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Авторизоваться</a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Зарегистрироваться</a>
 								</li>
-							</ul>
+							</ul> -->
 							<!-- For Auth user -->
-							<!-- 
+							
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">example@example.com</a>
 								</li>
-								<li class="list_header_account_info_item">
+								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Личный кабинет</a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Настройки</a>
 								</li>
-								<li class="list_header_account_link_to_item">
+								<li class="list_header_account_link_to_item  list_header_account_link_to_item_logout">
 									<a href="#" class="list_header_account_info_link">
 										<svg  viewBox="0 0 14 12"  xmlns="http://www.w3.org/2000/svg">
 											<path  fill-rule="evenodd" clip-rule="evenodd" d="M9.01073 10.2172C9.01073 11.1454 8.27652 11.9016 7.37545 11.9016H1.63528C0.734207 11.9016 0 11.1454 0 10.2172V2.58598C0 1.65787 0.734207 0.901611 1.63528 0.901611H7.37545C8.27652 0.901611 9.01073 1.65787 9.01073 2.58598V3.99536C9.01073 4.37349 8.71037 4.68286 8.34327 4.68286C7.97616 4.68286 7.6758 4.37349 7.6758 3.99536V2.58598C7.6758 2.41411 7.54231 2.27661 7.37545 2.27661H1.63528C1.46841 2.27661 1.33492 2.41411 1.33492 2.58598V10.2172C1.33492 10.3891 1.46841 10.5266 1.63528 10.5266H7.37545C7.54231 10.5266 7.6758 10.3891 7.6758 10.2172V8.80786C7.6758 8.42973 7.97616 8.12036 8.34327 8.12036C8.71037 8.12036 9.01073 8.42973 9.01073 8.80786V10.2172ZM5.17283 5.69693H11.8141L10.4625 4.32193C10.1955 4.04692 10.1955 3.61723 10.4625 3.34224C10.7294 3.06723 11.1466 3.06723 11.4136 3.34224L13.8832 5.92036V6.0063C13.9499 6.10942 14 6.24692 14 6.40161C14 6.5563 13.9666 6.67661 13.8832 6.79692V6.88286L11.4136 9.42661C11.2801 9.56412 11.1132 9.63286 10.9464 9.63286C10.7795 9.63286 10.6126 9.56412 10.4791 9.42661C10.2122 9.15161 10.2122 8.72192 10.4791 8.44693L11.8141 7.07193H5.17283C4.80573 7.07193 4.50537 6.76254 4.50537 6.38443C4.50537 6.0063 4.80573 5.69693 5.17283 5.69693Z"/>
@@ -128,7 +131,7 @@
 										<span> Выйти</span>
 									</a>
 								</li>
-							</ul>  -->
+							</ul> 
 						</div>
 
 
