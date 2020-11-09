@@ -10,14 +10,11 @@ class MainController extends  Controller{
 	public function indexAction()
 	{	
 
-		$vars = [
-			'name'=>'Вася',
-			'Age'=> '88',
-			'array'=>[1,2,3],
-		];
+		
 		
 		$db = new Db;
-		$params =[];
+		$params = [];
+		$vars = [];
 
 		//$data = $db->column('SELECT name FROM users  WHERE id = :id',$params);
 		//echo $data;
@@ -36,17 +33,14 @@ class MainController extends  Controller{
 		$dataUpcomingMovies = json_decode($upcomingMovies);
 
 
-		// if( $topMovies != false && !is_null($dataTopMovies)){
-		//     foreach($dataTopMovies as $k => $e){
-		//         echo '<p>'  . $e . '</p>';
-		//     }
-		// }
-		
-		// if( $upcomingMovies != false && !is_null($dataUpcomingMovies)){
-		//     foreach($dataUpcomingMovies as $k => $e){
-		//         echo '<p>'  . $e . '</p>';
-		//     }
-		// }
+		if( $topMovies != false && !is_null($dataTopMovies)){
+			array_push($vars,$dataTopMovies);
+		}
+
+
+		if( $upcomingMovies != false && !is_null($dataUpcomingMovies)){
+			array_push($vars,$dataUpcomingMovies);
+		}
 		
 		// debug($dataUpcomingMovies);
 		// debug($dataTopMovies);

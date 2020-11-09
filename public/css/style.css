@@ -65,7 +65,7 @@ header{
 	transition: color .3s ease;
 }
 .header_navbar_link:hover{
-	color:#3cafaad6;
+	color:#04a49c;
 }
 .list_header_menu_desktop{
 	display: flex;
@@ -75,7 +75,7 @@ header{
 	margin: 0 10px;
 }
 .list_header_menu_desktop_item:hover .list_header_menu_desktop_link{
-	color:#3cafaad6;
+	color:#04a49c;
 }
 
 .list_header_menu_desktop_link{
@@ -184,7 +184,7 @@ header{
 	margin-right: 10px;
 }
 .list_header_account_link_to_item:not(.list_header_account_info_item):hover a{
-	background: #3cafaad6;
+	background: #04a49c;
 	border-radius:3px;
 }  
 
@@ -225,7 +225,7 @@ footer{
 
 
 .list_footer_menu_desktop_item:hover .list_footer_menu_desktop_link{
-	color:#3cafaad6;
+	color:#04a49c;
 }
 
 
@@ -308,9 +308,38 @@ footer{
 
 
 
+/*Navigation Collection*/
 
 
+.navigation_collection{
+	margin-top: 35px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.navigation_collection_page{
+	font-size: 20px;
+    background: #28282896;
+    padding: 10px 18px;
+    display: block;
+    margin-right: 10px;
+    transition:background .3s ease;
+}
 
+.navigation_collection_active_page{
+	font-size: 19px;
+    background: #04a49c;
+    padding: 10px 18px;
+    display: block;
+    margin-right: 10px;
+    color:#fff;
+}
+
+.navigation_collection_page:hover{
+	background:#3cafaad6;
+}
 /*Waiting spinner*/
 
 .waitingSpin{
@@ -327,7 +356,7 @@ footer{
     width: 5em;
     position: absolute;
     height: 5em;
-    background-color: #15c9c1d6;
+    background-color:  #04a49c;
     border-radius: 100%;
     -webkit-animation: pulses-anim 1.0s infinite ease-in-out;
     animation: pulses-anim 1.0s infinite ease-in-out;
@@ -359,12 +388,12 @@ footer{
 	border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background-color: #3cafaad6;
+	background-color: #04a49c;
 }
 ::-webkit-scrollbar-track {
 	background: #333;
 }
 ::selection {
-	background: #3cafaad6;
+	background:#04a49c;
 	color: #e7ebee;
 }

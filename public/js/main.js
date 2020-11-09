@@ -46,4 +46,15 @@ jQuery(document).ready(function($) {
 			showBlockAuth = true;
 		}
 	});
+
+	$(".collection .poster_collection img").each(function(key, item) {
+		$(item).on("error", function() {
+			showDefaultImage(this);
+		}).attr('src', $(item).attr('src'));
+	});
+
+	function showDefaultImage(img) {
+		$(img).attr('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/public/images/no-img/no-img.jpg');
+		$(img).off("error");
+	}
 });
