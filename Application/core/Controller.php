@@ -1,8 +1,8 @@
 <?php 
 
-namespace Application\core; 
+namespace Application\Core; 
 
-use Application\core\View;
+use Application\Core\View;
 
 abstract class Controller {
 	

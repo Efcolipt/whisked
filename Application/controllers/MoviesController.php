@@ -1,10 +1,9 @@
 <?php 
 
-namespace Application\controllers; 
+namespace Application\Controllers; 
 
-use Application\core\Controller; 
-use Application\core\PaginateNavigationBuilder; 
-use Application\lib\Db; 
+use Application\Core\Controller; 
+use Application\Lib\Db; 
 
 class MoviesController extends  Controller{
 	

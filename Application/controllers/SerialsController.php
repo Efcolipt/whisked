@@ -2,8 +2,8 @@
 
 namespace Application\controllers; 
 
-use Application\core\Controller; 
-use Application\lib\Db; 
+use Application\Core\Controller; 
+use Application\Lib\Db; 
 
 class SerialsController extends  Controller{
 	
