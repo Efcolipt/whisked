@@ -1,20 +1,5 @@
-/*// For uloaded img
-$("").each(function(key, item) {
-	$(item).on("error", function() {
-		showDefaultImage(this);
-	}).attr('src', $(item).attr('src'));
-});
+/*
 
-$("").each(function(key, item) {
-	$(item).on("error", function() {
-		showDefaultImage(this);
-	}).attr('src', $(item).attr('src'));
-});
-
-function showDefaultImage(img) {
-	$(img).attr('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/public/images/no-img/no-img.jpg');
-	$(img).off("error");
-}
 // Header , show and fade 
 let scrollTop = 0;
 let header = $('header');
@@ -35,7 +20,7 @@ $(window).scroll(function(event){
 }); */
 
 jQuery(document).ready(function($) {
-	$('.waitingSpin').stop().fadeOut(1500);
+	$('.waitingSpin').stop().fadeOut(1000);
 	let showBlockAuth = true;
 	$('.header_account_avatar').click(function (e) {
 		if (showBlockAuth) {
