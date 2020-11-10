@@ -12,9 +12,9 @@ class MainController extends  Controller{
 
 		
 		
-		$db = new Db;
+		$db     = new Db;
 		$params = [];
-		$vars = [];
+		$vars   = [];
 
 		//$data = $db->column('SELECT name FROM users  WHERE id = :id',$params);
 		//echo $data;
@@ -23,27 +23,17 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 		
-		$upcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1';
-		$topMovies = 'https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1';
+		$upcomingMovies = Controller::getContent('https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
+		$topMovies      = Controller::getContent('https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
 		
-		$topMovies = @file_get_contents($topMovies);
-		$upcomingMovies = @file_get_contents($upcomingMovies);
-
-		$dataTopMovies = json_decode($topMovies);
-		$dataUpcomingMovies = json_decode($upcomingMovies);
-
-
-		if( $topMovies != false && !is_null($dataTopMovies)){
-			array_push($vars,$dataTopMovies);
+		if( $topMovies != false){
+			$vars['topMovies'] = $topMovies;
 		}
 
-
-		if( $upcomingMovies != false && !is_null($dataUpcomingMovies)){
-			array_push($vars,$dataUpcomingMovies);
+		if( $upcomingMovies != false){
+			$vars['upcomingMovies'] = $upcomingMovies;
 		}
 		
-		// debug($dataUpcomingMovies);
-		// debug($dataTopMovies);
 		
 		$this->view->render('Главная',$vars );
 

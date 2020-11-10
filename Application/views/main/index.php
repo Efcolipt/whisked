@@ -1,4 +1,4 @@
-<?php $upcomingMovies = $vars[0]->results;$topMovies = $vars[1]->results;?>
+<?php $upcomingMovies = $vars["upcomingMovies"]->results;$topMovies = $vars["topMovies"]->results;?>
 <div class="list_collection">
 <?php for($i=0;$i < count($topMovies); $i++): ?>
 	<div class="collection" data-id="<?=$topMovies[$i]->id; ?>">
