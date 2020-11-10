@@ -24,14 +24,14 @@
 
 	<div class="navigation_collection">
 		<?php 
-			 for ($i = 1; $i < $vars['pageAll']; $i++) {
-				 if ($i != $vars['pageCurrent']) {
-				 	echo '<a class="text_mont navigation_collection_page" href="/serials?page='.$i.'">'.$i.'</a> ';
-				 }
-				 else {
-				 	echo '<span class="text_mont navigation_collection_active_page">'.$i.'</span> ';
-				 }
-			}
+			//  for ($i = 1; $i < $vars['pageAll']; $i++) {
+			// 	 if ($i != $vars['pageCurrent']) {
+			// 	 	echo '<a class="text_mont navigation_collection_page" href="/serials?page='.$i.'">'.$i.'</a> ';
+			// 	 }
+			// 	 else {
+			// 	 	echo '<span class="text_mont navigation_collection_active_page">'.$i.'</span> ';
+			// 	 }
+			// }
 		 ?>	
 	</div> 
 
