@@ -2,7 +2,7 @@
 <div class="list_collection">
 <?php for($i = 0; $i < count($listSerials); $i++): ?>
 	<div class="collection" data-id="<?=$listSerials[$i]->id; ?>">
-		<a href="#" class="link_collection">
+		<a href="/watch/<?=$listSerials[$i]->id; ?>?serial=true" class="link_collection">
 			<div class="poster_collection">
 				<img src="https://image.tmdb.org/t/p/w500/<?=$listSerials[$i]->poster_path; ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">

@@ -23,8 +23,8 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 		
-		$upcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
-		$topMovies = 'https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiToken.'&language=ru-RU&page=1';
+		$upcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1';
+		$topMovies = 'https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1';
 		
 		$topMovies = @file_get_contents($topMovies);
 		$upcomingMovies = @file_get_contents($upcomingMovies);

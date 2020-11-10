@@ -15,7 +15,7 @@ class SerialsController extends  Controller{
 		$db = new Db;
 		$params = [];
 		$pageCurrent = (isset($_GET['page'])) ? $_GET['page'] : 1;
-		$listSerials = "https://api.themoviedb.org/3/tv/popular?api_key=".Controller::apiToken."&language=ru-RU&page=".$pageCurrent."&append_to_response=imdb_id";
+		$listSerials = "https://api.themoviedb.org/3/tv/popular?api_key=".Controller::apiTokenDB."&language=ru-RU&page=".$pageCurrent."&append_to_response=imdb_id";
 
 		$listSerials = @file_get_contents($listSerials);
 		$dataListSerials = json_decode($listSerials);
