@@ -11,8 +11,6 @@ class SerialsController extends  Controller{
 	{	
 
 		$vars        = [];
-		$db          = new Db;
-		$params      = [];
 
 
 		$pageCurrent = (isset($_GET['page'])) ? $_GET['page'] : 1;

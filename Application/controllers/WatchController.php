@@ -12,8 +12,6 @@ class WatchController extends  Controller{
 
 		
 		
-		$db     = new Db;
-		$params = [];
 		$vars   = [];
 
 		$movie  =  isset($_GET['movie']) ? true : false;
@@ -63,7 +61,7 @@ class WatchController extends  Controller{
 		}else{
 			$this->view->redirect('home');
 		}
-
+		debug($vars);
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
 

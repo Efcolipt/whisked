@@ -21,5 +21,10 @@ return [
 		'controller'=>'watch',
 		'action'=>'index',
 	],
+
+	'search' => [
+		'controller'=>'search',
+		'action'=>'index',
+	],
 ];
  ?>
