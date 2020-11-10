@@ -1,8 +1,12 @@
-<?php 
+<?php
 
 return [
 	'' => [
 		'controller'=>'main',
+		'action'=>'index',
+	],
+	'login' => [
+		'controller'=>'login',
 		'action'=>'index',
 	],
 	'movies' => [

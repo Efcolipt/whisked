@@ -68,7 +68,7 @@
 							<li class="list_header_menu_desktop_item">
 								<a href="#" class="list_header_menu_desktop_link">О нас</a>
 							</li>
-                            <!-- 
+                            <!--
 	                        <li class="list_header_menu_desktop_item">
 								<a href="#" class="list_menu_desktop_link">Мультфильмы</a>
 							</li> -->
@@ -108,14 +108,14 @@
 									<a href="#" class="list_header_account_info_link">Гость</a>
 								</li>
 								<li class="list_header_account_link_to_item">
-									<a href="#" class="list_header_account_info_link">Авторизоваться</a>
+									<a href="/login" class="list_header_account_info_link">Авторизоваться</a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Зарегистрироваться</a>
 								</li>
 							</ul>
 							<!-- For Auth user -->
-							
+
 							<!-- <ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">example@example.com</a>
@@ -134,7 +134,7 @@
 										<span> Выйти</span>
 									</a>
 								</li>
-							</ul> 
+							</ul>
 						</div> -->
 
 
