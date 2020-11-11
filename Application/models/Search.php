@@ -21,7 +21,7 @@ class Search extends Model
 				if (!isset($newArr[$i]['media_type']) || !isset($newArr[$i]['name'])|| !isset($newArr[$i]['id']) ) {
 					continue;
 				}
-				$result[$i]['media_type'] = $newArr[$i]['media_type'];
+				$result[$i]['media_type'] = "serial";
 				$result[$i]['title'] = $newArr[$i]['name'];
 				$result[$i]['date'] =  !empty($newArr[$i]['first_air_date']) ? $newArr[$i]['first_air_date'] : "";
 				$result[$i]['vote_average'] =  !empty($newArr[$i]['vote_average']) ? $newArr[$i]['vote_average'] : 0 ;

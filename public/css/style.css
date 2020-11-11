@@ -27,7 +27,6 @@ a{
 .wrapper{
 	display: flex;
     flex-direction: column;
-    height: 100%;
 }
 main{
 	flex: 1 0 auto;
@@ -43,8 +42,20 @@ main{
 }
 
 header{
+	position: sticky;
+    top: 0px;
+    z-index: 999;
 	padding: 25px 0;
 	background: #23232340;
+	transition: top .4s linear,background .4s linear;
+}
+.hideHeader {
+    top: -90px;
+    background: #040404e6;
+}
+.showHeader {
+    top: 0px;
+    background: #040404e6;
 }
 
 .header_icon_burger{
@@ -236,11 +247,11 @@ footer{
 	margin-bottom: 85px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .collection{
-	margin: 15px 10px;
+	margin: 15px 30px;
 	width: 260px;
 
 }
@@ -383,6 +394,77 @@ footer{
     box-sizing: border-box;
     overflow: auto;
 } 
+
+.collection_centered_side_view_tab_video{
+    background-color: #2323235c;
+    width: 100%;
+}
+.collection_centered_side_view_tab_video_helper_top{
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collection_centered_side_view_tab_video_helper_top_players {
+    padding: 20px 25px;
+    background: #4443434d;
+    transition: opacity .3s ease-in;
+}
+.collection_centered_side_view_tab_video_helper_top_players:hover {
+    opacity: .7;
+}
+.collection_centered_side_view_tab_video_helper_top_complaint{
+    margin: 0 15px;
+}
+.collection_centered_side_view_tab_video_helper_top_icon_complaint{
+	transition: opacity .3s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+.collection_centered_side_view_tab_video_helper_top_icon_complaint:hover {
+    opacity: .7;
+}
+
+.collection_centered_side_view_tab_video_helper_top_icon_complaint > i {
+    margin-right: 9px;
+    font-size: 22px;
+    color: #c10808;
+}
+.collection_centered_side_view_tab_video_helper_bottom{
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: center;
+}
+
+
+.collection_centered_side_view_tab_video_helper_bottom_favorite_item{
+	margin: 0 15px;
+    font-size: 20px;
+    transition: opacity .3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+.collection_centered_side_view_tab_video_helper_bottom_favorite_item > i {
+    margin-left: 9px;
+    transition: opacity .3s ease;
+}
+
+.collection_centered_side_view_tab_video_helper_bottom_favorite_item:hover > i {
+    opacity: .7;
+}
+.collection_centered_side_view_tab_video_helper_bottom_social_item{
+	margin: 0 15px;
+    font-size: 18px;
+    transition: opacity .3s ease;
+    color: #fff;
+}
+.collection_centered_side_view_tab_video_helper_bottom_social_item:hover {
+    opacity: .7;
+}
+
 /*Navigation Collection*/
 
 
