@@ -3,14 +3,13 @@
 namespace Application\controllers; 
 
 use Application\Core\Controller; 
-use Application\Lib\Db; 
 
 class SerialsController extends  Controller{
 	
 	public function indexAction()
 	{	
 
-		$vars        = [];
+		$vars = [];
 
 
 		$pageCurrent = (isset($_GET['page'])) ? $_GET['page'] : 1;

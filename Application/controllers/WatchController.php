@@ -3,23 +3,19 @@
 namespace Application\Controllers; 
 
 use Application\Core\Controller; 
-use Application\lib\Db; 
+use Application\Core\View;
 
 class WatchController extends  Controller{
 	
-	public function indexAction()
+	public function movieAction()
 	{	
 
-		
-		
 		$vars   = [];
-
-		$movie  =  isset($_GET['movie']) ? true : false;
-		$serial = isset($_GET['serial']) ? true : false;
+		$movie  =  isset($_GET['q']) ? $_GET['q'] : 0;
 		
 
-		if ((isset($movie) && $movie == true && is_bool($movie)) && ( (!isset($serial) || $serial == false ) && is_bool($serial))) {
-			$movieInfo = Controller::getContent('https://api.themoviedb.org/3/movie/'.$this->route['id'].'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
+		if (isset($movie) && $movie == true && $movie > 0) {
+			$movieInfo = Controller::getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
 			if ($movieInfo != false) {
 				$movieVideo = Controller::getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
@@ -34,38 +30,63 @@ class WatchController extends  Controller{
 					];
 				if ($movieVideo != false && sizeof($movieVideo->data)) {
 					$vars['video'] = $movieVideo->data[0]->iframe_src;
+				}else{
+					$vars['video'] = NULL;
 				}
 			}
-		}else if(( (!isset($movie) || $movie == false) && is_bool($movie)) && (isset($serial) && $serial == true && is_bool($serial))){
-			$serialInfo = Controller::getContent('https://api.themoviedb.org/3/tv/'.$this->route['id'].'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
-			$imdb_id = Controller::getContent("https://api.themoviedb.org/3/tv/".$this->route['id']."/external_ids?api_key=".Controller::apiTokenDB);
+		}else{
+			View::errorCode(480);
+		}
+		
+
+		if (!count($vars)) {
+			View::errorCode(480);
+		}
+
+
+		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
+	}
+
+	public function serialAction()
+	{
+		
+		$vars    = [];
+		$serial  =  isset($_GET['q']) ? $_GET['q'] : 0;
+
+		if( isset($serial) && $serial == true && $serial > 0 ){
+			$serialInfo = Controller::getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
+			$imdb_id = Controller::getContent("https://api.themoviedb.org/3/tv/".$serial."/external_ids?api_key=".Controller::apiTokenDB);
 
 			if($serialInfo != false && $imdb_id != false){
 				$serialVideo = Controller::getContent("https://videocdn.tv/api/short?imdb_id=".$imdb_id->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
-						'video'        => $serialVideo->data[0]->iframe_src,
 						'poster'       => $serialInfo->poster_path,
 						'title'        => $serialInfo->name,
 						'average'      => $serialInfo->vote_average,
 						'date'         => $serialInfo->first_air_date,
 						'desctiption'  => $serialInfo->overview,
 						'genres'       => $serialInfo->genres,
-						'episodes_run' => $serialInfo->episode_run_time[0],
+						'episodes_run' => $serialInfo->episode_run_time,
 						'seasons'      => $serialInfo->number_of_seasons,
 						'episodes'     => $serialInfo->number_of_episodes,
 					];
 				if ($serialVideo != false  && sizeof($serialVideo->data)) {
 					$vars['video'] = $serialVideo->data[0]->iframe_src;
+				}else{
+					$vars['video'] = NULL;
 				}
 			}
 		}else{
-			$this->view->redirect('home');
+			View::errorCode(480);
 		}
-		debug($vars);
+
+		if (!count($vars)) {
+			View::errorCode(480);
+		}
+
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
-
-
+	
 
 }
  ?>

@@ -2,7 +2,7 @@
 <div class="list_collection">
 <?php for($i=0;$i < count($topMovies); $i++): ?>
 	<div class="collection" data-id="<?=$topMovies[$i]->id; ?>">
-		<a href="/watch/<?=$topMovies[$i]->id; ?>?movie=true" class="link_collection">
+		<a href="/watch/movie?q=<?=$topMovies[$i]->id; ?>" class="link_collection">
 			<div class="poster_collection">
 				<img src="https://image.tmdb.org/t/p/w500/<?=$topMovies[$i]->poster_path; ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">
@@ -26,7 +26,7 @@
 <div class="list_collection">
 <?php for($i=0;$i < count($upcomingMovies); $i++): ?>
 	<div class="collection" data-id="<?=$upcomingMovies[$i]->id; ?>">
-		<a href="/watch/<?=$upcomingMovies[$i]->id; ?>?movie=true" class="link_collection">
+		<a href="/watch/movie?q=<?=$upcomingMovies[$i]->id; ?>" class="link_collection">
 			<div class="poster_collection">
 				<img src="https://image.tmdb.org/t/p/w500/<?=$upcomingMovies[$i]->poster_path; ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">

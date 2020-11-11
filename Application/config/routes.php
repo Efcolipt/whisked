@@ -17,9 +17,14 @@ return [
 		'controller'=>'serials',
 		'action'=>'index',
 	],
-	'watch/{id:\d+}' => [
+	'watch/movie' => [
 		'controller'=>'watch',
-		'action'=>'index',
+		'action'=>'movie',
+	],
+
+	'watch/serial' => [
+		'controller'=>'watch',
+		'action'=>'serial',
 	],
 
 	'search' => [

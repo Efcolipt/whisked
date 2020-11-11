@@ -3,14 +3,13 @@
 namespace Application\Controllers; 
 
 use Application\Core\Controller; 
-use Application\Lib\Db; 
 
 class MoviesController extends  Controller{
 	
 	public function indexAction()
 	{	
 
-		$vars   = [];
+		$vars = [];
 
 		$pageCurrent = intval((isset($_GET['page'])) ? $_GET['page'] : 1);
 
@@ -25,7 +24,6 @@ class MoviesController extends  Controller{
 				'pageCurrent' => $pageCurrent,
 			];
 		}
-		
 		$this->view->render('Фильмы',$vars);
 
 	}

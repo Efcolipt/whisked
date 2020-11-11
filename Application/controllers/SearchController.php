@@ -3,7 +3,6 @@
 namespace Application\controllers; 
 
 use Application\Core\Controller; 
-use Application\Lib\Db; 
 
 class SearchController extends  Controller{
 	
