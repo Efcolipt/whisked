@@ -1,13 +1,14 @@
-<?php $listMovies = $vars["listMovies"]->results;?>
+<?php if (!empty($vars['results'])) {?>
 <div class="list_collection">
-<?php for($i = 0; $i < count($listMovies); $i++): ?>
-	<div class="collection" data-id="<?=$listMovies[$i]->id; ?>">
-		<a href="/watch/movie?q=<?=$listMovies[$i]->id; ?>" class="link_collection">
+	<?php foreach ($vars['results'] as $key => $value ) {?>
+
+		<div class="collection" data-id="<?=$value['id'];  ?>">
+			<a class="link_collection" href="/watch/movie<?=$value['id']; ?>" >
 			<div class="poster_collection">
-				<img src="https://image.tmdb.org/t/p/w500/<?=$listMovies[$i]->poster_path; ?>" alt="poster_collection">
+				<img src="https://image.tmdb.org/t/p/w500/<?=$value['poster_path'];  ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">
 					<div class="rait_collection">
-						<p class="text_mont">Рейтинг IMDB <span><?=$listMovies[$i]->vote_average; ?></span></p>
+						<p class="text_mont">Рейтинг IMDB <span><?=$value['vote_average'];  ?></span></p>
 					</div>
 					<div class="average_collection">
 						<p><span>HD</span></p>
@@ -15,22 +16,11 @@
 				</div>
 			</div>
 			<div class="about_collection">
-				<p class="headline_collection"><?=$listMovies[$i]->title; ?></p>
-				<p class="date_collection text_mont"><?=mb_strimwidth($listMovies[$i]->release_date,0,4); ?></p>
+				<p class="headline_collection"><?=$value['title'];  ?></p>
+				<p class="date_collection text_mont"><?=mb_strimwidth($value['date'],0,4) ?></p>
 			</div>
 		</a>
 	</div>
-<?php endfor; ?>
-	<!-- <div class="navigation_collection">
-		<?php 
-			//  for ($i = 1; $i < $vars['pageAll']; $i++) {
-			// 	 if ($i != $vars['pageCurrent']) {
-			// 	 	echo '<a class="text_mont navigation_collection_page" href="/movies?page='.$i.'">'.$i.'</a> ';
-			// 	 }
-			// 	 else {
-			// 	 	echo '<span class="text_mont navigation_collection_active_page">'.$i.'</span> ';
-			// 	 }
-			// }
-		 ?>	
-	</div> -->	
+<?php } ?>
 </div>
+<?php } ?>

@@ -27,11 +27,11 @@ class MainController extends  Controller{
 		$topMovies      = Controller::getContent('https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
 		
 		if( $topMovies != false){
-			$vars['topMovies'] = $topMovies;
+			$vars['topMovies'] = $this->model->reArray($topMovies->results,true);
 		}
 
 		if( $upcomingMovies != false){
-			$vars['upcomingMovies'] = $upcomingMovies;
+			$vars['upcomingMovies'] = $this->model->reArray($upcomingMovies->results,true);
 		}
 		
 		

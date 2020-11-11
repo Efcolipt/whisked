@@ -10,11 +10,10 @@ class WatchController extends  Controller{
 	public function movieAction()
 	{	
 
-		$vars   = [];
 		$movie  =  isset($_GET['q']) ? $_GET['q'] : 0;
-		
+		$vars   = [];
 
-		if (isset($movie) && $movie == true && $movie > 0) {
+		if (!empty($movie) && $movie > 0) {
 			$movieInfo = Controller::getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
 			if ($movieInfo != false) {
 				$movieVideo = Controller::getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
@@ -28,7 +27,7 @@ class WatchController extends  Controller{
 						'budget'      => $movieInfo->budget,
 						'companies'   => $movieInfo->production_countries,
 					];
-				if ($movieVideo != false && sizeof($movieVideo->data)) {
+				if ($movieVideo != false && !empty($movieVideo->data)) {
 					$vars['video'] = $movieVideo->data[0]->iframe_src;
 				}else{
 					$vars['video'] = NULL;
@@ -50,10 +49,10 @@ class WatchController extends  Controller{
 	public function serialAction()
 	{
 		
-		$vars    = [];
 		$serial  =  isset($_GET['q']) ? $_GET['q'] : 0;
+		$vars    = [];
 
-		if( isset($serial) && $serial == true && $serial > 0 ){
+		if( !empty($serial) && $serial > 0 ){
 			$serialInfo = Controller::getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
 			$imdb_id = Controller::getContent("https://api.themoviedb.org/3/tv/".$serial."/external_ids?api_key=".Controller::apiTokenDB);
 
@@ -70,7 +69,7 @@ class WatchController extends  Controller{
 						'seasons'      => $serialInfo->number_of_seasons,
 						'episodes'     => $serialInfo->number_of_episodes,
 					];
-				if ($serialVideo != false  && sizeof($serialVideo->data)) {
+				if ($serialVideo != false  && !empty($serialVideo->data)) {
 					$vars['video'] = $serialVideo->data[0]->iframe_src;
 				}else{
 					$vars['video'] = NULL;
