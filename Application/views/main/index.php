@@ -4,7 +4,7 @@
 	<?php foreach ($vars['upcomingMovies'] as $key => $value ) {?>
 
 		<div class="collection" data-id="<?=$value['id'];  ?>">
-			<a class="link_collection" href="/watch/<?=$value['media_type']."?q=".$value['id']; ?>" >
+			<a class="link_collection" href="/watch/movie?q=<?=$value['id']; ?>" >
 			<div class="poster_collection">
 				<img src="https://image.tmdb.org/t/p/w500/<?=$value['poster_path'];  ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">
@@ -31,7 +31,7 @@
 	<?php foreach ($vars['topMovies'] as $key => $value ) {?>
 
 		<div class="collection" data-id="<?=$value['id'];  ?>">
-			<a class="link_collection" href="/watch/<?=$value['media_type']."?q=".$value['id']; ?>" >
+			<a class="link_collection" href="/watch/movie?q=<?=$value['id']; ?>" >
 			<div class="poster_collection">
 				<img src="https://image.tmdb.org/t/p/w500/<?=$value['poster_path'];  ?>" alt="poster_collection">
 				<div class="info_collection_on_poster">
