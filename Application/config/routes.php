@@ -10,12 +10,12 @@ return [
 		'action'=>'index',
 	],
 	'movies' => [
-		'controller'=>'movies',
-		'action'=>'index',
+		'controller'=>'collection',
+		'action'=>'movies',
 	],
 	'serials' => [
-		'controller'=>'serials',
-		'action'=>'index',
+		'controller'=>'collection',
+		'action'=>'serials',
 	],
 	'watch/movie' => [
 		'controller'=>'watch',

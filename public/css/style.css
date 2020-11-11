@@ -359,6 +359,7 @@ footer{
 }
 .collection_top_side_view_txt_about{
 	padding-left: 20px;
+	padding-right: 20px;
 }
 .collection_top_side_view_txt_about div {
 	margin-bottom: 8px;
@@ -372,6 +373,16 @@ footer{
 .collection_top_side_view_txt_genres p,.collection_top_side_view_txt_companies p {
 	margin-left: 5px;
 }
+.collection_view{
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.collection_top_side_view_txt_description {
+	height: 161px;
+    box-sizing: border-box;
+    overflow: auto;
+} 
 /*Navigation Collection*/
 
 

@@ -5,7 +5,7 @@
 		</div>
 		<div class="collection_top_side_view_txt">
 			<div class="collection_top_side_view_txt_headline collection_top_side_view_txt_info">
-				<p><?=$vars['title'];?><span>12+</span><span>HD</span></p>
+				<p><?=$vars['title'];?><span class="text_mont">12+</span><span>HD</span></p>
 			</div>
 			<div class="collection_top_side_view_txt_about">
 				<div class="collection_top_side_view_txt_info ">
