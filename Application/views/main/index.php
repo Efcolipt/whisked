@@ -26,8 +26,7 @@
 </div>
 <?php } ?>
 <hr style="border:1px solid #343434;">
-<?php if (!empty($vars)) {
- ?>
+<?php if (!empty($vars)) {?>
 <div class="list_collection">
 	<?php foreach ($vars['topMovies'] as $key => $value ) {?>
 
