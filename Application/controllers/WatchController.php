@@ -10,9 +10,8 @@ class WatchController extends  Controller{
 	public function movieAction()
 	{	
 
-		$movie  =  isset($_GET['q']) ? $_GET['q'] : 0;
+		$movie  =  (!empty($_GET['q']) && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars   = [];
-
 		if (!empty($movie) && $movie > 0) {
 			$movieInfo = Controller::getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
 			if ($movieInfo != false) {
@@ -32,16 +31,14 @@ class WatchController extends  Controller{
 				}else{
 					$vars['video'] = NULL;
 				}
+			}else{
+				View::errorCode(480);
 			}
 		}else{
 			View::errorCode(480);
 		}
 		
-
-		if (!count($vars)) {
-			View::errorCode(480);
-		}
-
+		
 
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
@@ -49,7 +46,7 @@ class WatchController extends  Controller{
 	public function serialAction()
 	{
 		
-		$serial  =  isset($_GET['q']) ? $_GET['q'] : 0;
+		$serial  =  (!empty($_GET['q'])  && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars    = [];
 
 		if( !empty($serial) && $serial > 0 ){
@@ -74,14 +71,14 @@ class WatchController extends  Controller{
 				}else{
 					$vars['video'] = NULL;
 				}
+			}else{
+				View::errorCode(480);
 			}
 		}else{
 			View::errorCode(480);
 		}
-
-		if (!count($vars)) {
-			View::errorCode(480);
-		}
+		
+		
 
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
