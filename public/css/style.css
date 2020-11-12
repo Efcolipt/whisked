@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700|Montserrat|Comfortaa:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Comfortaa:wght@400;500&display=swap');
 *{
 	margin: 0;
 	padding: 0;
@@ -13,11 +13,11 @@ body,html{
 	height: 100%;
 }
 p,a,span,small,button,em,g,input{
-	font-family: 'Comfortaa',sans-serif;
+	font-family: 'Comfortaa',"Montserrat",sans-serif;
 	font-weight: normal;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'PT Sans',sans-serif;
+	font-family: 'Montserrat',sans-serif;
 	font-weight: bold;
 }
 a{
@@ -206,6 +206,8 @@ footer{
 	padding: 35px 0;
 	background: #23232340;
     flex: 0 0 auto;
+    z-index: 9999;
+    position: relative;
 }
 .inner_footer,.list_footer_menu_desktop{
 	display: flex;
