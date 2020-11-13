@@ -18,6 +18,9 @@ spl_autoload_register(function($class){
 
 
 session_start();
+$_SESSION['auth'] = false;
+// debug() use everywhere in code , check file dev.php in lib/dev.php
+
 $router = new Router;
 $router->runRouter();
 
