@@ -12,7 +12,7 @@
 
     <div class="control_form_account">
       <label for="login">Придумайте логин </label>
-      <input class="input_control_form" placeholder="testlogin" type="text" name="login" required >
+      <input class="input_control_form" type="text" name="login" required >
     </div> 
 
     <div class="control_form_account">
