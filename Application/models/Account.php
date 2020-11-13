@@ -55,10 +55,10 @@ class Account extends Model
 		$data = $_POST;
 		$MessageError = array();
 		if (!empty($data['send'])) {
-			$data['firstName'] = stripslashes($data['firstName']);
-			$data['firstName'] = htmlspecialchars($data['firstName']);
-			$data['lastName'] = stripslashes($data['lastName']);
-			$data['lastName'] = htmlspecialchars($data['lastName']);
+			// $data['firstName'] = stripslashes($data['firstName']);
+			// $data['firstName'] = htmlspecialchars($data['firstName']);
+			// $data['lastName'] = stripslashes($data['lastName']);
+			// $data['lastName'] = htmlspecialchars($data['lastName']);
 			$data['login'] = stripslashes($data['login']);
 			$data['login'] = htmlspecialchars($data['login']);
 			$data['email'] = stripslashes($data['email']);
@@ -76,13 +76,13 @@ class Account extends Model
 				$MessageError[] = 'Логин должен быть не меньше 3 символов и не больше 25';
 			}
 
-			if (strlen($data['firstName']) < 2  && !(strlen($data['firstName']) > 33) ) {
-				$MessageError[] = 'Имя должно быть не меньше 2 символов и не больше 33';
-			}
+			// if (strlen($data['firstName']) < 2  && !(strlen($data['firstName']) > 33) ) {
+			// 	$MessageError[] = 'Имя должно быть не меньше 2 символов и не больше 33';
+			// }
 
-			if (strlen($data['lastName']) < 2  && !(strlen($data['lastName']) > 33) ) {
-				$MessageError[] = 'Фамилия должна быть не меньше 2 символов и не больше 33';
-			}
+			// if (strlen($data['lastName']) < 2  && !(strlen($data['lastName']) > 33) ) {
+			// 	$MessageError[] = 'Фамилия должна быть не меньше 2 символов и не больше 33';
+			// }
 
 			if (strlen($data['email']) < 3 && !strlen($data['email']) > 25 ) {
 				$MessageError[] = 'Не меньше 3 символов и не больше 25';
@@ -122,22 +122,17 @@ class Account extends Model
 				$pass_hash = password_hash($data['password'], PASSWORD_DEFAULT);
 				$params = [
 					'login'=>$data['login'],
-					'firstName'=>$data['firstName'],
-					'lastName'=>$data['lastName'],
+					// 'firstName'=>$data['firstName'],
+					// 'lastName'=>$data['lastName'],
 					'password'=>$pass_hash,
 					'email'=>$data['email']
 				];
 
-				$insertData = $this->db->query("INSERT INTO users (first_name,last_name,login,password,email) VALUES (:firstName,:lastName,:login,:password,:email)",$params);
+				$insertData = $this->db->query("INSERT INTO users (login,password,email) VALUES (:login,:password,:email)",$params);
 
 				if ($insertData) {
 					$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login",$paramsL);
 					header("Location: /account/login");
-					// debug($user['data']);
-					// $_SESSION['admin'] = $user['data'][0]['status'];
-					// $_SESSION['id'] =  $user['data'][0]['id'];
-					// $_SESSION['login'] =  $user['data'][0]['login'];
-					// $_SESSION['email'] =  $user['data'][0]['email'];
 				}else{
 					$MessageError[] = "Ошибка, повторите позже";
 					return $MessageError;
