@@ -32,10 +32,10 @@ class WatchController extends  Controller{
 					$vars['video'] = NULL;
 				}
 			}else{
-				View::errorCode(480);
+				View::errorCode(404);
 			}
 		}else{
-			View::errorCode(480);
+			View::errorCode(404);
 		}
 		
 		
@@ -72,10 +72,10 @@ class WatchController extends  Controller{
 					$vars['video'] = NULL;
 				}
 			}else{
-				View::errorCode(480);
+				View::errorCode(404);
 			}
 		}else{
-			View::errorCode(480);
+			View::errorCode(404);
 		}
 		
 		
