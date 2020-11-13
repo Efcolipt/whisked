@@ -33,15 +33,39 @@ class Account extends Model
 			$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
 			if (!empty($user) && empty($MessageError)) {
 				if(password_verify($data['password'],$user['data'][0]['password'])){
-					$_SESSION['admin'] = $user['data'][0]['status'];
-					$_SESSION['id'] =  $user['data'][0]['id'];
-					$_SESSION['login'] =  $user['data'][0]['login'];
-					$_SESSION['email'] =  $user['data'][0]['email'];
-					$_SESSION['auth'] =  true;
-					header("Location: /");
+					
+					if (isset($data['remember'])) {
+						$cookie_token = md5($user['data'][0]['id'].$user['data'][0]['password'].time());
+						$params = [
+							'cookie_token' => $cookie_token,
+							'login' => $data['login'],
+						];
+						$update_cookie_token = $this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
+						if (!$update_cookie_token) {
+							$MessageError[] = "Возникла ошибка";
+						}else{
+							$_SESSION['user'] = $user['data'][0];
+							setcookie("cookie_token", $cookie_token, (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
+							echo("<script>location.href = '/';</script>");
+						}
+					}else{
+						if(isset($_COOKIE["cookie_token"])){
+ 							$params = [
+								'login' => $data['login'],
+							];
+					       $update_cookie_token = $this->db->query("UPDATE users SET cookie_token = '' WHERE login = :login",$params);
+					 		$_SESSION['user'] = $user['data'][0];
+					        setcookie("cookie_token", "", time() - 3600,"");
+							echo("<script>location.href = '/';</script>");
+					    }else{
+					    	$_SESSION['user'] = $user['data'][0];
+					    	echo("<script>location.href = '/';</script>");
+					    }
+					}
 				}else{
 					$MessageError[] = 'Неверный логин или пароль';
 				}
+
 			}else{
 				$MessageError[] = 'Неверный логин или пароль';
 			}
@@ -76,6 +100,10 @@ class Account extends Model
 				$MessageError[] = 'Логин должен быть не меньше 3 символов и не больше 25';
 			}
 
+			if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login'])){
+		        $MessageError[] = "Логин может состоять только из букв английского алфавита и цифр";
+		    }
+
 			// if (strlen($data['firstName']) < 2  && !(strlen($data['firstName']) > 33) ) {
 			// 	$MessageError[] = 'Имя должно быть не меньше 2 символов и не больше 33';
 			// }
@@ -84,18 +112,18 @@ class Account extends Model
 			// 	$MessageError[] = 'Фамилия должна быть не меньше 2 символов и не больше 33';
 			// }
 
-			if (strlen($data['email']) < 3 && !strlen($data['email']) > 25 ) {
+			if (mb_strlen($data['email']) < 3 && !mb_strlen($data['email']) > 25 ) {
 				$MessageError[] = 'Не меньше 3 символов и не больше 25';
 			}
 			$pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
-			if (!(strlen($data['email']) > 3)) {
+			if (!(mb_strlen($data['email']) > 3)) {
 				$MessageError[] = 'Введите Email';
 			}
 			if (!preg_match($pattern_email, $data['email'])) {
 				$MessageError[] = 'Введите корректный Email';
 			}
 
-			if (strlen($data['password']) < 6 ) {
+			if (mb_strlen($data['password']) < 6 ) {
 				$MessageError[] = 'Длина пароля должна быть не меньше 6 символов';
 			}
 			

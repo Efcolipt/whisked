@@ -12,6 +12,10 @@
 		<div class="control_form_account">
 			<input type="submit" name="send" value="Войти">
 		</div>
+		<div class="control_form_account checkbox_control_account_form">
+			<input type="checkbox" id="remember_control_account_form" name="remember" checked="checked" /> 
+			<label for="remember_control_account_form">Запомнить меня</label>
+		</div>
 		<div class="other_info_form_account">
 			<a href="/account/register" class="other_info_form_account_link">
 				<img src="/public/images/errors/arrow-back.png" alt="Перейти"> 

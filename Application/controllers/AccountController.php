@@ -12,6 +12,7 @@ class AccountController extends  Controller {
 
 		$db = new Db;
 		$result = $this->model->auth();
+		var_dump($result);
 		$this->view->render('Авторизация');
 	}
 
@@ -21,8 +22,10 @@ class AccountController extends  Controller {
 
 		$db = new Db;
 		$result = $this->model->registration();
+		var_dump($result);
 		$this->view->render('Регистрация');
 	}
+	
 	public function logoutAction()
 	{
 		session_destroy();

@@ -5,7 +5,7 @@
 
 jQuery(document).ready(function($) {
 
-	$('.waitingSpin').stop().fadeOut(1000);
+	$('.waitingSpin').stop().fadeOut(1500);
 	$('.header_account_avatar').click(function (e) {
 		$('.header_account_info').stop().slideToggle();
 	});

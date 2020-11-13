@@ -5,7 +5,6 @@
 	<title>
 		<?=$title; ?>
 	</title>
-
 	<!-- Media -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,7 +101,7 @@
 						</div>
 
 						<div class="header_account_info">
-							<?php if (empty($_SESSION['auth']) && $_SESSION['auth'] == false){  ?>
+							<?php if (empty($_SESSION['user'])){  ?>
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a class="list_header_account_info_link">Гость</a>
@@ -114,11 +113,14 @@
 									<a href="/account/register" class="list_header_account_info_link">Зарегистрироваться</a>
 								</li>
 							</ul>
-						<?php }else if(!empty($_SESSION['auth']) && $_SESSION['auth'] == true){ ?>
+						<?php }else if(!empty($_SESSION['user'])){ ?>
 
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
-									<a href="#" class="list_header_account_info_link"><?=(!empty($_SESSION['email'])) ? $_SESSION['email'] : $_SESSION['login']; ?></a>
+									<a href="#" class="list_header_account_info_link">
+										<?=(!empty($_SESSION['user']['email'])) ? $_SESSION['user']['email'] : "example@example.ru"; ?>
+											
+									</a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Личный кабинет</a>

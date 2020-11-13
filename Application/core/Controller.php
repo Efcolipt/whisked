@@ -3,6 +3,7 @@
 namespace Application\Core; 
 
 use Application\Core\View;
+use Application\lib\Db;
 
 abstract class Controller {
 	
@@ -26,6 +27,7 @@ abstract class Controller {
 		}
 	}
 
+
 	public function getContent($path = '')
 	{
 		$content = @file_get_contents($path);
@@ -36,6 +38,7 @@ abstract class Controller {
 	    return false;
 	}
 
+	
 }
 
  ?>
