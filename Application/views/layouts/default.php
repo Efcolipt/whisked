@@ -102,23 +102,23 @@
 						</div>
 
 						<div class="header_account_info">
-							<!-- For Guest -->
+							<?php if (empty($_SESSION['auth']) && $_SESSION['auth'] == false){  ?>
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
-									<a href="#" class="list_header_account_info_link">Гость</a>
+									<a class="list_header_account_info_link">Гость</a>
 								</li>
 								<li class="list_header_account_link_to_item">
-									<a href="/login" class="list_header_account_info_link">Авторизоваться</a>
+									<a href="/account/login" class="list_header_account_info_link">Авторизоваться</a>
 								</li>
 								<li class="list_header_account_link_to_item">
-									<a href="#" class="list_header_account_info_link">Зарегистрироваться</a>
+									<a href="/account/register" class="list_header_account_info_link">Зарегистрироваться</a>
 								</li>
 							</ul>
-							<!-- For Auth user -->
+						<?php }else if(!empty($_SESSION['auth']) && $_SESSION['auth'] == true){ ?>
 
-							<!-- <ul class="list_header_account_info">
+							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
-									<a href="#" class="list_header_account_info_link">example@example.com</a>
+									<a href="#" class="list_header_account_info_link"><?=(!empty($_SESSION['email'])) ? $_SESSION['email'] : $_SESSION['login']; ?></a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Личный кабинет</a>
@@ -127,7 +127,7 @@
 									<a href="#" class="list_header_account_info_link">Настройки</a>
 								</li>
 								<li class="list_header_account_link_to_item  list_header_account_link_to_item_logout">
-									<a href="#" class="list_header_account_info_link">
+									<a href="/account/logout" class="list_header_account_info_link">
 										<svg  viewBox="0 0 14 12"  xmlns="http://www.w3.org/2000/svg">
 											<path  fill-rule="evenodd" clip-rule="evenodd" d="M9.01073 10.2172C9.01073 11.1454 8.27652 11.9016 7.37545 11.9016H1.63528C0.734207 11.9016 0 11.1454 0 10.2172V2.58598C0 1.65787 0.734207 0.901611 1.63528 0.901611H7.37545C8.27652 0.901611 9.01073 1.65787 9.01073 2.58598V3.99536C9.01073 4.37349 8.71037 4.68286 8.34327 4.68286C7.97616 4.68286 7.6758 4.37349 7.6758 3.99536V2.58598C7.6758 2.41411 7.54231 2.27661 7.37545 2.27661H1.63528C1.46841 2.27661 1.33492 2.41411 1.33492 2.58598V10.2172C1.33492 10.3891 1.46841 10.5266 1.63528 10.5266H7.37545C7.54231 10.5266 7.6758 10.3891 7.6758 10.2172V8.80786C7.6758 8.42973 7.97616 8.12036 8.34327 8.12036C8.71037 8.12036 9.01073 8.42973 9.01073 8.80786V10.2172ZM5.17283 5.69693H11.8141L10.4625 4.32193C10.1955 4.04692 10.1955 3.61723 10.4625 3.34224C10.7294 3.06723 11.1466 3.06723 11.4136 3.34224L13.8832 5.92036V6.0063C13.9499 6.10942 14 6.24692 14 6.40161C14 6.5563 13.9666 6.67661 13.8832 6.79692V6.88286L11.4136 9.42661C11.2801 9.56412 11.1132 9.63286 10.9464 9.63286C10.7795 9.63286 10.6126 9.56412 10.4791 9.42661C10.2122 9.15161 10.2122 8.72192 10.4791 8.44693L11.8141 7.07193H5.17283C4.80573 7.07193 4.50537 6.76254 4.50537 6.38443C4.50537 6.0063 4.80573 5.69693 5.17283 5.69693Z"/>
 										</svg>
@@ -135,8 +135,8 @@
 									</a>
 								</li>
 							</ul>
-						</div> -->
-
+						</div>
+					<?php } ?>
 
 					</div>
 				</div>

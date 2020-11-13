@@ -5,9 +5,17 @@ return [
 		'controller'=>'main',
 		'action'=>'index',
 	],
-	'login' => [
-		'controller'=>'login',
-		'action'=>'index',
+	'account/login' => [
+		'controller'=>'account',
+		'action'=>'login',
+	],
+	'account/register' => [
+		'controller'=>'account',
+		'action'=>'register',
+	],
+	'account/logout' => [
+		'controller'=>'account',
+		'action'=>'logout',
 	],
 	'movies' => [
 		'controller'=>'movies',
