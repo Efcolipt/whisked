@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700|Rubik:400,500|Ubuntu&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Comfortaa:wght@400;500&display=swap');
 *{
 	margin: 0;
 	padding: 0;
@@ -7,16 +7,17 @@
 	list-style: none;
 }
 body,html{
-	font-family: 'Rubik','Ubuntu',sans-serif;
+	font-family: 'Comfortaa','Montserrat',sans-serif;
 	background:url('/public/images/default/backgroundWrapper.png');
 	font-size: 16px;
+	color: #FFF;
 }
 p,a,span,small,button,em,g,input{
-	font-family: 'Rubik','Ubuntu',sans-serif;
+	font-family: 'Montserrat',sans-serif;
 	font-weight: normal;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'PT Sans',sans-serif;
+	font-family: 'Comfortaa',sans-serif;
 	font-weight: bold;
 }
 .container{
@@ -24,4 +25,73 @@ h1,h2,h3,h4,h5,h6{
 	margin: 0 auto;
 	padding-right: 15px;
 	padding-left: 15px;
+}
+
+
+.error_content{
+    position: absolute;
+    top: 50%;
+    width: 850px;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+
+.error_content h1 {
+	font-size: 82px;
+	margin-bottom: 40px;
+}
+
+.error_content p {
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+
+
+.list_menu{
+	border-top: .5px solid #2f2f2f;
+	padding-top: 20px;
+	display: flex;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+
+.list_menu_item:not(:first-child){
+	margin-left: 20px;
+}
+.list_menu_item:hover .list_menu_link{
+	color:#04a49c;
+}
+.list_menu_link{
+	font-family: "Comfortaa",serif;
+	color:#565656;
+	transition:color .3s linear;
+}
+
+.back_home{
+	margin-bottom: 40px;
+	display: flex;
+	font-family: "Comfortaa",serif;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.back_home span{
+	color:#565656;
+	font-size: 18px;
+	transition: color .3s linear;
+}
+
+.back_home:hover span{
+	color:#04a49c;
+}
+
+.back_home:hover img{
+	transform:rotate(180deg);
+}
+.back_home img {
+	transition: transform .3s linear;
+	margin-right: 20px;
 }

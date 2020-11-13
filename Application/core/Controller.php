@@ -1,14 +1,15 @@
 <?php 
 
-namespace Application\core; 
+namespace Application\Core; 
 
-use Application\core\View;
+use Application\Core\View;
 
 abstract class Controller {
 	
 	public $route;
 	public $view;
-	const apiToken = "a74fc0e2e97b235f41c374ac30a95209";
+	const apiTokenDB = "a74fc0e2e97b235f41c374ac30a95209";
+	const apiTokenVideo = "05kYgyT9G4Z2hggKfwX0hDgbAeUrJumY098";
 
 
 	public function __construct($route){
@@ -23,6 +24,16 @@ abstract class Controller {
 		if (class_exists($path)) {
 			return new $path;
 		}
+	}
+
+	public function getContent($path = '')
+	{
+		$content = @file_get_contents($path);
+	    $dataContent = json_decode($content);
+	    if ($content != false && !is_null($dataContent)) {
+	    	return $dataContent;
+	    }
+	    return false;
 	}
 
 }

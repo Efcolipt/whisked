@@ -5,6 +5,12 @@ return [
 		'controller'=>'main',
 		'action'=>'index',
 	],
+
+	'home' => [
+		'controller'=>'main',
+		'action'=>'index',
+	],
+
 	'account/login' => [
 		'controller'=>'account',
 		'action'=>'login',
@@ -17,12 +23,27 @@ return [
 		'controller'=>'account',
 		'action'=>'logout',
 	],
+
 	'movies' => [
-		'controller'=>'movies',
-		'action'=>'index',
+		'controller'=>'collection',
+		'action'=>'movies',
 	],
 	'serials' => [
-		'controller'=>'serials',
+		'controller'=>'collection',
+		'action'=>'serials',
+	],
+	'watch/movie' => [
+		'controller'=>'watch',
+		'action'=>'movie',
+	],
+
+	'watch/serial' => [
+		'controller'=>'watch',
+		'action'=>'serial',
+	],
+
+	'search' => [
+		'controller'=>'search',
 		'action'=>'index',
 	],
 ];
