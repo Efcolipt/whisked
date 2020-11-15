@@ -4,6 +4,7 @@ namespace Application\Controllers;
 
 use Application\Core\Controller; 
 use Application\lib\Db; 
+use Application\lib\Helper; 
 
 class CollectionController extends  Controller{
 	
@@ -13,9 +14,9 @@ class CollectionController extends  Controller{
 
 		$vars = [];
 
-
+		$helper = new helper;
 		$pageCurrent = (isset($_GET['page'])) ? $_GET['page'] : 1;
-		$listSerials = Controller::getContent("https://api.themoviedb.org/3/tv/popular?api_key=".Controller::apiTokenDB."&language=ru-RU&page=".$pageCurrent."&append_to_response=imdb_id");
+		$listSerials = $helper->getContent("https://api.themoviedb.org/3/tv/popular?api_key=".Controller::apiTokenDB."&language=ru-RU&page=".$pageCurrent."&append_to_response=imdb_id");
 
 		if($listSerials != false){
 			$pageAll = $listSerials->total_pages;
@@ -37,8 +38,8 @@ class CollectionController extends  Controller{
 
 		$pageCurrent = intval((isset($_GET['page'])) ? $_GET['page'] : 1);
 
-
-		$listMovies  = Controller::getContent('https://api.themoviedb.org/3/movie/popular?api_key='.Controller::apiTokenDB.'&language=ru-RU&page='.$pageCurrent);
+		$helper = new Helper;
+		$listMovies  = $helper->getContent('https://api.themoviedb.org/3/movie/popular?api_key='.Controller::apiTokenDB.'&language=ru-RU&page='.$pageCurrent);
 
 		if($listMovies != false){
 			$pageAll = $listMovies->total_pages;

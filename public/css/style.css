@@ -25,11 +25,13 @@ a{
 }
 
 .wrapper{
-	display: flex;
-    flex-direction: column;
+	display: table;
+    height: 100%;
+    width: 100%;
 }
 main{
-	flex: 1 0 auto;
+	display: table-row;
+    height: 100%;
 }
 .text_mont{
 	font-family:"Montserrat",serif;
@@ -206,9 +208,8 @@ header{
 footer{
 	padding: 35px 0;
 	background: #23232340;
-    flex: 0 0 auto;
     z-index: 20;
-    position: relative;
+    width: 100%;
 }
 .inner_footer,.list_footer_menu_desktop{
 	display: flex;
@@ -595,6 +596,13 @@ footer{
     margin-left: 10px;
     user-select: none;
     cursor: pointer;
+}
+.control_form_account_error_block{
+    text-align: center;
+}
+.control_form_account_error{
+    color: #ca4747;
+    margin-top: 12px;
 }
 
 /*Waiting spinner*/

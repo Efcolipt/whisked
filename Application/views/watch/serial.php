@@ -1,38 +1,38 @@
 <div class="collection_view">
 	<div class="collection_top_side_view">
 		<div class="collection_top_side_view_img">
-			<img src="https://image.tmdb.org/t/p/w500/<?=$vars['poster'];?>" alt="">
+			<img src="https://image.tmdb.org/t/p/w500/<?=htmlspecialchars($vars['poster']);?>" alt="">
 		</div>
 		<div class="collection_top_side_view_txt">
 			<div class="collection_top_side_view_txt_headline collection_top_side_view_txt_info">
-				<p><?=$vars['title'];?><span>12+</span><span>HD</span></p>
+				<p><?=htmlspecialchars($vars['title']);?><span>12+</span><span>HD</span></p>
 			</div>
 
 			<div class="collection_top_side_view_txt_about">
 				<div class="collection_top_side_view_txt_info ">
-					<p>Рейтинг: <span class="text_mont"><?=$vars['average'];?></span></p>
+					<p>Рейтинг: <span class="text_mont"><?=htmlspecialchars($vars['average']);?></span></p>
 				</div>  
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Дата выхода: <span class="text_mont"><?=$vars['date'];?></span></p>
+					<p>Дата выхода: <span class="text_mont"><?=htmlspecialchars($vars['date']);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Кол-во сезонов: <span class="text_mont"><?=$vars['seasons'];?></span></p>
+					<p>Кол-во сезонов: <span class="text_mont"><?=htmlspecialchars($vars['seasons']);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Кол-во эпизодов: <span class="text_mont"><?=$vars['episodes'];?></span></p>
+					<p>Кол-во эпизодов: <span class="text_mont"><?=htmlspecialchars($vars['episodes']);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Средний показатель серии: <span class="text_mont"><?=$vars['episodes_run'][0];?></span></p>
+					<p>Средний показатель серии: <span class="text_mont"><?=htmlspecialchars($vars['episodes_run'][0]);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_genres">
 					<p>Жанр: </p>
 				<?php for ($i = 0; $i < count($vars['genres']); $i++): ?>
-					<p><?=$vars['genres'][$i]->name;?></p>,
+					<p><?=htmlspecialchars($vars['genres'][$i]->name);?></p>,
 				<?php endfor; ?>
 				</div> 
 
@@ -41,7 +41,7 @@
 				</div>
 				
 				<div class="collection_top_side_view_txt_description ">
-					<p>Описание: <?=$vars['desctiption']?></p>
+					<p>Описание: <?=htmlspecialchars($vars['desctiption']);?></p>
 				</div>
 			</div>
 
@@ -62,7 +62,7 @@
 			<?php if (!empty($vars['video'])) {
 				
 			 ?>
-			<iframe src="<?=$vars['video']; ?>" width="100%" height="800" frameborder="0"></iframe>
+			<iframe src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" frameborder="0"></iframe>
 			<?php } ?>
 			<div class="collection_centered_side_view_tab_video_helper_bottom">
 				<div class="collection_centered_side_view_tab_video_helper_bottom_favorite" data-sfc="800">

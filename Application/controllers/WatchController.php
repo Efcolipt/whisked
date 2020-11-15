@@ -4,18 +4,19 @@ namespace Application\Controllers;
 
 use Application\Core\Controller; 
 use Application\Core\View;
+use Application\lib\Helper; 
 
 class WatchController extends  Controller{
 	
 	public function movieAction()
 	{	
-
+		$helper = new Helper;
 		$movie  =  (!empty($_GET['q']) && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars   = [];
 		if (!empty($movie) && $movie > 0) {
-			$movieInfo = Controller::getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
+			$movieInfo = $helper->getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
 			if ($movieInfo != false) {
-				$movieVideo = Controller::getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
+				$movieVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
 						'poster'      => $movieInfo->poster_path,
 						'title'       => $movieInfo->title,
@@ -48,13 +49,13 @@ class WatchController extends  Controller{
 		
 		$serial  =  (!empty($_GET['q'])  && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars    = [];
-
+		$helper = new Helper;
 		if( !empty($serial) && $serial > 0 ){
-			$serialInfo = Controller::getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
-			$imdb_id = Controller::getContent("https://api.themoviedb.org/3/tv/".$serial."/external_ids?api_key=".Controller::apiTokenDB);
+			$serialInfo = $helper->getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU&append_to_response=ids');
+			$imdb_id = $helper->getContent("https://api.themoviedb.org/3/tv/".$serial."/external_ids?api_key=".Controller::apiTokenDB);
 
 			if($serialInfo != false && $imdb_id != false){
-				$serialVideo = Controller::getContent("https://videocdn.tv/api/short?imdb_id=".$imdb_id->imdb_id."&api_token=".Controller::apiTokenVideo);
+				$serialVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$imdb_id->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
 						'poster'       => $serialInfo->poster_path,
 						'title'        => $serialInfo->name,

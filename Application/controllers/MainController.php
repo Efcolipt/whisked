@@ -4,6 +4,7 @@ namespace Application\Controllers;
 
 use Application\Core\Controller; 
 use Application\lib\Db; 
+use Application\lib\Helper; 
 
 class MainController extends  Controller{
 	
@@ -13,6 +14,7 @@ class MainController extends  Controller{
 		
 		
 		$db     = new Db;
+		$helper = new Helper;
 		$params = [];
 		$vars   = [];
 
@@ -23,8 +25,8 @@ class MainController extends  Controller{
 
 		//debug($data[1]['name']);
 		
-		$upcomingMovies = Controller::getContent('https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
-		$topMovies      = Controller::getContent('https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
+		$upcomingMovies = $helper->getContent('https://api.themoviedb.org/3/movie/upcoming?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
+		$topMovies      = $helper->getContent('https://api.themoviedb.org/3/movie/top_rated?api_key='.Controller::apiTokenDB.'&language=ru-RU&page=1');
 		
 		if( $topMovies != false){
 			$vars['topMovies'] = $this->model->reArray($topMovies->results,true);

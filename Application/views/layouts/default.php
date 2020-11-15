@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>
-		<?=$title; ?>
+		<?=htmlspecialchars($title); ?>
 	</title>
 	<!-- Media -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
 	<meta name="copyright" content="">
 
 	<!-- Open Graph Meta -->
-	<meta property="og:title" content="<?=$title; ?>">
+	<meta property="og:title" content="<?=htmlspecialchars($title); ?>">
 	<meta property="og:locale" content="ru_RU">
 	<meta property="og:description" content="">
 	<meta property="og:image" content="">
@@ -28,7 +28,7 @@
 	<meta property="og:type" content="website">
 
 	<!-- Meta Google  -->
-	<meta itemprop="name" content="<?=$title; ?>" />
+	<meta itemprop="name" content="<?=htmlspecialchars($title); ?>" />
 	<meta itemprop="description" content="" />
 	<meta itemprop="image" content="" />
 
@@ -51,7 +51,7 @@
 						<a href="/" class="header_navbar_link">Fast Film Beta</a>
 					</div>
 					<div class="header_icon_burger">
-						<img src="/public/images/default/burger.png" alt="Bar for mobile">
+						<img src="/public/images/default/header/burger.png" alt="Bar for mobile">
 					</div>
 					<div class="header_menu_desktop">
 						<ul class="list_header_menu_desktop">
@@ -118,7 +118,7 @@
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">
-										<?=(!empty($_SESSION['user']['email'])) ? $_SESSION['user']['email'] : "example@example.ru"; ?>
+										<?=(!empty($_SESSION['user']['email'])) ? htmlspecialchars($_SESSION['user']['email']) : "example@example.ru"; ?>
 											
 									</a>
 								</li>
