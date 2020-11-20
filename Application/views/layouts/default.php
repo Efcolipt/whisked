@@ -42,7 +42,12 @@
 <body>
 	<div class="wrapper">
 		<div class="waitingSpin" >
-			<div class="spinner"></div>
+			<div class="spinner">
+				<div class="blob top"></div>
+					<div class="blob bottom"></div>
+					<div class="blob left"></div>
+					<div class="blob move-blob"></div>
+			</div>
 		</div>
 		<header>
 			<div class="container">
