@@ -58,11 +58,7 @@
 			<?php if (!empty($vars['video'])) {
 				
 			 ?>
-<<<<<<< HEAD
-			<iframe allowfullscreen src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" frameborder="0"></iframe>
-=======
-			<iframe src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" allowfullscreen frameborder="0"></iframe>
->>>>>>> ebb3942043a3a07c0367580a4e6dcab2c1232f5f
+				<iframe allowfullscreen src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" frameborder="0"></iframe>
 			<?php } ?>
 			<div class="collection_centered_side_view_tab_video_helper_bottom">
 				<div class="collection_centered_side_view_tab_video_helper_bottom_favorite" data-sfc="800">
