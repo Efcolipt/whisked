@@ -11,10 +11,16 @@ return [
 		'action'=>'index',
 	],
 
+	// 'user/{id:\b}' => [
+	// 	'controller'=>'main',
+	// 	'action'=>'index',
+	// ],
+
 	'account/login' => [
 		'controller'=>'account',
 		'action'=>'login',
 	],
+
 	'account/register' => [
 		'controller'=>'account',
 		'action'=>'register',
@@ -43,8 +49,8 @@ return [
 	],
 
 	'search' => [
-		'controller'=>'search',
-		'action'=>'index',
+		'controller'=>'collection',
+		'action'=>'search',
 	],
 ];
  ?>

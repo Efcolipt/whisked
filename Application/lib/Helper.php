@@ -7,7 +7,7 @@ use Application\lib\Db;
 class Helper {
 
 
-	public  function getContent($path = '')
+	public function getContent($path = '')
 	{
 		$content = @file_get_contents($path);
 	    $dataContent = json_decode($content);

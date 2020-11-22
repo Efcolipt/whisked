@@ -51,11 +51,9 @@ class WatchController extends  Controller{
 		$vars    = [];
 		$helper = new Helper;
 		if( !empty($serial) && $serial > 0 ){
-			$serialInfo = $helper->getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU&append_to_response=ids');
-			$imdb_id = $helper->getContent("https://api.themoviedb.org/3/tv/".$serial."/external_ids?api_key=".Controller::apiTokenDB);
-
-			if($serialInfo != false && $imdb_id != false){
-				$serialVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$imdb_id->imdb_id."&api_token=".Controller::apiTokenVideo);
+			$serialInfo = $helper->getContent('https://api.themoviedb.org/3/tv/'.$serial.'?api_key='.Controller::apiTokenDB.'&language=ru-RU&append_to_response=external_ids');
+			if($serialInfo != false){
+				$serialVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$serialInfo->external_ids->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
 						'poster'       => $serialInfo->poster_path,
 						'title'        => $serialInfo->name,

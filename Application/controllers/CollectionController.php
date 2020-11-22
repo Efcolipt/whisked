@@ -24,7 +24,7 @@ class CollectionController extends  Controller{
 				'pageAll'     => $pageAll,
 				'pageCurrent' => $pageCurrent,
 			];
-			$vars['results'] = $this->model->reArray($listSerials->results,true);
+			$vars['results'] = $this->model->reDataSerials($listSerials->results);
 		}
 		
 		$this->view->render('Сериалы',$vars);
@@ -47,13 +47,31 @@ class CollectionController extends  Controller{
 				'pageAll'     => $pageAll,
 				'pageCurrent' => $pageCurrent,
 			];
-			$vars['results'] = $this->model->reArray($listMovies->results,false);
+			$vars['results'] = $this->model->reDataMovies($listMovies->results);
 		}
 
 		$this->view->render('Фильмы',$vars);
 
 	}
 
+	public function searchAction()
+	{	
+
+		$vars = [];
+		$helper = new Helper;
+		$query = strip_tags($_POST['query']);
+		$title = $query;
+		
+		if (!empty($query)) {
+			$query = http_build_query(array('query' => $query));
+			$query = $helper->getContent('https://api.themoviedb.org/3/search/multi?api_key='.Controller::apiTokenDB.'&language=ru-RU&'.$query);
+			if (!empty($query->results)) {
+				$vars['results'] = $this->model->reDataSearch($query->results);
+			}
+		}
+
+		$this->view->render('Поиск по запросу '.$title,$vars);
+	}
 
 }
  ?>
