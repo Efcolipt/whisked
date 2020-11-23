@@ -10,6 +10,7 @@ abstract class Controller {
 	
 	public $route;
 	public $view;
+	public $acl;
 	const apiTokenDB = "a74fc0e2e97b235f41c374ac30a95209";
 	const apiTokenVideo = "05kYgyT9G4Z2hggKfwX0hDgbAeUrJumY098";
 
@@ -17,6 +18,9 @@ abstract class Controller {
 	public function __construct($route){
 		$this->route = $route;
 		Helper::checkAuth();
+		if(!$this->checkAcl()){
+			View::errorCode(403);
+		}
 		$this->view = new View($route);
 		$this->model = $this->loadModel($route['controller']);
 	}
@@ -30,9 +34,24 @@ abstract class Controller {
 
 	public function checkAcl()
 	{
-		# code...
+		$this->acl = require 'application/acl/'.$this->route['controller'].'.php';
+		if ($this->isAcl('all')) {
+			return true;
+		}elseif(empty($_SESSION['user']['id']) and $this->isAcl('guest')){
+			return true;
+		}elseif(!empty($_SESSION['user']['id']) and $this->isAcl('authorize')){
+			return true;
+		}elseif(!empty($_SESSION['admin']['id']) and $this->isAcl('admin')){
+			return true;
+		}
+
+		return false;
 	}
 
+	public function isAcl($key)
+	{
+		return in_array($this->route['action'], $this->acl[$key]);
+	}
 	
 }
 

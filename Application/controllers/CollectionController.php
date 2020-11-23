@@ -5,6 +5,7 @@ namespace Application\Controllers;
 use Application\Core\Controller; 
 use Application\lib\Db; 
 use Application\lib\Helper; 
+use Application\Core\View; 
 
 class CollectionController extends  Controller{
 	
@@ -59,7 +60,9 @@ class CollectionController extends  Controller{
 
 		$vars = [];
 		$helper = new Helper;
-		$query = strip_tags($_POST['query']);
+
+		$query = !empty($_POST['query']) ? strip_tags($_POST['query']) : "";
+
 		$title = $query;
 		
 		if (!empty($query)) {
@@ -68,6 +71,8 @@ class CollectionController extends  Controller{
 			if (!empty($query->results)) {
 				$vars['results'] = $this->model->reDataSearch($query->results);
 			}
+		}else{
+			View::errorCode(404);
 		}
 
 		$this->view->render('Поиск по запросу '.$title,$vars);

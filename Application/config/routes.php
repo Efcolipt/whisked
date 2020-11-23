@@ -30,6 +30,11 @@ return [
 		'action'=>'logout',
 	],
 
+	'account/user/{user:\w+}' => [
+		'controller'=>'account',
+		'action'=>'user',
+	],
+
 	'movies' => [
 		'controller'=>'collection',
 		'action'=>'movies',

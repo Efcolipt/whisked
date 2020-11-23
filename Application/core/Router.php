@@ -21,6 +21,7 @@ class Router {
 	 	$route = preg_replace('/{([a-z]+):([^\}]+)}/', '(?P<\1>\2)', $route);
 		$route = '#^'.$route.'$#';
 		$this->routes[$route] = $params;
+
 	}
 
 	 public function matchRoute(){ 
@@ -50,7 +51,9 @@ class Router {
 	 			$action = $this->params['action'].'Action';
 	 			if (method_exists($path, $action )) {
 	 				$controller = new $path($this->params);
+	 				// echo "<pre>";
 	 				// var_dump($controller);
+	 				// echo "</pre>";
 	 				$controller->$action();
 	 			}else{
 	 				View::errorCode(404);

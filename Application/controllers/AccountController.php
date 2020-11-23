@@ -5,6 +5,7 @@ namespace Application\controllers;
 use Application\core\Controller;
 use Application\lib\Db;
 use Application\lib\Helper;
+use Application\core\View;
 
 class AccountController extends  Controller {
 
@@ -42,6 +43,28 @@ class AccountController extends  Controller {
         	setcookie("cookie_token", "", time() - 3600,"/");
 		}
         echo("<script>location.href = '/';</script>");
+	}
+	public function userAction()
+	{
+		$db = new Db;
+		$vars = [];
+		$params = [
+			'login' => strip_tags(htmlspecialchars($this->route['user'])),
+		];
+		$query = $db->row('SELECT * FROM users WHERE login = :login',$params);
+		if ($query) {
+			$vars['user'] = $query[0];
+			if (!empty($_SESSION['user']['id']) && $_SESSION['user']['id'] == $vars['user']['id']) {
+				$isWho = true;
+			}else{
+				$isWho = false;
+			}
+			$vars['isWho'] = $isWho;
+		}else{
+			View::errorCode(404);
+		}
+		//.$vars['user']['login'] 
+		$this->view->render('Страница пользователя ',$vars);
 	}
 }
  ?>
