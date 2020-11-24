@@ -1,7 +1,7 @@
 <?php 
 
-namespace Application\Models;
-use Application\Core\Model;
+namespace Application\models;
+use Application\core\Model;
 
 class Collection extends Model
 {

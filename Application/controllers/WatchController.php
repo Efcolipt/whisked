@@ -1,9 +1,9 @@
 <?php 
 
-namespace Application\Controllers; 
+namespace Application\controllers; 
 
-use Application\Core\Controller; 
-use Application\Core\View;
+use Application\core\Controller; 
+use Application\core\View;
 use Application\lib\Helper; 
 
 class WatchController extends  Controller{

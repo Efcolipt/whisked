@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 return [
 	'host'=> 'localhost',
-	'dbname'=>'FastFilm',
+	'dbname'=>'whisked',
 	'user'=>'root',
-	'pass'=> '',
+	'pass'=> 'root',
 ];
 
 

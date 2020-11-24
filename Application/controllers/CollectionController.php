@@ -1,11 +1,11 @@
 <?php 
 
-namespace Application\Controllers; 
+namespace Application\controllers; 
 
-use Application\Core\Controller; 
+use Application\core\Controller; 
 use Application\lib\Db; 
 use Application\lib\Helper; 
-use Application\Core\View; 
+use Application\core\View; 
 
 class CollectionController extends  Controller{
 	

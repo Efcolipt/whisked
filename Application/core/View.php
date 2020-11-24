@@ -1,6 +1,6 @@
 <?php 
 
-namespace Application\Core; 
+namespace Application\core; 
 
 class View {
 	
@@ -17,24 +17,24 @@ public function __construct($route)
  
  public function render($title,$vars = []){
  	//extract($vars); Output
- 	$path = 'Application/views/'.$this->path.'.php';
+ 	$path = dirname(__DIR__,2).'/Application/views/'.$this->path.'.php';
  	if (file_exists($path)) {
  		ob_start();
  		require $path;
  		$content = ob_get_clean();
- 		require 'Application/views/layouts/'.$this->layout.'.php';
+ 		require dirname(__DIR__,2).'/Application/views/layouts/'.$this->layout.'.php';
  	} else{
  		View::errorCode(404);
  	}
  	
  }
 	public static function errorCode($code){
-		http_response_code($code);
-		$path = 'Application/views/errors/'.$code.'.php';
+        http_response_code($code);
+		$path = dirname(__DiR__,2).'/Application/views/errors/'.$code.'.php';
 		if (file_exists($path)) {
 				require $path ;
 			}	
-		exit;
+		
 	}
 
 	public function redirect($url){

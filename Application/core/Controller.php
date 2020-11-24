@@ -1,8 +1,8 @@
 <?php 
 
-namespace Application\Core; 
+namespace Application\core; 
 
-use Application\Core\View;
+use Application\core\View;
 use Application\lib\Db;
 use Application\lib\Helper;
 
@@ -34,7 +34,7 @@ abstract class Controller {
 
 	public function checkAcl()
 	{
-		$this->acl = require 'application/acl/'.$this->route['controller'].'.php';
+		$this->acl = require dirname(__DIR__,2).'/Application/acl/'.$this->route['controller'].'.php';
 		if ($this->isAcl('all')) {
 			return true;
 		}elseif(empty($_SESSION['user']['id']) and $this->isAcl('guest')){
