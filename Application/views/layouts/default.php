@@ -53,7 +53,7 @@
 			<div class="container">
 				<div class="inner_header">
 					<div class="header_brand">
-						<a href="/" class="header_navbar_link">Fast Film Beta</a>
+						<a href="/" class="header_navbar_link"><span>Whisked</span> <span class="beta">BETA</span></a>
 					</div>
 					<div class="header_icon_burger">
 						<img src="/public/images/default/header/burger.png" alt="Bar for mobile">
@@ -169,7 +169,7 @@
 							<p>Release <span  class="text_mont">v1.0</span></p>
 						</div>
 						<div class="footer_info_site_copyright">
-							<p><span class="text_mont">© 2018-<?=date("Y");?></span> <span>Fast Film</span></p>
+							<p><span class="text_mont">© 2018-<?=date("Y");?></span> <span>Whisked</span></p>
 						</div>
 					</div>
 				</div>
