@@ -97,7 +97,7 @@ header{
 	font-size: 18px;
 }
 
-.header_search  input { 
+.header_search  input {
 	padding: 12px 39px 12px 39px;
     border: 0;
     background: #272727;
@@ -200,7 +200,7 @@ header{
 .list_header_account_link_to_item:not(.list_header_account_info_item):hover a{
 	background: #04a49c;
 	border-radius:3px;
-}  
+}
 
 
 
@@ -284,7 +284,7 @@ footer{
 .date_collection{
 	color: #a6a6a6;
 	font-size: 14px;
-}   
+}
 .info_collection_on_poster{
 	bottom: 0;
     display: flex;
@@ -397,7 +397,7 @@ footer{
 	height: 161px;
     box-sizing: border-box;
     overflow: auto;
-} 
+}
 
 .collection_centered_side_view_tab_video{
     background-color: #2323235c;
@@ -501,8 +501,28 @@ footer{
 .navigation_collection_page:hover{
 	background:#3cafaad6;
 }
-
-
+.not_found_video{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+	color:#fff;
+	font-size: 20px;
+}
+.search_not_found{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+	color:#fff;
+	font-size: 24px;
+}
+.closed_site{
+	text-align: center;
+	color:#fff;
+}
+.closed_site h1 {
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
 /*Account*/
 
 .form_account form{

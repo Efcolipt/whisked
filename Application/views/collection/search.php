@@ -24,4 +24,6 @@
 	</div>
 <?php } ?>
 </div>
-<?php } ?>
+<?php }else{?>
+<p class="search_not_found">По вашему запросу ничего не найдено</p>
+<?php  }?>

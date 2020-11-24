@@ -1,17 +1,17 @@
-<?php 
+<?php
 
-namespace Application\controllers; 
+namespace Application\controllers;
 
-use Application\core\Controller; 
-use Application\lib\Db; 
-use Application\lib\Helper; 
-use Application\core\View; 
+use Application\core\Controller;
+use Application\lib\Db;
+use Application\lib\Helper;
+use Application\core\View;
 
 class CollectionController extends  Controller{
-	
-	
+
+
 	public function serialsAction()
-	{	
+	{
 
 		$vars = [];
 
@@ -27,13 +27,13 @@ class CollectionController extends  Controller{
 			];
 			$vars['results'] = $this->model->reDataSerials($listSerials->results);
 		}
-		
+
 		$this->view->render('Сериалы',$vars);
 	}
 
-	
+
 	public function moviesAction()
-	{	
+	{
 
 		$vars = [];
 
@@ -56,7 +56,7 @@ class CollectionController extends  Controller{
 	}
 
 	public function searchAction()
-	{	
+	{
 
 		$vars = [];
 		$helper = new Helper;
@@ -64,16 +64,19 @@ class CollectionController extends  Controller{
 		$query = !empty($_POST['query']) ? strip_tags($_POST['query']) : "";
 
 		$title = $query;
-		
+
 		if (!empty($query)) {
 			$query = http_build_query(array('query' => $query));
 			$query = $helper->getContent('https://api.themoviedb.org/3/search/multi?api_key='.Controller::apiTokenDB.'&language=ru-RU&'.$query);
 			if (!empty($query->results)) {
 				$vars['results'] = $this->model->reDataSearch($query->results);
+			}else{
+				$vars['results'] = NULL;
 			}
 		}else{
 			View::errorCode(404);
 		}
+
 
 		$this->view->render('Поиск по запросу '.$title,$vars);
 	}
