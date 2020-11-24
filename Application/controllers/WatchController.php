@@ -1,15 +1,15 @@
-<?php 
+<?php
 
-namespace Application\controllers; 
+namespace Application\controllers;
 
-use Application\core\Controller; 
+use Application\core\Controller;
 use Application\core\View;
-use Application\lib\Helper; 
+use Application\lib\Helper;
 
 class WatchController extends  Controller{
-	
+
 	public function movieAction()
-	{	
+	{
 		$helper = new Helper;
 		$movie  =  (!empty($_GET['q']) && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars   = [];
@@ -19,10 +19,11 @@ class WatchController extends  Controller{
 				$movieVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
 						'poster'      => $movieInfo->poster_path,
+						'backdrop'      => $movieInfo->backdrop_path,
 						'title'       => $movieInfo->title,
 						'average'     => $movieInfo->vote_average,
 						'date'        => $movieInfo->release_date,
-						'desctiption' => $movieInfo->overview,
+						'description' => $movieInfo->overview,
 						'genres'      => $movieInfo->genres,
 						'budget'      => $movieInfo->budget,
 						'companies'   => $movieInfo->production_countries,
@@ -38,15 +39,15 @@ class WatchController extends  Controller{
 		}else{
 			View::errorCode(404);
 		}
-		
-		
+
+
 
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
 
 	public function serialAction()
 	{
-		
+
 		$serial  =  (!empty($_GET['q'])  && !is_int($_GET['q'])) ? $_GET['q'] : 0;
 		$vars    = [];
 		$helper = new Helper;
@@ -59,7 +60,7 @@ class WatchController extends  Controller{
 						'title'        => $serialInfo->name,
 						'average'      => $serialInfo->vote_average,
 						'date'         => $serialInfo->first_air_date,
-						'desctiption'  => $serialInfo->overview,
+						'description'  => $serialInfo->overview,
 						'genres'       => $serialInfo->genres,
 						'episodes_run' => $serialInfo->episode_run_time,
 						'seasons'      => $serialInfo->number_of_seasons,
@@ -76,12 +77,12 @@ class WatchController extends  Controller{
 		}else{
 			View::errorCode(404);
 		}
-		
-		
+
+
 
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
-	
+
 
 }
  ?>

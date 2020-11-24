@@ -36,7 +36,7 @@
 					<p>Языки: Русский, Английский</p>
 				</div>
 				<div class="collection_top_side_view_txt_description ">
-					<p>Описание: <?=htmlspecialchars($vars['desctiption'])?></p>
+					<p>Описание: <?=htmlspecialchars($vars['description'])?></p>
 				</div>
 
 			</div>

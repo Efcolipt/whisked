@@ -28,7 +28,7 @@
 				<div class="collection_top_side_view_txt_info ">
 					<p>Средний показатель серии: <span class="text_mont"><?=htmlspecialchars($vars['episodes_run'][0]);?></span></p>
 				</div>
-
+				
 				<div class="collection_top_side_view_txt_genres">
 					<p>Жанр: </p>
 				<?php for ($i = 0; $i < count($vars['genres']); $i++): ?>
@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="collection_top_side_view_txt_description ">
-					<p>Описание: <?=htmlspecialchars($vars['desctiption']);?></p>
+					<p>Описание: <?=htmlspecialchars($vars['description']);?></p>
 				</div>
 			</div>
 

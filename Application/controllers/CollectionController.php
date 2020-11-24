@@ -50,6 +50,7 @@ class CollectionController extends  Controller{
 			];
 			$vars['results'] = $this->model->reDataMovies($listMovies->results);
 		}
+		// debug($vars);
 
 		$this->view->render('Фильмы',$vars);
 

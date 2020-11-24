@@ -13,24 +13,27 @@
 
 	<!-- Meta for search -->
 	<meta name="robots" content="index, follow">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<meta name="copyright" content="">
+	<meta name="keywords" content="фильмы онлайн бесплатно в хорошем отличном качестве без смс кино видео смотреть без регистрации новинки кинофильмы онлайн кинотеатр 2012 2013 просмотр видеоролики">
+	<meta name="description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta name="author" content="Whisked">
+	<meta name="copyright" content="Whisked">
 
 	<!-- Open Graph Meta -->
-	<meta property="og:title" content="<?=htmlspecialchars($title); ?>">
+	<meta property="og:title" content="<?=htmlspecialchars($title); ?> | Whisked">
 	<meta property="og:locale" content="ru_RU">
-	<meta property="og:description" content="">
-	<meta property="og:image" content="">
-	<meta property="og:site_name" content="FastFilm">
-	<meta property="og:url" content="">
+	<meta property="og:description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta property="og:image" content="<?= isset($vars['backdrop'])  ? "https://image.tmdb.org/t/p/w500".$vars['backdrop'] : "/public/images/logo/logo.png"  ?>">
+	<meta property="og:site_name" content="Whisked">
+	<meta property="og:url" content="whisked.ru">
 	<meta property="og:type" content="website">
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="780" />
+	<meta property="og:image:height" content="520" />
 
 	<!-- Meta Google  -->
-	<meta itemprop="name" content="<?=htmlspecialchars($title); ?>" />
-	<meta itemprop="description" content="" />
-	<meta itemprop="image" content="" />
+	<meta itemprop="name" content="<?=htmlspecialchars($title); ?> | Whisked" />
+	<meta itemprop="description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
+	<meta itemprop="image" content="<?= isset($vars['poster_path']) ? $vars['poster_path'] : "/public/images/logo/logo.png"  ?>" />
 
 	<!-- For media app -->
 	<!-- <link rel="apple-touch-icon" sizes="57x57" href="#"> -->
