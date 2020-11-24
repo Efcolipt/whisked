@@ -123,12 +123,12 @@
 							<ul class="list_header_account_info">
 								<li class="list_header_account_info_item list_header_account_info_about">
 									<a href="#" class="list_header_account_info_link">
-										<?=(!empty($_SESSION['user']['email'])) ? htmlspecialchars($_SESSION['user']['email']) : "example@example.ru"; ?>
-											
+										<?=htmlspecialchars($_SESSION['user']['email'])?>
+
 									</a>
 								</li>
 								<li class="list_header_account_link_to_item">
-									<a href="#" class="list_header_account_info_link">Личный кабинет</a>
+									<a href="/account/user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
 								</li>
 								<li class="list_header_account_link_to_item">
 									<a href="#" class="list_header_account_info_link">Настройки</a>
