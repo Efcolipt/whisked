@@ -16,10 +16,10 @@ class CollectionController extends  Controller{
 		$vars = [];
 
 		$helper = new helper;
-		$pageCurrent = (isset($_GET['page'])) ? $_GET['page'] : 1;
+		$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
 		$listSerials = $helper->getContent("https://api.themoviedb.org/3/tv/popular?api_key=".Controller::apiTokenDB."&language=ru-RU&page=".$pageCurrent."&append_to_response=imdb_id");
 
-		if($listSerials != false){
+		if($listSerials){
 			$pageAll = $listSerials->total_pages;
 			$vars = [
 				'pageAll'     => $pageAll,
@@ -36,13 +36,10 @@ class CollectionController extends  Controller{
 	{
 
 		$vars = [];
-
-		$pageCurrent = intval((isset($_GET['page'])) ? $_GET['page'] : 1);
-
+		$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
 		$helper = new Helper;
-		$listMovies  = $helper->getContent('https://api.themoviedb.org/3/movie/popular?api_key='.Controller::apiTokenDB.'&language=ru-RU&page='.$pageCurrent);
-
-		if($listMovies != false){
+		$listMovies  = $helper->getContent('https://api.themoviedb.org/3/movie/popular?api_key='.Controller::apiTokenDB.'&language=ru-RU&limit=10&page='.$pageCurrent);
+		if($listMovies){
 			$pageAll = $listMovies->total_pages;
 			$vars = [
 				'pageAll'     => $pageAll,
@@ -50,7 +47,6 @@ class CollectionController extends  Controller{
 			];
 			$vars['results'] = $this->model->reDataMovies($listMovies->results);
 		}
-		// debug($vars);
 
 		$this->view->render('Фильмы',$vars);
 

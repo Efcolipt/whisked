@@ -1,6 +1,6 @@
-<?php if (!empty($vars['results'])) {?>
+<?php if (!empty($vars['results'])):?>
 <div class="list_collection">
-	<?php foreach ($vars['results'] as $key => $value ) {?>
+	<?php foreach ($vars['results'] as $key => $value ):?>
 
 		<div class="collection" data-id="<?=htmlspecialchars($value['id']);  ?>">
 			<a class="link_collection" href="/watch/movie?q=<?=htmlspecialchars($value['id']); ?>" >
@@ -21,6 +21,41 @@
 			</div>
 		</a>
 	</div>
-<?php } ?>
+<?php endforeach; ?>
+<?php
+	$page = $vars['pageCurrent'];
+	$pageLast = $vars['pageAll'];
+?>
+	<div class="navigation_collection">
+			<?php if ($page <= 5): ?>
+				<?php for($i = 1; $i < 12; $i++): ?>
+					<?php if ($page+1 == $i+1): ?>
+						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+					<?php continue; endif; ?>
+					<a href="/movies?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
+				<?php endfor; ?>
+			<?php endif; ?>
+			<?php if ($page >= 6 && $page < 	$pageLast - 5): ?>
+					<a href="/movies?page=<?=$page - 5;?>" class=" navigation_collection_page"><?=$page - 5; ?></a>
+					<a href="/movies?page=<?=$page - 4;?>" class=" navigation_collection_page"><?=$page - 4; ?></a>
+					<a href="/movies?page=<?=$page - 3;?>" class=" navigation_collection_page"><?=$page - 3; ?></a>
+					<a href="/movies?page=<?=$page - 2;?>" class=" navigation_collection_page"><?=$page - 2	; ?></a>
+					<a href="/movies?page=<?=$page - 1;?>" class=" navigation_collection_page"><?=$page - 1; ?></a>
+				<?php for($i = $page; $i < $page + 6; $i++): ?>
+					<?php if ($page == $i): ?>
+						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+					<?php continue; endif; ?>
+					<a href="/movies?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
+				<?php endfor; ?>
+			<?php endif; ?>
+			<?php if ($page >= 	$pageLast - 5): ?>
+				<?php for($i = $page-5; $i < $page; $i++): ?>
+					<?php if ($page+1 == $i+1): ?>
+						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+					<?php continue; endif; ?>
+					<a href="/movies?page=<?=$i;?>" class="navigation_collection_page"><?=$i;?></a>
+				<?php endfor; ?>
+			<?php endif; ?>
+	</div>
 </div>
-<?php } ?>
+<?php endif; ?>

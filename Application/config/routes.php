@@ -11,10 +11,6 @@ return [
 		'action'=>'index',
 	],
 
-	// 'user/{id:\b}' => [
-	// 	'controller'=>'main',
-	// 	'action'=>'index',
-	// ],
 
 	'account/login' => [
 		'controller'=>'account',
