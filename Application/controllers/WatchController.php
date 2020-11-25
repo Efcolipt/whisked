@@ -15,11 +15,11 @@ class WatchController extends  Controller{
 		$vars   = [];
 		if (!empty($movie) && $movie > 0) {
 			$movieInfo = $helper->getContent('https://api.themoviedb.org/3/movie/'.$movie.'?api_key='.Controller::apiTokenDB.'&language=ru-RU');
-			if ($movieInfo != false) {
+			if ($movieInfo) {
 				$movieVideo = $helper->getContent("https://videocdn.tv/api/short?imdb_id=".$movieInfo->imdb_id."&api_token=".Controller::apiTokenVideo);
 					$vars = [
 						'poster'      => $movieInfo->poster_path,
-						'backdrop'      => $movieInfo->backdrop_path,
+						'backdrop'    => $movieInfo->backdrop_path,
 						'title'       => $movieInfo->title,
 						'average'     => $movieInfo->vote_average,
 						'date'        => $movieInfo->release_date,
@@ -28,7 +28,7 @@ class WatchController extends  Controller{
 						'budget'      => $movieInfo->budget,
 						'companies'   => $movieInfo->production_countries,
 					];
-				if ($movieVideo != false && !empty($movieVideo->data)) {
+				if ($movieVideo && !empty($movieVideo->data)) {
 					$vars['video'] = $movieVideo->data[0]->iframe_src;
 				}else{
 					$vars['video'] = NULL;

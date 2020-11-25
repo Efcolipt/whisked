@@ -9,12 +9,20 @@
 </head>
 <body>
 	<div id="error_page">
+		<div class="waitingSpin" >
+			<div class="spinner">
+				<div class="blob top"></div>
+					<div class="blob bottom"></div>
+					<div class="blob left"></div>
+					<div class="blob move-blob"></div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="error_content">
 				<h1>Error 404</h1>
 				<p>Упс , кажется страница которую вы ищете больше не существует</p>
 				<a href="/" class="back_home">
-					<img src="/public/images/errors/arrow-back.png" alt="Назад"> 
+					<img src="/public/images/errors/arrow-back.png" alt="Назад">
 					<span>Вернуться на главную</span>
 				</a>
 				<ul class="list_menu">
@@ -37,5 +45,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+	<script src="/public/js/error_page.js"></script>
 </body>
 </html>
