@@ -1,4 +1,4 @@
-<?php 
+<?php
 require __DIR__.'/Application/lib/Dev.php';
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
@@ -13,19 +13,13 @@ spl_autoload_register(function($class){
 	    //debug(1);
 		require $path;
 	}
-	
+
 });
 
 
 session_start();
-
 $router = new Router;
 $router->runRouter();
-
-
-
-
-
 
 
 

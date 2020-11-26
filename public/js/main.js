@@ -4,6 +4,9 @@
  */
 
 jQuery(document).ready(function($) {
+	$('.burger_icon_mobile_menu').click(function () {
+			$('.header_menu_desktop').stop().slideToggle();
+	});
 
 	$('.waitingSpin').stop().fadeOut(1000);
 	$('.header_account_avatar').click(function (e) {

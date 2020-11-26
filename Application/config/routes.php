@@ -6,6 +6,7 @@ return [
 		'action'=>'index',
 	],
 
+
 	'home' => [
 		'controller'=>'main',
 		'action'=>'index',

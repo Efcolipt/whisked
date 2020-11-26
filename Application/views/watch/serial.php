@@ -28,7 +28,7 @@
 				<div class="collection_top_side_view_txt_info ">
 					<p>Средний показатель серии: <span class="text_mont"><?=htmlspecialchars($vars['episodes_run'][0]);?></span></p>
 				</div>
-				
+
 				<div class="collection_top_side_view_txt_genres">
 					<p>Жанр: </p>
 				<?php for ($i = 0; $i < count($vars['genres']); $i++): ?>
@@ -62,7 +62,7 @@
 			<?php if (!empty($vars['video'])) {
 
 			 ?>
-			<iframe allowfullscreen src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" frameborder="0"></iframe>
+			<iframe src="https://65.svetacdn.in/6pNafaytDjIo/tv-series/<?=$vars['id']; ?>" width="100%" height="800" frameborder="0" allowfullscreen></iframe>
 			<?php }else { ?>
 					<p class="not_found_video">Сериал не найден</p>
 			<?php	} ?>

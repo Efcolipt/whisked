@@ -58,7 +58,7 @@
 			<?php if (!empty($vars['video'])) {
 
 			 ?>
-				<iframe allowfullscreen src="<?=htmlspecialchars($vars['video']); ?>" width="100%" height="800" frameborder="0"></iframe>
+			 <iframe src="https://65.svetacdn.in/6pNafaytDjIo/movie/<?=$vars['id']; ?>" width="100%" height="800" frameborder="0" allowfullscreen></iframe>
 			<?php }else { ?>
 					<p class="not_found_video">Фильм не найден</p>
 			<?php	} ?>

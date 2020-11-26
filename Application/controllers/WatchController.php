@@ -30,8 +30,10 @@ class WatchController extends  Controller{
 					];
 				if ($movieVideo && !empty($movieVideo->data)) {
 					$vars['video'] = $movieVideo->data[0]->iframe_src;
+					$vars['id'] = $movieVideo->data[0]->id;
 				}else{
 					$vars['video'] = NULL;
+					$vars['id'] = NULL;
 				}
 			}else{
 				View::errorCode(404);
@@ -65,11 +67,14 @@ class WatchController extends  Controller{
 						'episodes_run' => $serialInfo->episode_run_time,
 						'seasons'      => $serialInfo->number_of_seasons,
 						'episodes'     => $serialInfo->number_of_episodes,
+
 					];
 				if ($serialVideo != false  && !empty($serialVideo->data)) {
 					$vars['video'] = $serialVideo->data[0]->iframe_src;
+					$vars['id']    = $serialVideo->data[0]->id;
 				}else{
 					$vars['video'] = NULL;
+					$vars['id'] = NULL;
 				}
 			}else{
 				View::errorCode(404);
