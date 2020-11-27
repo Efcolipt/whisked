@@ -103,21 +103,18 @@ header{
   content: '';
   top: 9px;
 }
-#burger_icon_mobile_menu_check:checked ~ .burger_icon_mobile_menu > span {
+.burger_icon_mobile_menu_open > span {
   transform: rotate(45deg);
 }
-#burger_icon_mobile_menu_check:checked ~ .burger_icon_mobile_menu > span::before {
+.burger_icon_mobile_menu_open > span::before {
   top: 0;
   transform: rotate(0);
 }
-#burger_icon_mobile_menu_check:checked ~ .burger_icon_mobile_menu > span::after {
+.burger_icon_mobile_menu_open > span::after {
   top: 0;
   transform: rotate(90deg);
 }
-#burger_icon_mobile_menu_check:checked  ~ .header_menu_desktop {
-  visibility: visible;
-  left: 0;
-}
+
 .burger_icon_mobile_menu > span,
 .burger_icon_mobile_menu > span::before,
 .burger_icon_mobile_menu > span::after {
@@ -230,7 +227,7 @@ header{
     z-index: 20;
     right: 0;
     border-radius: 4px;
-    background-color: #1f1f1f;
+    background-color: #040404e6;
     text-align: left;
     top: 50px;
 }
@@ -242,12 +239,12 @@ header{
     position: absolute;
     right: 30px;
     top: -3px;
-    background: #1f1f1f;
+    background: #040404e6;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 .list_header_account_info_about{
-	border-bottom: 1px solid #3b3b3b;
+	border-bottom: 1px solid #212121;
 }
 .list_header_account_info_about .list_header_account_info_link{
 	font-size: 15px;

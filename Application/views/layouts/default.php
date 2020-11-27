@@ -59,7 +59,7 @@
 				<div class="inner_header">
 					<div class="unite_header_burger_brand">
 						<div class="header_icon_burger">
-							<input id="burger_icon_mobile_menu_check" type="checkbox" />
+							<!-- <input id="burger_icon_mobile_menu_check" type="checkbox" /> -->
 							 <label class="burger_icon_mobile_menu" for="burger_icon_mobile_menu_check">
 								 <span></span>
 							 </label>

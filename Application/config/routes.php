@@ -3,13 +3,13 @@
 return [
 	'' => [
 		'controller'=>'main',
-		'action'=>'index',
+		'action'=>'home',
 	],
 
 
 	'home' => [
 		'controller'=>'main',
-		'action'=>'index',
+		'action'=>'home',
 	],
 
 

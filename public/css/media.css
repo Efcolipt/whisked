@@ -1,9 +1,24 @@
 @media only screen and (max-width:1070px) {
   .header_menu_desktop{
-    display: none;
     position: fixed;
     left: 0;
-    bottom: 0;
+    display: block;
+    width: 100%;
+    /* top: 91px; */
+    bottom:-100%;
+    z-index: 200;
+    transition: bottom .3s ease;
+  }
+  .show_header_menu_desktop{
+    bottom:0;
+  }
+  .list_header_menu_desktop{
+    flex-direction: column;
+    text-align: center;
+    background: #040404e6;
+  }
+  .list_header_menu_desktop_item{
+    margin: 25px 0px;
   }
   .header_icon_burger{
     display: block;

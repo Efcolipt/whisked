@@ -8,7 +8,7 @@ use Application\lib\Helper;
 
 class MainController extends  Controller{
 
-	public function indexAction()
+	public function homeAction()
 	{
 
 
