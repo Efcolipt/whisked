@@ -21,6 +21,9 @@ class Account extends Model
 			$params = [
 				'login' => $data['login'],
 			];
+			if (empty($data['login']) || empty($data['password'])) {
+					$MessageError['other'] = 'Неверный логин или пароль';
+			}
 
 			$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
 			if (!empty($user['data']) && empty($MessageError)) {
@@ -81,7 +84,7 @@ class Account extends Model
 			$data['email'] = htmlspecialchars($data['email']);
 			$data['password'] = htmlspecialchars($data['password']);
 			$data['password']= stripslashes($data['password']);
-			$data['rePassword']= stripslashes($data['rePassword']); 
+			$data['rePassword']= stripslashes($data['rePassword']);
 			$data['rePassword'] = htmlspecialchars($data['rePassword']);
 
 
@@ -118,7 +121,7 @@ class Account extends Model
 			if (mb_strlen($data['password']) < 6 ) {
 				$MessageError['password'] = 'Длина пароля должна быть не меньше 6 символов';
 			}
-			
+
 			if ($data['password'] != $data['rePassword']) {
 				$MessageError['rePassword'] = 'Пароли не совпадают';
 			}
@@ -130,7 +133,7 @@ class Account extends Model
 			$paramsE = [
 				'email'=>$data['email'],
 			];
-			
+
 
 			$similar_login = $this->db->row('SELECT * FROM users WHERE login = :login',$paramsL);
 			$similar_email = $this->db->row('SELECT * FROM users WHERE email = :email',$paramsE);
@@ -158,7 +161,7 @@ class Account extends Model
 					return $MessageError;
 				}
 
-			}   
+			}
 
 		}
 			return $MessageError;

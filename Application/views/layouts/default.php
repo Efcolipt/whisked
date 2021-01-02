@@ -42,6 +42,9 @@
 	<link rel="stylesheet" href="/public/css/media.css">
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/images/favicon/favicon.png">
+	<!-- Verification -->
+	<meta name="google-site-verification" content="8VIsXTUaNPw8A2JUq-2azZvju2-ll7OIhApGL09cT4A" />
+	<meta name="yandex-verification" content="527dd094f9d7b8fa" />
 	<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(69718450, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/69718450" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
 <body>
@@ -86,8 +89,8 @@
 					</div>
 					<div class="unite_header_search_accout">
 						<div class="header_search">
-							<form action="/search" method="post">
-								<input type="text" placeholder="Найти ?" name="query" required>
+							<form action="/search" method="get">
+								<input type="text" placeholder="Найти ?" name="q" required>
 								<button class="header_search_icon">
 									<svg viewBox="0 0 18 18">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M13.9499 12.4702C15.9598 9.71455 15.6403 5.74064 13.048 3.14826C10.193 0.293337 5.66259 0.195039 2.92892 2.92871C0.195246 5.66238 0.293543 10.1928 3.14847 13.0478C5.74081 15.6401 9.71462 15.9596 12.4703 13.9498C12.5259 14.1145 12.6194 14.2692 12.7506 14.4004L15.4212 17.071C15.8768 17.5266 16.6155 17.5266 17.0711 17.071C17.5267 16.6154 17.5267 15.8767 17.0711 15.4211L14.4005 12.7505C14.2693 12.6193 14.1146 12.5259 13.9499 12.4702ZM11.7161 11.7166C13.6296 9.80299 13.5608 6.63167 11.5624 4.63322C9.56394 2.63478 6.39262 2.56597 4.47905 4.47954C2.56548 6.39311 2.63429 9.56442 4.63274 11.5629C6.63119 13.5613 9.8025 13.6301 11.7161 11.7166Z"></path>
@@ -135,7 +138,7 @@
 										</a>
 									</li>
 									<li class="list_header_account_link_to_item">
-										<a href="/account/user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
+										<a href="user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
 									</li>
 									<li class="list_header_account_link_to_item">
 										<a href="#" class="list_header_account_info_link">Настройки</a>

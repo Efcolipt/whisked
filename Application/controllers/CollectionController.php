@@ -26,6 +26,7 @@ class CollectionController extends  Controller{
 				'pageCurrent' => $pageCurrent,
 			];
 			$vars['results'] = $this->model->reDataSerials($listSerials->results);
+			
 		}
 
 		$this->view->render('Сериалы',$vars);
@@ -58,7 +59,7 @@ class CollectionController extends  Controller{
 		$vars = [];
 		$helper = new Helper;
 
-		$query = !empty($_POST['query']) ? strip_tags($_POST['query']) : "";
+		$query = !empty($_GET['q']) ? strip_tags($_GET['q']) : "";
 
 		$title = $query;
 

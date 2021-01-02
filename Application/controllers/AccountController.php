@@ -25,7 +25,7 @@ class AccountController extends  Controller {
 		$vars = $this->model->registration();
 		$this->view->render('Регистрация',$vars);
 	}
-	
+
 	public function logoutAction()
 	{
 		if (isset($_SESSION['user']['login'])) {
@@ -55,16 +55,16 @@ class AccountController extends  Controller {
 		if ($query) {
 			$vars['user'] = $query[0];
 			if (!empty($_SESSION['user']['id']) && $_SESSION['user']['id'] == $vars['user']['id']) {
-				$isWho = true;
+				$this->view->render('Страница пользователя ',$vars);
 			}else{
-				$isWho = false;
+				View::errorCode(403);
 			}
 			$vars['isWho'] = $isWho;
 		}else{
-			View::errorCode(404);
+			View::errorCode(403);
 		}
-		//.$vars['user']['login'] 
-		$this->view->render('Страница пользователя ',$vars);
+		//.$vars['user']['login']
+
 	}
 }
  ?>

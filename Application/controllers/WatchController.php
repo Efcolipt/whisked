@@ -43,7 +43,6 @@ class WatchController extends  Controller{
 		}
 
 
-
 		$this->view->render(isset($vars['title']) ? $vars['title'] : 'Смотреть',$vars);
 	}
 

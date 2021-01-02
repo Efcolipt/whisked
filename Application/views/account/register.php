@@ -14,7 +14,7 @@
       <label for="login">Придумайте логин </label>
       <input class="input_control_form" type="text" name="login" required  value = "<?=isset($_POST['login']) ? htmlspecialchars($_POST['login']) : "" ;?>">
       <small class="control_form_account_error"><?=isset($vars['login']) ? htmlspecialchars($vars['login']):"";  ?></small>
-    </div> 
+    </div>
 
     <div class="control_form_account">
       <label for="email">Ваш Email </label>
@@ -25,25 +25,25 @@
 
     <div class="control_form_account">
       <label for="password"> Придумайте пароль </label>
-      <input class="input_control_form" type="password" name="password" >
+      <input class="input_control_form" type="password" name="password" required>
       <small class="control_form_account_error"><?=isset($vars['password'])?htmlspecialchars($vars['password']):"";  ?></small>
     </div>
 
     <div class="control_form_account">
       <label for="rePassword"> Повторите пароль </label>
-      <input class="input_control_form" type="password" name="rePassword" >
+      <input class="input_control_form" type="password" name="rePassword" required>
       <small class="control_form_account_error"><?=isset($vars['rePassword'])?htmlspecialchars($vars['rePassword']):"";  ?></small>
     </div>
 
     <div class="control_form_account">
       <input class="input_control_form" type="submit" name="send" value="Войти">
     </div>
-    <div class="control_form_account">
+    <div class="control_form_account" style="text-align:center;">
       <small class="control_form_account_error"><?=isset($vars['other'])?htmlspecialchars($vars['other']):"";  ?></small>
     </div>
     <div class="other_info_form_account">
       <a href="/account/login" class="other_info_form_account_link">
-        <img src="/public/images/errors/arrow-back.png" alt="Перейти"> 
+        <img src="/public/images/errors/arrow-back.png" alt="Перейти">
         <span>Уже зарегистрированы ?</span>
       </a>
     </div>

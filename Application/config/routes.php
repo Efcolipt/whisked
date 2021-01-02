@@ -27,7 +27,7 @@ return [
 		'action'=>'logout',
 	],
 
-	'account/user/{user:\w+}' => [
+	'user/{user:\w+}' => [
 		'controller'=>'account',
 		'action'=>'user',
 	],

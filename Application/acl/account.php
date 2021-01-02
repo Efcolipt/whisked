@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -17,7 +17,7 @@ return [
    'admin' => [
 		'logout',
 		'login',
-   		'register',
+   	'register',
    ],
 
 ];
