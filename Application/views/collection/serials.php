@@ -28,30 +28,30 @@
 			<?php if ($page <= 5): ?>
 				<?php for($i = 1; $i < 12; $i++): ?>
 					<?php if ($page+1 == $i+1): ?>
-						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+						<a href="/serials?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
 					<?php continue; endif; ?>
-					<a href="/movies?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
+					<a href="/serials?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
 				<?php endfor; ?>
 			<?php endif; ?>
 			<?php if ($page >= 6 && $page < 	$pageLast - 5): ?>
-					<a href="/movies?page=<?=$page - 5;?>" class=" navigation_collection_page"><?=$page - 5; ?></a>
-					<a href="/movies?page=<?=$page - 4;?>" class=" navigation_collection_page"><?=$page - 4; ?></a>
-					<a href="/movies?page=<?=$page - 3;?>" class=" navigation_collection_page"><?=$page - 3; ?></a>
-					<a href="/movies?page=<?=$page - 2;?>" class=" navigation_collection_page"><?=$page - 2	; ?></a>
-					<a href="/movies?page=<?=$page - 1;?>" class=" navigation_collection_page"><?=$page - 1; ?></a>
+					<a href="/serials?page=<?=$page - 5;?>" class=" navigation_collection_page"><?=$page - 5; ?></a>
+					<a href="/serials?page=<?=$page - 4;?>" class=" navigation_collection_page"><?=$page - 4; ?></a>
+					<a href="/serials?page=<?=$page - 3;?>" class=" navigation_collection_page"><?=$page - 3; ?></a>
+					<a href="/serials?page=<?=$page - 2;?>" class=" navigation_collection_page"><?=$page - 2	; ?></a>
+					<a href="/serials?page=<?=$page - 1;?>" class=" navigation_collection_page"><?=$page - 1; ?></a>
 				<?php for($i = $page; $i < $page + 6; $i++): ?>
 					<?php if ($page == $i): ?>
-						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+						<a href="/serials?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
 					<?php continue; endif; ?>
-					<a href="/movies?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
+					<a href="/serials?page=<?=$i;  ?>" class="navigation_collection_page"><?=$i;  ?></a>
 				<?php endfor; ?>
 			<?php endif; ?>
 			<?php if ($page >= 	$pageLast - 5): ?>
 				<?php for($i = $page-5; $i < $page; $i++): ?>
 					<?php if ($page+1 == $i+1): ?>
-						<a href="/movies?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
+						<a href="/serials?page=<?=$page;?>" class="navigation_collection_active_page navigation_collection_page"><?=$page; ?></a>
 					<?php continue; endif; ?>
-					<a href="/movies?page=<?=$i;?>" class="navigation_collection_page"><?=$i;?></a>
+					<a href="/serials?page=<?=$i;?>" class="navigation_collection_page"><?=$i;?></a>
 				<?php endfor; ?>
 			<?php endif; ?>
 	</div>
