@@ -15,15 +15,24 @@ jQuery(document).ready(function($) {
 	});
 
 	$(".collection .poster_collection img").each(function(key, item) {
-		$(item).on("error", function() {
-			showDefaultImage(this);
-		}).attr('src', $(item).attr('src'));
+		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") {
+				$(item).attr('src', $(item).attr('data-src'));
+		}else{
+			$(item).on("error", function() {
+				showDefaultImage(this);
+			}).attr('src', $(item).attr('src'));
+		}
 	});
 
+
 	$(".collection_top_side_view_img img").each(function(key, item) {
-		$(item).on("error", function() {
-			showDefaultImage(this);
-		}).attr('src', $(item).attr('src'));
+		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") {
+				$(item).attr('src', $(item).attr('data-src'));
+		}else{
+			$(item).on("error", function() {
+				showDefaultImage(this);
+			}).attr('src', $(item).attr('src'));
+		}
 	});
 
 	function showDefaultImage(img) {

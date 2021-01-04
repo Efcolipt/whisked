@@ -1,54 +1,23 @@
-<?php if (!empty($vars)) {
- ?>
 <div class="list_collection">
-	<?php foreach ($vars['upcomingMovies'] as $key => $value ) {?>
-
-		<div class="collection" data-id="<?=htmlspecialchars($value['id']);  ?>">
-			<a class="link_collection" href="/watch/movie?q=<?=htmlspecialchars($value['id']); ?>" >
+	<?php foreach ($vars['upcoming'] as $key):?>
+		<div class="collection" data-id="<?=htmlspecialchars($key->kinopoisk_id);  ?>">
+			<a class="link_collection" href="/watch/<?=htmlspecialchars($key->kinopoisk_id); ?>" >
 			<div class="poster_collection">
-				<img src="https://image.tmdb.org/t/p/w500/<?=htmlspecialchars($value['poster_path']);  ?>" alt="poster_collection">
+				<img data-src="<?=htmlspecialchars($key->info->poster);?>" src="" alt=<?=htmlspecialchars($key->info->rus);?> >
 				<div class="info_collection_on_poster">
 					<div class="rait_collection">
-						<p class="text_mont">Рейтинг IMDB <span><?=htmlspecialchars($value['vote_average']);  ?></span></p>
+						<p class="text_mont">Рейтинг IMDB <span><?=htmlspecialchars($key->info->rating->rating_imdb);  ?></span></p>
 					</div>
 					<div class="average_collection">
-						<p><span>HD</span></p>
+						<p><span>4K</span></p>
 					</div>
 				</div>
 			</div>
 			<div class="about_collection">
-				<p class="headline_collection"><?=htmlspecialchars($value['title']);  ?></p>
-				<p class="date_collection text_mont"><?=htmlspecialchars(mb_strimwidth($value['date'],0,4)); ?></p>
+				<p class="headline_collection"><?=htmlspecialchars($key->info->rus);  ?></p>
+				<p class="date_collection text_mont"><?=htmlspecialchars($key->info->year); ?></p>
 			</div>
 		</a>
 	</div>
-<?php } ?>
+<?php endforeach; ?>
 </div>
-<?php } ?>
-<hr style="border:1px solid #343434;">
-<?php if (!empty($vars)) {?>
-<div class="list_collection">
-	<?php foreach ($vars['topMovies'] as $key => $value ) {?>
-
-		<div class="collection" data-id="<?=htmlspecialchars($value['id']);  ?>">
-			<a class="link_collection" href="/watch/movie?q=<?=htmlspecialchars($value['id']); ?>" >
-			<div class="poster_collection">
-				<img src="https://image.tmdb.org/t/p/w500/<?=htmlspecialchars($value['poster_path']);  ?>" alt="poster_collection">
-				<div class="info_collection_on_poster">
-					<div class="rait_collection">
-						<p class="text_mont">Рейтинг IMDB <span><?=htmlspecialchars($value['vote_average']);  ?></span></p>
-					</div>
-					<div class="average_collection">
-						<p><span>HD</span></p>
-					</div>
-				</div>
-			</div>
-			<div class="about_collection">
-				<p class="headline_collection"><?=htmlspecialchars($value['title']);  ?></p>
-				<p class="date_collection text_mont"><?=htmlspecialchars(mb_strimwidth($value['date'],0,4)); ?></p>
-			</div>
-		</a>
-	</div>
-<?php } ?>
-</div>
-<?php } ?>

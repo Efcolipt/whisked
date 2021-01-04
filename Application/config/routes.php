@@ -40,14 +40,9 @@ return [
 		'controller'=>'collection',
 		'action'=>'serials',
 	],
-	'watch/movie' => [
+	'watch/{q:\d+}' => [
 		'controller'=>'watch',
-		'action'=>'movie',
-	],
-
-	'watch/serial' => [
-		'controller'=>'watch',
-		'action'=>'serial',
+		'action'=>'watching',
 	],
 
 	'search' => [

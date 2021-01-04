@@ -1,10 +1,10 @@
 <?php
 
 return [
-	'host'=> '',
-	'dbname'=>'',
-	'user'=>'',
-	'pass'=> '',
+	'host'=> 'localhost',
+	'dbname'=>'whisked',
+	'user'=>'root',
+	'pass'=> 'root',
 ];
 
 

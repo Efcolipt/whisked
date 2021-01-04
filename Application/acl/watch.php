@@ -1,9 +1,8 @@
-<?php 
+<?php
 
 return [
    'all' => [
-      'movie',
-      'serial',
+      'watching',
    ],
    'guest' => [
    	//

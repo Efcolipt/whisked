@@ -1,18 +1,17 @@
-<?php 
+<?php
 
-namespace Application\core; 
+namespace Application\core;
 
 use Application\core\View;
 use Application\lib\Db;
 use Application\lib\Helper;
 
 abstract class Controller {
-	
+
 	public $route;
 	public $view;
 	public $acl;
-	const apiTokenDB = "a74fc0e2e97b235f41c374ac30a95209";
-	const apiTokenVideo = "05kYgyT9G4Z2hggKfwX0hDgbAeUrJumY098";
+	const tokenDB = "7250d60740fc5811592ea4fcf893239f";
 
 
 	public function __construct($route){
@@ -52,7 +51,7 @@ abstract class Controller {
 	{
 		return in_array($this->route['action'], $this->acl[$key]);
 	}
-	
+
 }
 
  ?>
