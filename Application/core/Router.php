@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Application\core;
 
@@ -9,12 +9,10 @@ class Router {
 	protected $params = [];
 
 
-		
+
 	public function __construct(){
 		$arr = require dirname(__DIR__,2).'/Application/config/routes.php';
-		foreach ($arr as $key => $val) {
-			$this->addRegEXP($key,$val);
-		}
+		foreach ($arr as $key => $val) $this->addRegEXP($key,$val);
 	}
 
 	 public function addRegEXP($route,$params){
@@ -24,16 +22,14 @@ class Router {
 
 	}
 
-	 public function matchRoute(){ 
+	 public function matchRoute(){
 		$url = trim($_SERVER['REQUEST_URI'], '/');
 		$url = strtok($url, '?');
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 foreach ($matches as $key => $match) {
                     if (is_string($key)) {
-                        if (is_numeric($match)) {
-                            $match = (int) $match;
-                        }
+                        if (is_numeric($match)) $match = (int) $match;
                         $params[$key] = $match;
                     }
                 }
@@ -51,9 +47,6 @@ class Router {
 	 			$action = $this->params['action'].'Action';
 	 			if (method_exists($path, $action )) {
 	 				$controller = new $path($this->params);
-	 				// echo "<pre>";
-	 				// var_dump($controller);
-	 				// echo "</pre>";
 	 				$controller->$action();
 	 			}else{
 	 				View::errorCode(404);
@@ -61,7 +54,6 @@ class Router {
 	 		}else{
 	 			View::errorCode(404);
 	 		}
-	 		
 	 	}else{
 	 		View::errorCode(404);
 	 	}

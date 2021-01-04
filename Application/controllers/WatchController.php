@@ -15,11 +15,7 @@ class WatchController extends  Controller{
 		$vars   = [];
 		if (!empty($q) && $q > 0 && !is_int($q)) {
 			$info = $helper->getContent('https://bazon.cc/api/search?token='.Controller::tokenDB.'&kp='.$q);
-			if ($info) {
-					$vars['info'] = $info->results[0];
-			}else{
-				View::errorCode(404);
-			}
+			$info ? $vars['info'] = $info->results[0] : View::errorCode(404);
 		}else{
 			View::errorCode(404);
 		}

@@ -1,16 +1,15 @@
-<?php 
+<?php
 namespace Application\Lib;
 
 use PDO;
 
 class Db {
-	
+
 	protected $db;
 
 	public function __construct(){
 		$config = require 'Application/config/db.php';
 		$this->db = new PDO('mysql:host='.$config['host'].';dbname='.$config['dbname'].'',$config['user'],$config['pass']);
-
 	}
 
 	public function query($sql,$params = []){
@@ -19,8 +18,8 @@ class Db {
 			foreach ($params as $key => $val) {
 				$stmt->bindValue(':'.$key , $val);
 			}
-		}	
-			
+		}
+
 		$stmt->execute();
 
 		return $stmt;

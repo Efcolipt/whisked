@@ -9,7 +9,6 @@ use Application\core\View;
 
 class CollectionController extends  Controller{
 
-
 	public function serialsAction()
 	{
 
@@ -26,7 +25,6 @@ class CollectionController extends  Controller{
 					 View::errorCode(404);
 				}
 				$this->view->render('Сериалы',$vars);
-
 	}
 
 
