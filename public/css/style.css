@@ -537,10 +537,13 @@ footer{
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 }
+.collection_top_side_view_txt_headline p {
+	margin-right: 8px;
+}
 .collection_top_side_view_txt_headline span{
-	margin-left: 8px;
     font-size: 14px;
     color: #9e9d9d;
     border-radius: 4px;

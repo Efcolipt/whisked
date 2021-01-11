@@ -50,6 +50,10 @@ return [
 		'controller'=>'collection',
 		'action'=>'movies',
 	],
+	'anime' => [
+		'controller'=>'collection',
+		'action'=>'anime',
+	],
 	'serials' => [
 		'controller'=>'collection',
 		'action'=>'serials',

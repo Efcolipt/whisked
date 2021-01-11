@@ -1,3 +1,4 @@
-jQuery(document).ready(function ($) {
-  $('.waitingSpin').stop().fadeOut(1000);
-});
+NProgress.start();
+window.onload = function() {
+   NProgress.done(); $('.fade').removeClass('out');
+};

@@ -27,6 +27,15 @@ class CollectionController extends  Controller{
 		$this->view->render('Фильмы',$vars);
 	}
 
+	public function animeAction()
+	{
+		$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
+		$helper = new Helper;
+		$info  = $helper->getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&page='.$pageCurrent.'&cat=аниме');
+		$info ? $vars = ['pageCurrent' => $pageCurrent,'info' => $info->results] : View::errorCode(404);
+		$this->view->render('Фильмы',$vars);
+	}
+
 	public function searchAction()
 	{
 

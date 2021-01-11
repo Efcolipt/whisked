@@ -9,14 +9,14 @@
 </head>
 <body>
 	<div id="error_page">
-		<div class="waitingSpin" >
+		<!-- <div class="waitingSpin" >
 			<div class="spinner">
 				<div class="blob top"></div>
 					<div class="blob bottom"></div>
 					<div class="blob left"></div>
 					<div class="blob move-blob"></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="container">
 			<div class="error_content">
 				<h1>Error 403</h1>
@@ -34,6 +34,9 @@
 					</li>
 					<li class="list_menu_item">
 						<a href="/serials" class="list_menu_link">Сериалы</a>
+					<li>
+					<li class="list_menu_item">
+						<a href="/anime" class="list_menu_link">Аниме</a>
 					<li>
 					<li class="list_menu_item">
 						<a href="/contacts" class="list_menu_link">Контакты</a>
