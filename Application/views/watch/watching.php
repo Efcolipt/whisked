@@ -5,11 +5,16 @@
 		</div>
 		<div class="collection_top_side_view_txt">
 			<div class="collection_top_side_view_txt_headline collection_top_side_view_txt_info">
-				<p><?=htmlspecialchars($vars['info']->info->rus);?><span class="text_mont"><?=htmlspecialchars($vars['info']->info->age);?>+</span><span>HD</span></p>
+				<p>
+					<?=htmlspecialchars($vars['info']->info->rus);?>
+					<div>
+						<span><?=htmlspecialchars($vars['info']->info->age);?> +</span>
+						<span><?=htmlspecialchars($vars['info']->quality);?></span></p>
+					</div>
 			</div>
 			<div class="collection_top_side_view_txt_about">
 				<div class="collection_top_side_view_txt_info ">
-					<p>Рейтинг IMDB: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->rating->rating_imdb);?> </span></p>
+					<p>Рейтинг IMDB: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->rating->rating_imdb);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
@@ -17,25 +22,26 @@
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
+					<p>Перевод: <span class="text_mont"><?=htmlspecialchars($vars['info']->translation);?></span></p>
+				</div>
+
+				<div class="collection_top_side_view_txt_info ">
 					<p>Актеры: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->actors);?></span></p>
 				</div>
 				<div class="collection_top_side_view_txt_genres">
-					<p>Жанр: <?=htmlspecialchars($vars['info']->info->genre);?></p>
+					<p>Жанр: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->genre);?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_companies">
-					<p>Страны съёмок: <?=htmlspecialchars($vars['info']->info->country);?></p>
+					<p>Страны съёмок: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->country);?></span></p>
 				</div>
 				<div class="collection_top_side_view_txt_lang ">
-					<p>Языки: Русский, Английский</p>
+					<p>Языки: <span class="text_mont">Русский, Английский</span></p>
 				</div>
 				<div class="collection_top_side_view_txt_description ">
-					<p>Описание: <?=htmlspecialchars($vars['info']->info->description);?></p>
+					<p>Описание: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->description);?></span></p>
 				</div>
-
 			</div>
-
-
 		</div>
 	</div>
 	<div class="collection_centered_side_view">

@@ -6,10 +6,24 @@ return [
 		'action'=>'home',
 	],
 
-
 	'home' => [
 		'controller'=>'main',
 		'action'=>'home',
+	],
+
+	'rightholders' => [
+		'controller'=>'main',
+		'action'=>'right',
+	],
+
+	'contacts' => [
+		'controller'=>'main',
+		'action'=>'contacts',
+	],
+
+	'quality' => [
+		'controller'=>'main',
+		'action'=>'quality',
 	],
 
 

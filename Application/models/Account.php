@@ -11,19 +11,14 @@ class Account extends Model
 		$MessageError = array();
 
 		if (!empty($data['send'])) {
-
 			$data['login'] = stripslashes($data['login']);
 			$data['login'] = htmlspecialchars($data['login']);
 			$data['password'] = htmlspecialchars($data['password']);
 			$data['password']= stripslashes($data['password']);
 
 
-			$params = [
-				'login' => $data['login'],
-			];
-			if (empty($data['login']) || empty($data['password'])) {
-					$MessageError['other'] = 'Неверный логин или пароль';
-			}
+			$params = ['login' => $data['login']];
+			if (empty($data['login']) || empty($data['password'])) $MessageError['other'] = 'Неверный логин или пароль';
 
 			$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
 			if (!empty($user['data']) && empty($MessageError)) {
@@ -74,10 +69,6 @@ class Account extends Model
 		$data = $_POST;
 		$MessageError = array();
 		if (!empty($data['send'])) {
-			// $data['firstName'] = stripslashes($data['firstName']);
-			// $data['firstName'] = htmlspecialchars($data['firstName']);
-			// $data['lastName'] = stripslashes($data['lastName']);
-			// $data['lastName'] = htmlspecialchars($data['lastName']);
 			$data['login'] = stripslashes($data['login']);
 			$data['login'] = htmlspecialchars($data['login']);
 			$data['email'] = stripslashes($data['email']);
@@ -91,62 +82,32 @@ class Account extends Model
 
 
 
-			if (strlen($data['login']) < 3  && !(strlen($data['login']) > 25) ) {
-				$MessageError['login'] = 'Логин должен быть не меньше 3 символов и не больше 25';
-			}
+			if (strlen($data['login']) < 3  && !(strlen($data['login']) > 25) ) $MessageError['login'] = 'Логин должен быть не меньше 3 символов и не больше 25';
 
-			if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login'])){
-		        $MessageError['login'] = "Логин может состоять только из букв английского алфавита и цифр";
-		    }
+			if(!preg_match("/^[a-zA-Z0-9]+$/",$_POST['login'])) $MessageError['login'] = "Логин может состоять только из букв английского алфавита и цифр";
 
-			// if (strlen($data['firstName']) < 2  && !(strlen($data['firstName']) > 33) ) {
-			// 	$MessageError[] = 'Имя должно быть не меньше 2 символов и не больше 33';
-			// }
 
-			// if (strlen($data['lastName']) < 2  && !(strlen($data['lastName']) > 33) ) {
-			// 	$MessageError[] = 'Фамилия должна быть не меньше 2 символов и не больше 33';
-			// }
-
-			if (mb_strlen($data['email']) < 3 && !mb_strlen($data['email']) > 25 ) {
-				$MessageError['email'] = 'Не меньше 3 символов и не больше 25';
-			}
+			if (mb_strlen($data['email']) < 3 && !mb_strlen($data['email']) > 25 ) $MessageError['email'] = 'Не меньше 3 символов и не больше 25';
 			$pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
-			if (!(mb_strlen($data['email']) > 3)) {
-				$MessageError['email'] = 'Введите Email';
-			}
-			if (!preg_match($pattern_email, $data['email'])) {
-				$MessageError['email'] = 'Введите корректный Email';
-			}
+			if (!(mb_strlen($data['email']) > 3)) $MessageError['email'] = 'Введите Email';
+			if (!preg_match($pattern_email, $data['email'])) $MessageError['email'] = 'Введите корректный Email';
 
-			if (mb_strlen($data['password']) < 6 ) {
-				$MessageError['password'] = 'Длина пароля должна быть не меньше 6 символов';
-			}
+			if (mb_strlen($data['password']) < 6 ) $MessageError['password'] = 'Длина пароля должна быть не меньше 6 символов';
 
-			if ($data['password'] != $data['rePassword']) {
-				$MessageError['rePassword'] = 'Пароли не совпадают';
-			}
+			if ($data['password'] != $data['rePassword']) $MessageError['rePassword'] = 'Пароли не совпадают';
 
-
-			$paramsL = [
-				'login'=>$data['login'],
-			];
-			$paramsE = [
-				'email'=>$data['email'],
-			];
-
+			$paramsL = ['login'=>$data['login']];
+			$paramsE = ['email'=>$data['email']];
 
 			$similar_login = $this->db->row('SELECT * FROM users WHERE login = :login',$paramsL);
 			$similar_email = $this->db->row('SELECT * FROM users WHERE email = :email',$paramsE);
-			if (!empty($similar_login) || !empty($similar_email) ) {
-				$MessageError['other'] = 'Такой пользователь уже существует';
-			}
+
+			if (!empty($similar_login) || !empty($similar_email) ) $MessageError['other'] = 'Такой пользователь уже существует';
 
 			if (empty($MessageError)) {
 				$pass_hash = password_hash($data['password'], PASSWORD_DEFAULT);
 				$params = [
 					'login'=>$data['login'],
-					// 'firstName'=>$data['firstName'],
-					// 'lastName'=>$data['lastName'],
 					'password'=>$pass_hash,
 					'email'=>$data['email']
 				];

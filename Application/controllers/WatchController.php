@@ -12,7 +12,6 @@ class WatchController extends  Controller{
 	{
 		$helper = new Helper;
 		$q  		= strip_tags(htmlspecialchars($this->route['q']));
-		$vars   = [];
 		if (!empty($q) && $q > 0 && !is_int($q)) {
 			$info = $helper->getContent('https://bazon.cc/api/search?token='.Controller::tokenDB.'&kp='.$q);
 			$info ? $vars['info'] = $info->results[0] : View::errorCode(404);

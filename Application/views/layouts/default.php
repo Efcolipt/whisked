@@ -8,20 +8,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
-
+	<meta name="theme-color" content="#040404e6">
 	<!-- Meta for search -->
 	<meta name="robots" content="index, follow">
 	<meta name="keywords" content="фильмы онлайн бесплатно в хорошем отличном качестве без смс кино видео смотреть без регистрации новинки кинофильмы онлайн кинотеатр 2012 2013 просмотр видеоролики">
-	<meta name="description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
-	<meta name="author" content="Whisked">
-	<meta name="copyright" content="Whisked">
+	<meta name="description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta name="author" content="whisked">
+	<meta name="copyright" content="whisked">
 
 	<!-- Open Graph Meta -->
 	<meta property="og:title" content="<?=htmlspecialchars($title); ?> | Whisked">
 	<meta property="og:locale" content="ru_RU">
-	<meta property="og:description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
-	<meta property="og:image" content="<?= isset($vars['backdrop'])  ? "https://image.tmdb.org/t/p/w500".$vars['backdrop'] : "/public/images/logo/logo.png"  ?>">
-	<meta property="og:site_name" content="Whisked">
+	<meta property="og:description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta property="og:image" content="<?= isset($vars['info']->info->poster)  ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>">
+	<meta property="og:site_name" content="whisked">
 	<meta property="og:url" content="whisked.ru">
 	<meta property="og:type" content="website">
 	<meta property="og:image:type" content="image/png" />
@@ -30,8 +30,8 @@
 
 	<!-- Meta Google  -->
 	<meta itemprop="name" content="<?=htmlspecialchars($title); ?> | Whisked" />
-	<meta itemprop="description" content="<?= isset($vars['description']) ? $vars['description'] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
-	<meta itemprop="image" content="<?= isset($vars['poster_path']) ? $vars['poster_path'] : "/public/images/logo/logo.png"  ?>" />
+	<meta itemprop="description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
+	<meta itemprop="image" content="<?= isset($vars['info']->info->poster) ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>" />
 
 	<!-- For media app -->
 	<!-- <link rel="apple-touch-icon" sizes="57x57" href="#"> -->
@@ -44,6 +44,9 @@
 	<meta name="google-site-verification" content="8VIsXTUaNPw8A2JUq-2azZvju2-ll7OIhApGL09cT4A" />
 	<meta name="yandex-verification" content="527dd094f9d7b8fa" />
 	<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(69718450, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/69718450" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+	<!-- pixel vk -->
+	<script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?168",t.onload=function(){VK.Retargeting.Init("VK-RTRG-688666-1ykwm"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-688666-1ykwm" style="position:fixed; left:-999px;" alt=""/></noscript>
 </head>
 <body>
 	<div class="wrapper">
@@ -72,7 +75,7 @@
 					<div class="header_menu_desktop">
 						<ul class="list_header_menu_desktop">
 							<li class="list_header_menu_desktop_item">
-								<a href="/" class="list_header_menu_desktop_link">Главная</a>
+								<a href="/" class="list_header_menu_desktop_link">Новинки</a>
 							</li>
 							<li class="list_header_menu_desktop_item">
 								<a href="/movies" class="list_header_menu_desktop_link">Фильмы</a>
@@ -81,7 +84,7 @@
 								<a href="/serials" class="list_header_menu_desktop_link">Сериалы</a>
 							</li>
 							<li class="list_header_menu_desktop_item">
-								<a href="#" class="list_header_menu_desktop_link">О нас</a>
+								<a href="/contacts" class="list_header_menu_desktop_link">Контакты</a>
 							</li>
 						</ul>
 					</div>
@@ -114,7 +117,7 @@
 							</div>
 
 							<div class="header_account_info">
-								<?php if (empty($_SESSION['user'])){  ?>
+								<?php if (empty($_SESSION['user'])):  ?>
 								<ul class="list_header_account_info">
 									<li class="list_header_account_info_item list_header_account_info_about">
 										<a class="list_header_account_info_link">Гость</a>
@@ -126,17 +129,17 @@
 										<a href="/account/register" class="list_header_account_info_link">Зарегистрироваться</a>
 									</li>
 								</ul>
-							<?php }else if(!empty($_SESSION['user'])){ ?>
+							<?php elseif(!empty($_SESSION['user'])): ?>
 
 								<ul class="list_header_account_info">
 									<li class="list_header_account_info_item list_header_account_info_about">
 										<a href="#" class="list_header_account_info_link">
-											<?=htmlspecialchars($_SESSION['user']['email'])?>
+											<?=htmlspecialchars($_SESSION['user']['email']);?>
 
 										</a>
 									</li>
 									<li class="list_header_account_link_to_item">
-										<a href="user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
+										<a href="/user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
 									</li>
 									<li class="list_header_account_link_to_item">
 										<a href="#" class="list_header_account_info_link">Настройки</a>
@@ -146,17 +149,14 @@
 											<svg  viewBox="0 0 14 12"  xmlns="http://www.w3.org/2000/svg">
 												<path  fill-rule="evenodd" clip-rule="evenodd" d="M9.01073 10.2172C9.01073 11.1454 8.27652 11.9016 7.37545 11.9016H1.63528C0.734207 11.9016 0 11.1454 0 10.2172V2.58598C0 1.65787 0.734207 0.901611 1.63528 0.901611H7.37545C8.27652 0.901611 9.01073 1.65787 9.01073 2.58598V3.99536C9.01073 4.37349 8.71037 4.68286 8.34327 4.68286C7.97616 4.68286 7.6758 4.37349 7.6758 3.99536V2.58598C7.6758 2.41411 7.54231 2.27661 7.37545 2.27661H1.63528C1.46841 2.27661 1.33492 2.41411 1.33492 2.58598V10.2172C1.33492 10.3891 1.46841 10.5266 1.63528 10.5266H7.37545C7.54231 10.5266 7.6758 10.3891 7.6758 10.2172V8.80786C7.6758 8.42973 7.97616 8.12036 8.34327 8.12036C8.71037 8.12036 9.01073 8.42973 9.01073 8.80786V10.2172ZM5.17283 5.69693H11.8141L10.4625 4.32193C10.1955 4.04692 10.1955 3.61723 10.4625 3.34224C10.7294 3.06723 11.1466 3.06723 11.4136 3.34224L13.8832 5.92036V6.0063C13.9499 6.10942 14 6.24692 14 6.40161C14 6.5563 13.9666 6.67661 13.8832 6.79692V6.88286L11.4136 9.42661C11.2801 9.56412 11.1132 9.63286 10.9464 9.63286C10.7795 9.63286 10.6126 9.56412 10.4791 9.42661C10.2122 9.15161 10.2122 8.72192 10.4791 8.44693L11.8141 7.07193H5.17283C4.80573 7.07193 4.50537 6.76254 4.50537 6.38443C4.50537 6.0063 4.80573 5.69693 5.17283 5.69693Z"/>
 											</svg>
-											<span> Выйти</span>
+											<span>Выйти</span>
 										</a>
 									</li>
 								</ul>
 							</div>
-						<?php } ?>
-
+						<?php endif; ?>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</header>
@@ -170,14 +170,13 @@
 				<div class="inner_footer">
 					<div class="footer_menu_desktop">
 						<ul class="list_footer_menu_desktop">
-							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Контакты</a></li>
-							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Помощь</a></li>
-							<li class="list_footer_menu_desktop_item"><a href="#" class="list_footer_menu_desktop_link">Правообладателям</a></li>
+							<li class="list_footer_menu_desktop_item"><a href="/quality" class="list_footer_menu_desktop_link">Качество</a></li>
+							<li class="list_footer_menu_desktop_item"><a href="/rightholders" class="list_footer_menu_desktop_link">Правообладателям</a></li>
 						</ul>
 					</div>
 					<div class="footer_info_site">
 						<div class="footer_info_site_release">
-							<p>Release <span  class="text_mont">v1.0</span></p>
+							<p>Release <span  class="text_mont">v2.0.0</span></p>
 						</div>
 						<div class="footer_info_site_copyright">
 							<p><span class="text_mont">© 2018-<?=date("Y");?></span> <span>Whisked</span></p>

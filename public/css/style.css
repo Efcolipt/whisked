@@ -12,7 +12,7 @@ body,html{
 	font-size: 16px;
 	height: 100%;
 }
-p,a,span,small,button,em,g,input,label{
+p,a,span,small,button,em,g,input,label,textarea{
 	font-family: 'Comfortaa',"Montserrat",sans-serif;
 	font-weight: normal;
 }
@@ -33,8 +33,24 @@ main{
 	display: table-row;
     height: 100%;
 }
+.main_color_text_link{
+	color:#04a49c;
+}
 .text_mont{
 	font-family:"Montserrat",serif;
+}
+.default_text_box{
+	margin-top: 35px;
+	margin-bottom: 35px;
+}
+.default_text_box h1{
+	color:#dadada;
+	margin-bottom: 35px;
+}
+.default_text_box p{
+	line-height: 27px;
+	margin-bottom: 20px;
+	color: #dadada;
 }
 .container{
 	position: relative;
@@ -373,6 +389,7 @@ footer{
 }
 .average_collection{
 	border-top-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 	padding: 4px;
 }
 .average_collection p {
@@ -395,7 +412,6 @@ footer{
 	position: relative;
     width: 100%;
     overflow: hidden;
-    line-height: 26px;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -408,14 +424,15 @@ footer{
     margin-bottom: 45px;
 }
 
-.collection_top_side_view_img {
+/* .collection_top_side_view_img {
     height: 495px;
-}
+} */
 
 .collection_top_side_view_img img {
-    width: 325px;
-    height: 487px;
+		width: 335px;
+    height: 100%;
     border: 4px solid #000;
+    object-fit: cover;
 }
 
 .collection_top_side_view_txt  {
@@ -426,10 +443,13 @@ footer{
 .collection_top_side_view_txt_headline  {
     padding: 18px 20px 18px 20px;
     margin-top: 0 !important;
-    margin-bottom: 25px;
     background-color: #23232366;
     font-size: 26px;
     color: #fff;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		justify-content: space-between;
 }
 .collection_top_side_view_txt_headline span{
 	margin-left: 8px;
@@ -443,9 +463,14 @@ footer{
 .collection_top_side_view_txt_about{
 	padding-left: 20px;
 	padding-right: 20px;
+	margin-top: 25px;
+	line-height: 26px;
 }
 .collection_top_side_view_txt_about div {
 	margin-bottom: 8px;
+}
+.collection_top_side_view_txt_about div:last-child{
+	margin-bottom: 0 !important;
 }
 .collection_top_side_view_txt_genres,.collection_top_side_view_txt_companies{
 	display: flex;
@@ -593,7 +618,7 @@ footer{
 }
 /*Account*/
 
-.form_account form{
+.form_send form{
     padding: 130px 40px 60px 40px;
     margin: 85px auto;
     width: 425px;
@@ -601,13 +626,13 @@ footer{
     color: #fff;
     border-radius: 3px;
 }
-.control_form_account{
+.control_form{
     display: flex;
     flex-direction: column;
     margin-bottom: 25px;
 
 }
-.control_form_account label {
+.control_form label {
     margin-bottom: 8px;
     font-size: 14px;
 }
@@ -620,8 +645,10 @@ footer{
     color: #d8d8d8;
     font-size: 15px;
     letter-spacing: 1px;
+		resize: vertical;
 }
-.control_form_account input[type="submit"]{
+
+.control_form input[type="submit"]{
     border:none;
     padding: 15px 10px;
     border-radius:3px;
@@ -631,25 +658,25 @@ footer{
     transition: background-color .3s linear;
 }
 
-.control_form_account:hover input[type="submit"]{
+.control_form:hover input[type="submit"]{
     background-color:#3adad3d6;
 }
-.other_info_form_account{
+.other_info_form{
     margin-top: 80px;
     text-align: center;
 }
 
-.other_info_form_account a{
+.other_info_form a{
     font-size: 15px;
     padding-bottom: 2px;
     color: #d8d8d8;
     transition: color.3s linear;
 }
-.other_info_form_account a:hover{
+.other_info_form a:hover{
     color:#04a49c;
 }
 
-.other_info_form_account_link{
+.other_info_form_link{
     display: flex;
     font-family: "Comfortaa",serif;
     -webkit-align-items: center;
@@ -657,38 +684,38 @@ footer{
     -webkit-justify-content: center;
             justify-content: center;
 }
-.other_info_form_account_link span{
+.other_info_form_link span{
     color:#565656;
     font-size: 18px;
     transition: color .3s linear;
 }
 
-.other_info_form_account_link:hover span{
+.other_info_form_link:hover span{
     color:#04a49c;
 }
 
-.other_info_form_account_link:hover img{
+.other_info_form_link:hover img{
     transform:rotate(180deg);
 }
-.other_info_form_account_link img {
+.other_info_form_link img {
     transition: transform .3s linear;
     margin-right: 20px;
 }
 
-.checkbox_control_account_form{
+.checkbox_control_form{
     flex-direction: row;
     justify-content: center;
     cursor: pointer;
 }
-.checkbox_control_account_form label{
+.checkbox_control_form label{
     margin-left: 10px;
     user-select: none;
     cursor: pointer;
 }
-.control_form_account_error_block{
+.control_form_error_block{
     text-align: center;
 }
-.control_form_account_error{
+.control_form_error{
     color: #ca4747;
     margin-top: 12px;
 }

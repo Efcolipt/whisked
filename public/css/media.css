@@ -1,4 +1,4 @@
-@media only screen and (max-width:1070px) {
+@media only screen and (max-width:1095px) {
   .header_menu_desktop{
     position: fixed;
     left: 0;
@@ -22,6 +22,26 @@
   }
   .header_icon_burger{
     display: block;
+  }
+
+}
+@media only screen and (max-width:830px) {
+  .list_footer_menu_desktop_item {
+    margin-left: 15px;
+  }
+  .inner_footer{
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .footer_menu_desktop{
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width:720px) {
+  .header_search{
+    display: none;
   }
 
 }

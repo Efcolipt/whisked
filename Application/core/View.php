@@ -19,9 +19,7 @@ public function __construct($route)
  	//extract($vars); Output
  	$path = dirname(__DIR__,2).'/Application/views/'.$this->path.'.php';
 	$closed = require dirname(__DIR__,2).'/Application/config/closed.php';
-	if (in_array($this->path, $closed)) {
-		$this->pageClosed();
-	}
+	if (in_array($this->path, $closed)) $this->pageClosed();
  	if (file_exists($path)) {
  		ob_start();
  		require $path;
@@ -35,9 +33,7 @@ public function __construct($route)
 	public static function errorCode($code){
     http_response_code($code);
 		$path = dirname(__DiR__,2).'/Application/views/errors/'.$code.'.php';
-		if (file_exists($path)) {
-				require $path ;
-			}
+		if (file_exists($path)) require $path ;
 		exit;
 	}
 
@@ -50,7 +46,5 @@ public function __construct($route)
 		header('Location: /'.$url);
 		exit;
 	}
-
-
 }
 ?>
