@@ -14,25 +14,26 @@ jQuery(document).ready(function($) {
 		$('.header_account_info').stop().slideToggle();
 	});
 
-	$(".collection .poster_collection img").each(function(key, item) {
-		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") {
-				$(item).attr('src', $(item).attr('data-src'));
-		}else{
+	$(".poster_collection img").each(function(key, item) {
+		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") $(item).attr('src', $(item).attr('data-src'));
 			$(item).on("error", function() {
 				showDefaultImage(this);
 			}).attr('src', $(item).attr('src'));
-		}
 	});
 
 
 	$(".collection_top_side_view_img img").each(function(key, item) {
-		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") {
-				$(item).attr('src', $(item).attr('data-src'));
-		}else{
+		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") $(item).attr('src', $(item).attr('data-src'));
+		$(item).on("error", function() {
+			showDefaultImage(this);
+		}).attr('src', $(item).attr('src'));
+	});
+
+	$(".poster_collection_slider img").each(function(key, item) {
+		if (typeof $(item).attr('data-src') !== typeof undefined && $(item).attr('data-src') !== false && $(item).attr('data-src') !== "") $(item).attr('src', $(item).attr('data-src'));
 			$(item).on("error", function() {
 				showDefaultImage(this);
 			}).attr('src', $(item).attr('src'));
-		}
 	});
 
 	function showDefaultImage(img) {
@@ -68,4 +69,16 @@ jQuery(document).ready(function($) {
 
 		scrollTop = currentScrollTop;
 	});
+	$(".wrapper_list_slider_collection").each(function(index) {
+		$('.list_collection_slider', $(this)).slick({
+			slidesToShow: 7,
+			slidesToScroll: 1,
+			prevArrow:$(this).find('.arrow_navigation_slider_collection_left'),
+			nextArrow:$(this).find('.arrow_navigation_slider_collection_right'),
+		});
+	});
+	NProgress.start();
+	window.onload = function() {
+		 NProgress.done(); $('.fade').removeClass('out');
+	};
 });

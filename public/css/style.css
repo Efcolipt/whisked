@@ -8,7 +8,8 @@
 }
 body,html{
 	font-family: 'Ubuntu',sans-serif;
-	background:url('/public/images/default/backgroundWrapper.png');
+	background: #16151a;
+	/* background:url('/public/images/default/backgroundWrapper.png'); */
 	font-size: 16px;
 	height: 100%;
 }
@@ -357,13 +358,17 @@ footer{
     object-fit: cover;
     transition:transform .3s ease;
 }
-.about_collection{
-	font-size: 15px;
-}
+
 .headline_collection{
 	margin-top: 10px;
 	margin-bottom: 10px;
+	font-size: 15px;
 	transition:color .3s ease;
+	overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .date_collection{
 	color: #a6a6a6;
@@ -405,7 +410,90 @@ footer{
 	color:#04a49c;
 }
 
+/* Slider Collection */
+.wrapper_list_slider_collection{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.arrows_navigation_collection_slider{
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+}
 
+.headline_info_slider_navigation h2{
+	font-size: 18px;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+	font-weight: 700;
+	border-bottom: 3px solid #6d6d6d;
+	margin-right: 20px;
+	position: relative;
+	color: #cdcdcd;
+}
+.navigation_collection_slider{
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 8px;
+}
+.arrow_navigation_slider_collection_right{
+	margin-left: 22px;
+}
+.arrow_navigation_slider_collection {
+	color: #cdcdcd;
+  font-size: 36px;
+  opacity: 1;
+	cursor: pointer;
+	transition: color .3s ease-in;
+}
+.arrow_navigation_slider_collection:hover{
+	color:#04a49c;
+}
+.collection_slider{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	margin: 0 8px;
+	max-width: 200px;
+}
+.poster_collection_slider{
+	height: 250px;
+}
+.poster_collection_slider img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .3s ease-in-out;
+	border-radius: 3px;
+}
+.about_collection_slider{
+	display: none;
+}
+.headline_collection_slider{
+	font-size: 15px;
+	color: #b9b9b9;
+	overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+	margin-top: 14px;
+	transition: color .3s ease;
+}
+.link_collection_slider{
+	width: 100%;
+	height: 100%;
+}
+.link_collection_slider:hover .headline_collection_slider{
+	 color: #04a49c;
+}
+.link_collection_slider:hover .poster_collection_slider img{
+	transform: scale(1.05);
+}
 /*Watch collection*/
 
 .collection_top_side_view{

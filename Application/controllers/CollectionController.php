@@ -3,7 +3,6 @@
 namespace Application\controllers;
 
 use Application\core\Controller;
-use Application\lib\Db;
 use Application\lib\Helper;
 use Application\core\View;
 
