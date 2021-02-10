@@ -141,8 +141,7 @@
 								<ul class="list_header_account_info">
 									<li class="list_header_account_info_item list_header_account_info_about">
 										<a href="#" class="list_header_account_info_link">
-											<?=htmlspecialchars($_SESSION['user']['email']);?>
-
+											<?=htmlspecialchars($_SESSION['user']['login']);?>
 										</a>
 									</li>
 									<li class="list_header_account_link_to_item">
