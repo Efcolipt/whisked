@@ -14,12 +14,6 @@ return [
 			'user',
    ],
 
-   'admin' => [
-		'logout',
-		'login',
-   	'register',
-		'user',
-   ],
 
 ];
 
