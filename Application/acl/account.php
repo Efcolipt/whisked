@@ -3,7 +3,6 @@
 return [
 
 	'all' => [
-		'user',
 	],
 
    'guest' => [
@@ -12,12 +11,14 @@ return [
    ],
    'authorize' => [
    		'logout',
+			'user',
    ],
 
    'admin' => [
 		'logout',
 		'login',
    	'register',
+		'user',
    ],
 
 ];

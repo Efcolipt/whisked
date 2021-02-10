@@ -23,28 +23,20 @@ class Account extends Model
 			$params = ['login' => $data['login']];
 			if (empty($data['login']) || empty($data['password'])) $MessageError['other'] = 'Неверный логин или пароль';
 			if(!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['other'] = "Логин может состоять только из букв английского алфавита и цифр";
-
-			$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
-			if (!empty($user['data']) && empty($MessageError) && Helper::check_csrf()) {
-				if(password_verify($data['password'],$user['data'][0]['password'])){
+			$user = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
+			if (!empty($user) && empty($MessageError) && Helper::check_csrf()) {
+				if(password_verify($data['password'],$user[0]['password'])){
 
 					if (isset($data['remember'])) {
 						$params = [
-							'cookie_token' => password_hash($user['data'][0]['id'].$user['data'][0]['password'].time(), PASSWORD_DEFAULT),
+							'cookie_token' => password_hash($user[0]['id'].$user[0]['password'].time(), PASSWORD_DEFAULT),
 							'login' => $data['login']
 						];
 						$update_cookie_token = $this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
 						(!$update_cookie_token) ? $MessageError['other'] = "Возникла ошибка" : setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
 					}
-					// }else{
-					// 	if(isset($_COOKIE["cookie_token"])){
- 					// 		$params = ['login' => $data['login']];
-			    //     $update_cookie_token = $this->db->query("UPDATE users SET cookie_token = '' WHERE login = :login",$params);
-			    //     setcookie("cookie_token", "", time() - 3600,"/");
-				  //   }
-					// }
 
-					$_SESSION['user'] = $user['data'][0];
+					$_SESSION['user'] = $user[0];
 					View::redirect();
 
 				}else
@@ -103,8 +95,8 @@ class Account extends Model
 
 				if ($insertData) {
 					$params = ['login'=> $data['login']];
-					$user['data'] = $this->db->row("SELECT * FROM users WHERE login = :login", $params);
-				if ($user['data']) View::redirect('account/login');
+					$user = $this->db->row("SELECT * FROM users WHERE login = :login", $params);
+				if (!empty($user)) View::redirect('account/login');
 				}else{
 					$MessageError['other'] = "Ошибка, повторите позже";
 				}

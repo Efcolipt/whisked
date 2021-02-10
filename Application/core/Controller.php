@@ -31,10 +31,10 @@ abstract class Controller {
 	public function checkAcl()
 	{
 		$this->acl = require dirname(__DIR__,2).'/Application/acl/'.$this->route['controller'].'.php';
+		if (!empty($_SESSION['user']['isAdmin'])  return true;
 		if ($this->isAcl('all')) return true;
 		elseif(empty($_SESSION['user']['id']) and $this->isAcl('guest')) return true;
 		elseif(!empty($_SESSION['user']['id']) and $this->isAcl('authorize')) return true;
-		elseif(!empty($_SESSION['admin']['id']) and $this->isAcl('admin')) return true;
 		return false;
 	}
 
