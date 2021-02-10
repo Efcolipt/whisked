@@ -1,5 +1,8 @@
+<?php use Application\lib\Helper; ?>
+
 <div class="form_send">
   <form method="post">
+    <?php Helper::csrf_html(); ?>
     <div class="control_form">
       <label for="login">Придумайте логин </label>
       <input class="input_control_form" type="text" name="login" required  value = "<?=isset($_POST['login']) ? htmlspecialchars($_POST['login']) : "" ;?>">

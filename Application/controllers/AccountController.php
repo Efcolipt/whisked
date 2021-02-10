@@ -28,17 +28,18 @@ class AccountController extends  Controller {
 
 	public function logoutAction()
 	{
+
 		$db = new Db;
-		isset($_SESSION['user']['login']) ? $params = ['login' => $_SESSION['user']['login']] : header('Location: /');
+		isset($_SESSION['user']['login']) ? $params = ['login' => $_SESSION['user']['login']] : View::errorCode(403);
 		session_destroy();
 		$cookie_token = $db->query("UPDATE users SET cookie_token = '' WHERE login = :login",$params);
 		if ($cookie_token) setcookie("cookie_token", "", time() - 3600,"/");
-    echo("<script>location.href = '/';</script>");
+    View::redirect();
 	}
 	public function userAction()
 	{
 		$db = new Db;
-		$params = ['login' => strip_tags(htmlspecialchars($this->route['user']))];
+		$params = ['login' => filter_var($this->route['user'], FILTER_SANITIZE_STRING)];
 		$query = $db->row('SELECT * FROM users WHERE login = :login',$params);
 		if ($query) {
 			$vars['user'] = $query[0];

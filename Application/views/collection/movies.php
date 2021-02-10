@@ -1,5 +1,5 @@
 <div class="list_collection">
-	<?php for ($i = 0; $i < 32; $i++):?>
+	<?php for ($i = 0; $i < 8; $i++):?>
 		<div class="collection" data-id="<?=htmlspecialchars($vars['info'][$i]->kinopoisk_id);  ?>">
 			<a class="link_collection" href="/watch/<?=htmlspecialchars($vars['info'][$i]->kinopoisk_id); ?>" >
 			<div class="poster_collection">

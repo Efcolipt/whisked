@@ -16,6 +16,7 @@ abstract class Controller {
 
 	public function __construct($route){
 		$this->route = $route;
+		Helper::gen_csrf();
 		Helper::checkAuth();
 		if(!$this->checkAcl()) View::errorCode(403);
 		$this->view = new View($route);

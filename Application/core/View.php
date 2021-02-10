@@ -37,14 +37,16 @@ public function __construct($route)
 		exit;
 	}
 
+	public static function redirect($url = ''){
+		header('Location: /'.$url);
+		exit;
+	}
+
 	public static function pageClosed(){
 	  require dirname(__DiR__,2).'/Application/views/site_closed/closed.php';
 		exit;
 	}
 
-	public function redirect($url){
-		header('Location: /'.$url);
-		exit;
-	}
+
 }
 ?>

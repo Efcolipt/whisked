@@ -561,7 +561,7 @@ footer{
 	margin-bottom: 8px;
 }
 .collection_top_side_view_txt_about div:last-child{
-	margin-bottom: 0 !important;
+	margin-bottom: 25px;
 }
 .collection_top_side_view_txt_genres,.collection_top_side_view_txt_companies{
 	display: flex;

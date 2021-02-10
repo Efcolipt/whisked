@@ -10,10 +10,9 @@ class MainController extends  Controller{
 
 	public function homeAction()
 	{
-		$helper = new Helper;
-		$upcoming = $helper->getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&year=2020&resolution=2160');
-		$serials = $helper->getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=serial&year=2020&resolution=1080');
-		$anime = $helper->getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&year=2019&cat=аниме');
+		$upcoming = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&year=2020&resolution=2160');
+		$serials = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=serial&year=2020&resolution=1080');
+		$anime = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&year=2019&cat=аниме');
 		$upcoming ? $vars['upcoming'] = $upcoming->results : View::errorCode(404);
 		$serials ? $vars['serials'] = $serials->results : View::errorCode(404);
 		$anime ? $vars['anime'] = $anime->results : View::errorCode(404);
