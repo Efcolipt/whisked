@@ -3,7 +3,7 @@
 namespace Application\models;
 use Application\core\Model;
 use Application\lib\Helper;
-use Application\lib\ReCaptcha;
+
 
 class Main extends Model{
 
@@ -13,8 +13,7 @@ class Main extends Model{
     $pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
     $secret = "6LdDSlUaAAAAALm6lRr4pL_zU5zdgBdJI9Ww5dJD";
     $response = null;
-    $reCaptcha = new ReCaptcha($secret);
-
+    $reCaptcha = new \Application\lib\ReCaptcha($secret);
     if (!empty($data['send'])) {
       if (mb_strlen($data['name']) < 2  || mb_strlen($data['name']) > 32) $MessageError['name'] = 'Слишком маленькое или большое имя';
       if (mb_strlen($data['headline']) < 10  || mb_strlen($data['headline']) > 80) $MessageError['headline'] = 'Тема должна быть не больше 80 и не меньше 10 символов';
