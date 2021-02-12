@@ -28,7 +28,6 @@ class MainController extends  Controller{
 	public function contactsAction()
 	{
 		$vars = $this->model->contact();
-		debug($vars);
 		$this->view->render('Контакты',$vars);
 	}
 

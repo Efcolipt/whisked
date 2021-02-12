@@ -3,7 +3,7 @@
 namespace Application\models;
 use Application\core\Model;
 use Application\lib\Helper;
-use Application\lib\ReCaptcha;
+// use Application\lib\ReCaptcha;
 
 
 class Main extends Model{
@@ -12,9 +12,9 @@ class Main extends Model{
     $data = $_POST;
     $MessageError = [];
     $pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
-    $secret = "6LdDSlUaAAAAALm6lRr4pL_zU5zdgBdJI9Ww5dJD";
-    $response = null;
-    $reCaptcha = new ReCaptcha($secret);
+    // $secret = "6LdDSlUaAAAAALm6lRr4pL_zU5zdgBdJI9Ww5dJD";
+    // $response = null;
+    // $reCaptcha = new ReCaptcha($secret);
 
     if (!empty($data['send'])) {
       if (mb_strlen($data['name']) < 2  || mb_strlen($data['name']) > 32) $MessageError['name'] = 'Слишком маленькое или большое имя';
@@ -34,23 +34,24 @@ class Main extends Model{
 
       if (empty($MessageError) && Helper::checkCsrf() && !empty($data['g-recaptcha-response'])) {
 
-        $response = $reCaptcha->verifyResponse(
-            $_SERVER["REMOTE_ADDR"],
-            $data["g-recaptcha-response"]
-          );
+        // $response = $reCaptcha->verifyResponse(
+        //     $_SERVER["REMOTE_ADDR"],
+        //     $data["g-recaptcha-response"]
+        //   );
+          $params = [
+            'name' => $data['name'],
+            'headline' => $data['headline'],
+            'email' => $data['email'],
+            'message' => $data['message']
+          ];
+          $insertData = $this->db->query("INSERT INTO questions (name,email,headline,message) VALUES (:name,:email,:headline,:message)",$params);
+          if (!$insertData) return $MessageError['other'] = 'Повтороите попытку позже';
 
-          if ($response != null && $response->success) {
-            $params = [
-              'name' => $data['name'],
-              'headline' => $data['headline'],
-              'email' => $data['email'],
-              'message' => $data['message']
-            ];
-            $insertData = $this->db->query("INSERT INTO questions (name,email,headline,message) VALUES (:name,:email,:headline,:message)",$params);
-            if (!$insertData) return $MessageError['other'] = 'Повтороите попытку позже';
-          }else{
-            $MessageError['other'] = 'Капча не пройдена';
-          }
+          // if ($response != null && $response->success) {
+          //
+          // }else{
+          //   $MessageError['other'] = 'Капча не пройдена';
+          // }
 
       }
 

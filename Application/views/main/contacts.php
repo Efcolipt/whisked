@@ -1,5 +1,4 @@
 <?php use Application\lib\Helper; ?>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="form_send">
   <form method="post">
     <?php Helper::insertCsrf(); ?>
@@ -28,7 +27,6 @@
       <small class="control_form_error"><?=isset($vars['message']) ? Helper::filterString($vars['message']):"";  ?></small>
     </div>
 
-    <div class="g-recaptcha" data-theme="dark" data-sitekey="6LdDSlUaAAAAABP0ZsGUhUMN0CXRbt3wC-JIq8Mc"></div>
 
     <div class="control_form">
       <input class="input_control_form" type="submit" name="send" value="Отправить">
@@ -38,7 +36,7 @@
       <small class="control_form_error"><?=isset($vars['other']) ? Helper::filterString($vars['other']):"";  ?></small>
     </div>
     <?php endif; ?>
-    <?php if (empty($vars)):?>
+    <?php if (empty($vars) && !empty($_POST)):?>
     <div class="control_form" style="text-align:center;">
       <small class="control_form_success">Сообщение отправлено!</small>
     </div>
