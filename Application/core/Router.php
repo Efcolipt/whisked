@@ -14,7 +14,7 @@ class Router {
 		$arr = require dirname(__DIR__,2).'/Application/config/routes.php';
 		foreach ($arr as $key => $val) $this->addRegEXP($key,$val);
 	}
-
+	
 	 public function addRegEXP($route,$params){
 	 	$route = preg_replace('/{([a-z]+):([^\}]+)}/', '(?P<\1>\2)', $route);
 		$route = '#^'.$route.'$#';

@@ -21,7 +21,7 @@
 	</div>
 <?php endfor; ?>
 <?php
-	$page = $vars['pageCurrent'];
+	$page = $vars['page'];
 	$pageLast = 500;
 ?>
 	<div class="navigation_collection">

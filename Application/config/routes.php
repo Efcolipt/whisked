@@ -46,6 +46,12 @@ return [
 		'action'=>'user',
 	],
 
+
+	'watch/{q:\d+}' => [
+		'controller'=>'watch',
+		'action'=>'watching',
+	],
+
 	'movies' => [
 		'controller'=>'collection',
 		'action'=>'movies',
@@ -57,10 +63,6 @@ return [
 	'serials' => [
 		'controller'=>'collection',
 		'action'=>'serials',
-	],
-	'watch/{q:\d+}' => [
-		'controller'=>'watch',
-		'action'=>'watching',
 	],
 
 	'search' => [

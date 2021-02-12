@@ -4,8 +4,8 @@ return [
    'all' => [
       'search',
       'movies',
-      'serials',
       'anime',
+      'serial',
    ],
    'guest' => [
    	//

@@ -13,18 +13,14 @@ class Account extends Model
 		$MessageError = [];
 
 		if (!empty($data['send'])) {
-			$data['login'] = filter_var(trim($data['login'], " "), FILTER_SANITIZE_STRING);
-			$data['password'] = filter_var($data['password'], FILTER_SANITIZE_STRING);
-			// $data['login'] = stripslashes($data['login']);
-			// $data['login'] = htmlspecialchars($data['login']);
-			// $data['password'] = htmlspecialchars($data['password']);
-			// $data['password']= stripslashes($data['password']);
-
-			$params = ['login' => $data['login']];
 			if (empty($data['login']) || empty($data['password'])) $MessageError['other'] = 'Неверный логин или пароль';
 			if(!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['other'] = "Логин может состоять только из букв английского алфавита и цифр";
+
+			$data['login'] = Helper::filterString($data['login']);
+			$params = ['login' => $data['login']];
 			$user = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
-			if (!empty($user) && empty($MessageError) && Helper::check_csrf()) {
+
+			if (!empty($user) && empty($MessageError) && Helper::checkCsrf()) {
 				if(password_verify($data['password'],$user[0]['password'])){
 
 					if (isset($data['remember'])) {
@@ -52,39 +48,25 @@ class Account extends Model
 	{
 		$data = $_POST;
 		$MessageError = [];
+		$pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 		if (!empty($data['send'])) {
-			$data['login'] = filter_var(trim($data['login'], " "), FILTER_SANITIZE_STRING);
-			$data['email'] = filter_var(trim($data['email'], " "), FILTER_SANITIZE_STRING);
-			$data['password'] = filter_var($data['password'], FILTER_SANITIZE_STRING);
-			$data['rePassword'] = filter_var($data['rePassword'], FILTER_SANITIZE_STRING);
 
-			// $data['login'] = stripslashes($data['login']);
-			// $data['login'] = htmlspecialchars($data['login']);
-			// $data['email'] = stripslashes($data['email']);
-			// $data['email'] = htmlspecialchars($data['email']);
-			// $data['password'] = htmlspecialchars($data['password']);
-			// $data['password']= stripslashes($data['password']);
-			// $data['rePassword']= stripslashes($data['rePassword']);
-			// $data['rePassword'] = htmlspecialchars($data['rePassword']);
-
-
-
-			$pattern_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
-
-			if (mb_strlen($data['login']) < 3  && !mb_strlen($data['login']) > 30 ) $MessageError['login'] = 'Логин должен быть не меньше 3 символов и не больше 30';
-			if (mb_strlen($data['email']) < 3  && !mb_strlen($data['email']) > 32 ) $MessageError['email'] = 'Не меньше 3 символов и не больше 32';
+			if (mb_strlen($data['login']) < 3  || mb_strlen($data['login']) > 30 ) $MessageError['login'] = 'Логин должен быть не меньше 3 и не больше 30 символов';
+			if (mb_strlen($data['email']) < 5  || mb_strlen($data['email']) > 50 ) $MessageError['email'] = 'Не меньше 3 и не больше 50 символов';
 			if (mb_strlen($data['password']) < 6 ) $MessageError['password'] = 'Длина пароля должна быть не меньше 6 символов';
 
-			if(!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['login'] = 'Логин может состоять только из букв английского алфавита и цифр';
+			if (!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['login'] = 'Логин может состоять только из букв английского алфавита и цифр';
 			if (!preg_match($pattern_email, $data['email'])) $MessageError['email'] = 'Введите корректный Email';
 
 			if ($data['password'] != $data['rePassword']) $MessageError['rePassword'] = 'Пароли не совпадают';
 
+			$data['login'] = Helper::filterString($data['login']);
+			$data['email'] = Helper::filterEmail($data['email']);
 			$params = ['login'=>$data['login'], 'email'=>$data['email']];
 			$similar = $this->db->row('SELECT * FROM users WHERE login = :login OR email = :email',$params);
 			if (!empty($similar)) $MessageError['other'] = 'Такой пользователь уже существует';
 
-			if (empty($MessageError) && Helper::check_csrf() ) {
+			if (empty($MessageError) && Helper::checkCsrf() ) {
 				$params = [
 					'login'=> $data['login'],
 					'password'=> password_hash($data['password'], PASSWORD_DEFAULT),
@@ -98,15 +80,23 @@ class Account extends Model
 					$user = $this->db->row("SELECT * FROM users WHERE login = :login", $params);
 				if (!empty($user)) View::redirect('account/login');
 				}else{
-					$MessageError['other'] = "Ошибка, повторите позже";
+					$MessageError['other'] = "Повтороите попытку позже";
 				}
-			}else{
-				$MessageError['other'] = "Ошибка, повторите позже";
 			}
 
 		}
 			return $MessageError;
 	}
+
+	public function logout()
+	{
+		$params = ['login' => Helper::filterString($_SESSION['user']['login'])];
+		$cookie_token = $this->db->query("UPDATE users SET cookie_token = '' WHERE login = :login",$params);
+		if ($cookie_token) setcookie("cookie_token", "", time() - 3600,"/");
+		session_destroy();
+    View::redirect();
+	}
+
 
 }
 ?>

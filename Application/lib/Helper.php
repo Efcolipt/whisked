@@ -2,10 +2,29 @@
 
 namespace Application\lib;
 use Application\lib\Db;
-
 class Helper {
 
+	public function  __construct()
+	{
 
+		Helper::checkAuth();
+	}
+
+
+	public static function filterString($value='')
+	{
+		return htmlspecialchars(filter_var($value, FILTER_SANITIZE_STRING));
+	}
+
+	public static function filterEmail($value='')
+	{
+		return htmlspecialchars(filter_var($value, FILTER_SANITIZE_EMAIL));
+	}
+
+	public static function filterNumber($value='')
+	{
+		return htmlspecialchars(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
+	}
 
 	public static function  getContent($path = '')
 	{
@@ -14,6 +33,19 @@ class Helper {
     if ($content != false && !is_null($dataContent) && !property_exists($dataContent,'error')) return $dataContent;
     return false;
 	}
+
+	public static function getContentWithBuildQuery($url,$queryContent)
+	{
+			$url = Helper::buildQueryUrl($url,$queryContent);
+			return Helper::getContent($url);
+	}
+
+	public static function  buildQueryUrl($url,$queryContent)
+	{
+		return $url."?".http_build_query($queryContent);
+	}
+
+
 	public static function randomString($strength = 16)
 	{
 				$input = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -26,22 +58,25 @@ class Helper {
 
 		    return $random_string;
 	}
-	public static function check_csrf() {
+
+
+	public static function checkCsrf() {
 		if (!array_key_exists('csrf', $_POST) || $_POST['csrf'] !== $_SESSION['csrf']) {
 			return false;
 		}
 		return true;
 	}
 
-	public static function csrf_html() {
-			printf('<input type="hidden" name="csrf" value="%s" />', filter_var($_SESSION['csrf'],FILTER_SANITIZE_STRING));
+	public static function insertCsrf() {
+			printf('<input type="hidden" name="csrf" value="%s" />', $_SESSION['csrf']);
 	}
 
-	public static function gen_csrf($replace = false) {
+	public static function genereteCsrf($replace = false) {
 			if ($replace || !array_key_exists('csrf', $_SESSION)) {
 				$_SESSION['csrf'] = Helper::randomString(50);
 			}
 	}
+
 
 	public static function checkAuth()
 	{
@@ -49,13 +84,30 @@ class Helper {
 		if (isset($_COOKIE['cookie_token']) && !isset($_SESSION['user'])) {
 			$db = new Db;
 			$params = ['cookie_token' => $_COOKIE['cookie_token']];
-			$user['user'] = $db->row("SELECT * FROM users WHERE cookie_token = :cookie_token",$params);
-			$_SESSION['user'] = $user ? $user['user'][0] : NULL;
+			$user = $db->row("SELECT * FROM users WHERE cookie_token = :cookie_token",$params);
+			$_SESSION['user'] = $user ? $user[0] : NULL;
 		}
 
 	}
 
+	public static function pagination($countPages = 10,$active = 12, $countShowPages = 5,$url = '/index.php', $urlPage = 'index.php?page=')
+	{
+	  if ($countPages > 1) {
+		    $left = $active - 1;
+		    $right = $countPages - $active;
+		    if ($left < floor($countShowPages / 2)) $start = 1;
+		    else $start = $active - floor($countShowPages / 2);
+		    $end = $start + $countShowPages - 1;
+		    if ($end > $countPages) {
+		      $start -= ($end - $countPages);
+		      $end = $countPages;
+		      if ($start < 1) $start = 1;
+	    }
+		}
 
+
+
+	}
 
 }
 

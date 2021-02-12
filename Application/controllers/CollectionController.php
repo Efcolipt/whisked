@@ -3,46 +3,42 @@
 namespace Application\controllers;
 
 use Application\core\Controller;
-use Application\lib\Helper;
 use Application\core\View;
+use Application\lib\Helper;
 
 class CollectionController extends  Controller{
-
-	public function serialsAction()
-	{
-				$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
-				$info  = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=serial&page='.$pageCurrent);
-				$info ? $vars = ['pageCurrent' => $pageCurrent,'info'	=> $info->results] : View::errorCode(404);
-				$this->view->render('Сериалы',$vars);
-	}
 
 
 	public function moviesAction()
 	{
-		$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
-		$info  = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&page='.$pageCurrent);
-		$info ? $vars = ['pageCurrent' => $pageCurrent,'info' => $info->results] : View::errorCode(404);
+		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
+		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'film','page'=> $page]);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
 		$this->view->render('Фильмы',$vars);
+	}
+
+	public function serialAction()
+	{
+		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
+		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'serial','page'=>  $page]);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
+		$this->view->render('Сериалы',$vars);
 	}
 
 	public function animeAction()
 	{
-		$pageCurrent = (isset($_GET['page']) && intval($_GET['page']) > 0)  ? intval($_GET['page']) : 1;
-		$info  = Helper::getContent('https://bazon.cc/api/json?token='.Controller::tokenDB.'&type=film&page='.$pageCurrent.'&cat=аниме');
-		$info ? $vars = ['pageCurrent' => $pageCurrent,'info' => $info->results] : View::errorCode(404);
-		$this->view->render('Фильмы',$vars);
+		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
+		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'film','cat'=>'аниме','page'=>  $page]);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
+		$this->view->render('Аниме',$vars);
 	}
+
 
 	public function searchAction()
 	{
-		$query = filter_var($_GET['q'],FILTER_SANITIZE_STRING);
-		if (!empty($query)) {
-			$info = Helper::getContent('https://bazon.cc/api/search?token='.Controller::tokenDB.'&title='.http_build_query(array('query' => $query)));
-			$vars['info'] = $info ? $info->results : "";
-		}else{
-			View::errorCode(404);
-		}
-
+		isset($_GET['q']) ? $query = Helper::filterString($_GET['q']) : View::errorCode(404);
+		$info = Helper::getContentWithBuildQuery($this->urlContentSearch,['token'=> $this->urlTokenContent, 'title' => $query]);
+		$vars['info'] = $info ? $info->results : "";
 		$this->view->render('Поиск по запросу '.$query,$vars);
 	}
 
