@@ -17,10 +17,12 @@ abstract class Controller {
 
 
 	public function __construct($route){
-		Helper::genereteCsrf();
 		$this->route = $route;
-		if(!$this->checkAcl()) View::errorCode(403);
 		$this->view = new View($route);
+
+		if(!$this->checkAcl()) View::errorCode(403);
+		Helper::genereteCsrf();
+
 		$this->model = $this->loadModel($route['controller']);
 	}
 

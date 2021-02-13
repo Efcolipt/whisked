@@ -41,9 +41,14 @@ return [
 		'action'=>'logout',
 	],
 
-	'user/{user:\w+}' => [
+	// 'user/{user:\w+}' => [
+	// 	'controller'=>'account',
+	// 	'action'=>'user',
+	// ],
+
+	'profile' => [
 		'controller'=>'account',
-		'action'=>'user',
+		'action'=>'profile',
 	],
 
 

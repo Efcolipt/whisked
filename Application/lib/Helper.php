@@ -29,8 +29,8 @@ class Helper {
 	public static function  getContent($path = '')
 	{
 		$content = @file_get_contents($path);
-    $dataContent = json_decode($content);
-    if ($content != false && !is_null($dataContent) && !property_exists($dataContent,'error')) return $dataContent;
+    $dataContent = json_decode($content,true);
+    if ($content != false && !is_null($dataContent)) return $dataContent;
     return false;
 	}
 

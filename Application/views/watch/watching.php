@@ -1,45 +1,45 @@
 <div class="collection_view">
 	<div class="collection_top_side_view">
 		<div class="collection_top_side_view_img">
-			<img data-src="<?=htmlspecialchars($vars['info']->info->poster);?>" src="" alt=<?=htmlspecialchars($vars['info']->info->rus);?> >
+			<img data-src="<?=$info["poster"];?>"  alt="<?=$info["rus"];?>" >
 		</div>
 		<div class="collection_top_side_view_txt">
 			<div class="collection_top_side_view_txt_headline collection_top_side_view_txt_info">
 				<p>
-					<?=htmlspecialchars($vars['info']->info->rus);?>
+					<?=$info['rus'];?>
 					<div>
-						<span><?=htmlspecialchars($vars['info']->info->age);?> +</span>
-						<span><?=htmlspecialchars($vars['info']->quality);?></span></p>
+						<span><?=$info['age'];?> +</span>
+						<span><?=$quality;?></span></p>
 					</div>
 			</div>
 			<div class="collection_top_side_view_txt_about">
 				<div class="collection_top_side_view_txt_info ">
-					<p>Рейтинг IMDB: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->rating->rating_imdb);?></span></p>
+					<p>Рейтинг IMDB: <span class="text_mont"><?=$info['rating']['rating_imdb'];?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Дата премьеры: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->premiere);?></span></p>
+					<p>Дата премьеры: <span class="text_mont"><?=$info['premiere'];?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Перевод: <span class="text_mont"><?=htmlspecialchars($vars['info']->translation);?></span></p>
+					<p>Перевод: <span class="text_mont"><?=$translation;?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_info ">
-					<p>Актеры: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->actors);?></span></p>
+					<p>Актеры: <span class="text_mont"><?=$info['actors'];?></span></p>
 				</div>
 				<div class="collection_top_side_view_txt_genres">
-					<p>Жанр: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->genre);?></span></p>
+					<p>Жанр: <span class="text_mont"><?=$info['genre'];?></span></p>
 				</div>
 
 				<div class="collection_top_side_view_txt_companies">
-					<p>Страны съёмок: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->country);?></span></p>
+					<p>Страны съёмок: <span class="text_mont"><?=$info['country'];?></span></p>
 				</div>
 				<div class="collection_top_side_view_txt_lang ">
 					<p>Языки: <span class="text_mont">Русский, Английский</span></p>
 				</div>
 				<div class="collection_top_side_view_txt_description ">
-					<p>Описание: <span class="text_mont"><?=htmlspecialchars($vars['info']->info->description);?></span></p>
+					<p>Описание: <span class="text_mont"><?=$info['description'];?></span></p>
 				</div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 
-			 <iframe src="<?=htmlspecialchars($vars['info']->link);?>" frameborder="0" scrolling="no" allowfullscreen="" referrerpolicy="origin" width="100%" height="800"></iframe>
+			 <iframe src="<?=$link;?>" frameborder="0" scrolling="no" allowfullscreen="" referrerpolicy="origin" width="100%" height="800"></iframe>
 			 <!-- <p class="not_found_video">Фильм не найден</p> -->
 			<div class="collection_centered_side_view_tab_video_helper_bottom">
 				<div class="collection_centered_side_view_tab_video_helper_bottom_favorite" data-sfc="800">

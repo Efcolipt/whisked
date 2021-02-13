@@ -12,13 +12,14 @@ class View {
 	public function __construct($route){
 		$this->route = $route;
 		$this->path = $route['controller'].'/'.$route['action'];
+
+		$closed = require dirname(__DIR__,2).'/Application/config/closed.php';
+		if (in_array($this->path, $closed)) $this->pageClosed();
 	}
 
  	public function render($title,$vars = []){
-	 	//extract($vars); Output
+	 	extract($vars);
 	 	$path = dirname(__DIR__,2).'/Application/views/'.$this->path.'.php';
-		$closed = require dirname(__DIR__,2).'/Application/config/closed.php';
-		if (in_array($this->path, $closed)) $this->pageClosed();
 	 	if (file_exists($path)) {
 	 		ob_start();
 	 		require $path;

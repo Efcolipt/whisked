@@ -13,9 +13,12 @@ class MainController extends  Controller{
 		$upcoming = Helper::getContentWithBuildQuery($this->urlContentMain,['token'=> $this->urlTokenContent, 'type'=>'film','year'=>'2020','resolution'=>'2160']);
 		$serials = Helper::getContentWithBuildQuery($this->urlContentMain,['token'=> $this->urlTokenContent, 'type'=>'serial','year'=>'2020','resolution'=>'1080']);
 		$anime = Helper::getContentWithBuildQuery($this->urlContentMain,['token'=> $this->urlTokenContent, 'type'=>'film','year'=>'2019','cat'=>'аниме']);
-		$upcoming ? $vars['upcoming'] = $upcoming->results : View::errorCode(404);
-		$serials ? $vars['serials'] = $serials->results : View::errorCode(404);
-		$anime ? $vars['anime'] = $anime->results : View::errorCode(404);
+		($upcoming || $serials || $anime) ?? View::errorCode(404);
+		$vars = [
+			'upcoming' => $upcoming['results'],
+			'serials' => $serials['results'],
+			'anime' => $anime['results'],
+		];
 		$this->view->render('Главная',$vars);
 	}
 

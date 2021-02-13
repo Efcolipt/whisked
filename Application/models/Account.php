@@ -16,9 +16,7 @@ class Account extends Model
 			if (empty($data['login']) || empty($data['password'])) $MessageError['other'] = 'Неверный логин или пароль';
 			if(!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['other'] = "Логин может состоять только из букв английского алфавита и цифр";
 
-			$data['login'] = Helper::filterString($data['login']);
-			$params = ['login' => $data['login']];
-			$user = $this->db->row("SELECT * FROM users WHERE login = :login",$params);
+			$user = $this->getUser($data['login']);
 
 			if (!empty($user) && empty($MessageError) && Helper::checkCsrf()) {
 				if(password_verify($data['password'],$user[0]['password'])){
@@ -26,7 +24,7 @@ class Account extends Model
 					if (isset($data['remember'])) {
 						$params = [
 							'cookie_token' => password_hash($user[0]['id'].$user[0]['password'].time(), PASSWORD_DEFAULT),
-							'login' => $data['login']
+							'login' => $user[0]['login']
 						];
 						$update_cookie_token = $this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
 						(!$update_cookie_token) ? $MessageError['other'] = "Возникла ошибка" : setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
@@ -97,6 +95,12 @@ class Account extends Model
     View::redirect();
 	}
 
+	public function getUser($login){
+		$params = ['login' => Helper::filterString($login)];
+		$user = $this->db->row('SELECT * FROM users WHERE login = :login',$params);
+		return $user;
+	}
 
 }
+
 ?>

@@ -1,8 +1,9 @@
+<?php use Application\lib\Helper; ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title><?=htmlspecialchars($title); ?></title>
+	<title><?=$title; ?></title>
 	<!-- Media -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +18,7 @@
 	<meta name="copyright" content="whisked">
 
 	<!-- Open Graph Meta -->
-	<meta property="og:title" content="<?=htmlspecialchars($title); ?> | Whisked">
+	<meta property="og:title" content="<?=$title; ?> | Whisked">
 	<meta property="og:locale" content="ru_RU">
 	<meta property="og:description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
 	<meta property="og:image" content="<?= isset($vars['info']->info->poster)  ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>">
@@ -29,7 +30,7 @@
 	<meta property="og:image:height" content="520" />
 
 	<!-- Meta Google  -->
-	<meta itemprop="name" content="<?=htmlspecialchars($title); ?> | Whisked" />
+	<meta itemprop="name" content="<?=$title; ?> | Whisked" />
 	<meta itemprop="description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
 	<meta itemprop="image" content="<?= isset($vars['info']->info->poster) ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>" />
 
@@ -140,15 +141,15 @@
 
 								<ul class="list_header_account_info">
 									<li class="list_header_account_info_item list_header_account_info_about">
-										<a href="#" class="list_header_account_info_link">
-											<?=htmlspecialchars($_SESSION['user']['login']);?>
+										<a href="javascript:void(0)" class="list_header_account_info_link">
+											<?=Helper::filterString($_SESSION['user']['login']);?>
 										</a>
 									</li>
 									<li class="list_header_account_link_to_item">
-										<a href="/user/<?=htmlspecialchars($_SESSION['user']['login']); ?>" class="list_header_account_info_link">Личный кабинет</a>
+										<a href="/profile" class="list_header_account_info_link">Личный кабинет</a>
 									</li>
 									<li class="list_header_account_link_to_item">
-										<a href="#" class="list_header_account_info_link">Настройки</a>
+										<a href="javascript:void(0)" class="list_header_account_info_link">Настройки</a>
 									</li>
 									<li class="list_header_account_link_to_item  list_header_account_link_to_item_logout">
 										<a href="/account/logout" class="list_header_account_info_link">

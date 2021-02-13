@@ -1,29 +1,25 @@
 <div class="list_collection">
-	<?php for ($i = 0; $i < 32; $i++):?>
-		<div class="collection" data-id="<?=htmlspecialchars($vars['info'][$i]->kinopoisk_id);  ?>">
-			<a class="link_collection" href="/watch/<?=htmlspecialchars($vars['info'][$i]->kinopoisk_id); ?>" >
+	<?php for ($i = 0; $i < 8; $i++):?>
+		<div class="collection" data-id="<?=$info['kinopoisk_id'];  ?>">
+			<a class="link_collection" href="/watch/<?=$info[$i]['kinopoisk_id']; ?>" >
 			<div class="poster_collection">
-				<img data-src="<?=htmlspecialchars($vars['info'][$i]->info->poster);?>" src="" alt=<?=htmlspecialchars($vars['info'][$i]->info->rus);?> >
+				<img data-src="<?=$info[$i]['info']['poster'];?>" alt=<?=$info[$i]['info']['rus'];?> >
 				<div class="info_collection_on_poster">
 					<div class="rait_collection">
-						<p class="text_mont">Рейтинг IMDB <span><?=htmlspecialchars($vars['info'][$i]->info->rating->rating_imdb);  ?></span></p>
+						<p class="text_mont">Рейтинг IMDB <span><?=$info[$i]['info']['rating']['rating_imdb'];  ?></span></p>
 					</div>
 					<div class="average_collection">
-						<p><span><?=htmlspecialchars($vars['info'][$i]->quality);  ?></span></p>
+						<p><span><?=$info[$i]['quality'];  ?></span></p>
 					</div>
 				</div>
 			</div>
 			<div class="about_collection">
-				<p class="headline_collection"><?=htmlspecialchars($vars['info'][$i]->info->rus);  ?></p>
-				<p class="date_collection text_mont"><?=htmlspecialchars($vars['info'][$i]->info->year); ?></p>
+				<p class="headline_collection"><?=$info[$i]['info']['rus'];  ?></p>
+				<p class="date_collection text_mont"><?=$info[$i]['info']['year']; ?></p>
 			</div>
 		</a>
 	</div>
 <?php endfor; ?>
-<?php
-	$page = $vars['page'];
-	$pageLast = 500;
-?>
 	<div class="navigation_collection">
 			<?php if ($page <= 5): ?>
 				<?php for($i = 1; $i < 12; $i++): ?>

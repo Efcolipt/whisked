@@ -26,9 +26,11 @@ class AccountController extends  Controller {
 	{
 		$this->model->logout();
 	}
-	public function userAction()
+	public function profileAction()
 	{
-		$this->view->render(ucfirst($this->route['user']));
+
+		$vars = [$this->model->getUser($_SESSION['user']['login'])[0]];
+		$this->view->render("Профиль пользователя",$vars[0]);
 	}
 }
  ?>

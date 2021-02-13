@@ -13,15 +13,15 @@ class CollectionController extends  Controller{
 	{
 		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
 		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'film','page'=> $page]);
-		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info['results'], 'pageLast' => 500] : View::errorCode(404);
 		$this->view->render('Фильмы',$vars);
 	}
 
-	public function serialAction()
+	public function serialsAction()
 	{
 		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
 		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'serial','page'=>  $page]);
-		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info['results'], 'pageLast' => 500] : View::errorCode(404);
 		$this->view->render('Сериалы',$vars);
 	}
 
@@ -29,7 +29,7 @@ class CollectionController extends  Controller{
 	{
 		(isset($_GET['page'])) ? $page = Helper::filterNumber($_GET['page']) : $page = 1;
 		$info = Helper::getContentWithBuildQuery($this->urlContentMain,['token' => $this->urlTokenContent,'type'=>'film','cat'=>'аниме','page'=>  $page]);
-		$info ? $vars = ['page' =>  $page,'info'	=> $info->results] : View::errorCode(404);
+		$info ? $vars = ['page' =>  $page,'info'	=> $info['results'], 'pageLast' => 500] : View::errorCode(404);
 		$this->view->render('Аниме',$vars);
 	}
 
@@ -38,7 +38,7 @@ class CollectionController extends  Controller{
 	{
 		isset($_GET['q']) ? $query = Helper::filterString($_GET['q']) : View::errorCode(404);
 		$info = Helper::getContentWithBuildQuery($this->urlContentSearch,['token'=> $this->urlTokenContent, 'title' => $query]);
-		$vars['info'] = $info ? $info->results : "";
+		$vars = ['info' => $info['results']];
 		$this->view->render('Поиск по запросу '.$query,$vars);
 	}
 
