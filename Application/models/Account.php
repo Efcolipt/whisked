@@ -70,16 +70,8 @@ class Account extends Model
 					'password'=> password_hash($data['password'], PASSWORD_DEFAULT),
 					'email'=> $data['email'],
 				];
-
 				$insertData = $this->db->query("INSERT INTO users (login,password,email) VALUES (:login,:password,:email)",$params);
-
-				if ($insertData) {
-					$params = ['login'=> $data['login']];
-					$user = $this->db->row("SELECT * FROM users WHERE login = :login", $params);
-				if (!empty($user)) View::redirect('account/login');
-				}else{
-					$MessageError['other'] = "Повтороите попытку позже";
-				}
+				$insertData ? View::redirect('account/login') : $MessageError['other'] = "Повтороите попытку позже";
 			}
 
 		}
@@ -100,8 +92,6 @@ class Account extends Model
 		$user = $this->db->row('SELECT * FROM users WHERE login = :login',$params);
 		return $user;
 	}
-
-
 
 }
 
