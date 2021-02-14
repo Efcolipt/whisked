@@ -5,6 +5,7 @@ namespace Application\controllers;
 use Application\core\Controller;
 use Application\lib\Db;
 use Application\lib\Helper;
+use Application\lib\GetInfomationPerson;
 use Application\core\View;
 
 class AccountController extends  Controller {
@@ -26,11 +27,18 @@ class AccountController extends  Controller {
 	{
 		$this->model->logout();
 	}
-	public function profileAction()
+	public function userAction()
 	{
-
-		$vars = [$this->model->getUser($_SESSION['user']['login'])[0]];
-		$this->view->render("Профиль пользователя",$vars[0]);
+		$getInfomationPerson = new GetInfomationPerson;
+		$vars = [
+			'user' => $this->model->getUser($_SESSION['user']['login'])[0],
+			'ip' => $getInfomationPerson->ip,
+			'browser' => $getInfomationPerson->browser,
+			'system' => $getInfomationPerson->operating_system,
+			'systemVer' => $getInfomationPerson->os_version,
+		];
+		if ($vars['user']['login'] != Helper::filterString($this->route['user']) && (!$vars['user']['isAdmin']))   View::errorCode(403);
+		$this->view->render("Профиль пользователя",$vars);
 	}
 }
  ?>

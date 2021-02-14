@@ -146,7 +146,7 @@
 										</a>
 									</li>
 									<li class="list_header_account_link_to_item">
-										<a href="/profile" class="list_header_account_info_link">Личный кабинет</a>
+										<a href="/user/<?=Helper::filterString($_SESSION['user']['login']);?>" class="list_header_account_info_link">Личный кабинет</a>
 									</li>
 									<li class="list_header_account_link_to_item">
 										<a href="javascript:void(0)" class="list_header_account_info_link">Настройки</a>
@@ -179,7 +179,7 @@
 						<ul class="list_footer_menu_desktop">
 							<li class="list_footer_menu_desktop_item"><a href="/quality" class="list_footer_menu_desktop_link">Качество</a></li>
 							<li class="list_footer_menu_desktop_item"><a href="/rightholders" class="list_footer_menu_desktop_link">Правообладателям</a></li>
-							<li class="list_footer_menu_desktop_item"><a href="/contacts" class="list_footer_menu_desktop_link">Контакты</a></li>
+								<?php if(!empty($_SESSION['user'])): ?><li class="list_footer_menu_desktop_item"><a href="/contacts" class="list_footer_menu_desktop_link">Контакты</a></li><?php endif; ?>
 						</ul>
 					</div>
 					<div class="footer_info_site">

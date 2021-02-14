@@ -17,34 +17,26 @@ class Main extends Model{
     // $reCaptcha = new ReCaptcha($secret);
 
     if (!empty($data['send'])) {
-      if (mb_strlen($data['name']) < 2  || mb_strlen($data['name']) > 32) $MessageError['name'] = 'Слишком маленькое или большое имя';
-      if (mb_strlen($data['headline']) < 10  || mb_strlen($data['headline']) > 80) $MessageError['headline'] = 'Тема должна быть не больше 80 и не меньше 10 символов';
-      if (mb_strlen($data['name']) < 5  || mb_strlen($data['name']) > 90) $MessageError['email'] = 'Слишком маленький или большой email';
-      if (mb_strlen($data['message']) < 10  || mb_strlen($data['message']) > 800) $MessageError['message'] = 'Сообщение должно быть не больше 800 и не меньше 10 символов';
+      if (mb_strlen($data['headline']) < 10  || mb_strlen($data['headline']) > 80) $MessageError['headline'] = 'Тема должна быть не меньше 10 и не больше 80 символов';
+      if (mb_strlen($data['message']) < 10  || mb_strlen($data['message']) > 800) $MessageError['message'] = 'Сообщение должно быть не меньше 10 и не больше 800 символов';
 
-      $data['name'] = Helper::filterString($data['name']);
       $data['headline'] = Helper::filterString($data['headline']);
-      $data['email'] = Helper::filterEmail($data['email']);
       $data['message'] = Helper::filterString($data['message']);
 
-      if (!preg_match($pattern_email, $data['email'])) $MessageError['email'] = 'Введите корректный Email';
-      if (!preg_match("/[а-я]/i", $data['name']) && !preg_match("/[a-z]/i", $data['name'])) $MessageError['name'] = "Имя может состоять только из букв русского или английского алфавита";
-
-
-
-      if (empty($MessageError) && Helper::checkCsrf() && !empty($data['g-recaptcha-response'])) {
+      if (empty($MessageError) && Helper::checkCsrf() ) {
 
         // $response = $reCaptcha->verifyResponse(
         //     $_SERVER["REMOTE_ADDR"],
         //     $data["g-recaptcha-response"]
         //   );
+        // && !empty($data['g-recaptcha-response'])
           $params = [
-            'name' => $data['name'],
+            'id_sendler' => $_SESSION['user']['id'],
+            'email' => $_SESSION['user']['email'],
             'headline' => $data['headline'],
-            'email' => $data['email'],
             'message' => $data['message']
           ];
-          $insertData = $this->db->query("INSERT INTO questions (name,email,headline,message) VALUES (:name,:email,:headline,:message)",$params);
+          $insertData = $this->db->query("INSERT INTO questions (id_sendler,email,headline,message) VALUES (:id_sendler,:email,:headline,:message)",$params);
           if (!$insertData) return $MessageError['other'] = 'Повтороите попытку позже';
 
           // if ($response != null && $response->success) {

@@ -5,7 +5,7 @@
 		<?php Helper::insertCsrf(); ?>
 		<div class="control_form">
 			<label for="login">Логин </label>
-			<input class="input_control_form" type="text" name="login" required value = "<?=isset($_POST['login']) ? htmlspecialchars($_POST['login']):"";?>">
+			<input class="input_control_form" type="text" name="login" required value="<?php if (isset($_POST['login']))  echo htmlspecialchars($_POST['login']);?>">
 		</div>
 
 		<div class="control_form">
@@ -20,7 +20,7 @@
 			<label for="remember_control_form">Запомнить меня</label>
 		</div>
 		<div class="control_form_error_block">
-      		<small class="control_form_error" ><?=isset($vars['other']) ? htmlspecialchars($vars['other']):"";  ?></small>
+      		<small class="control_form_error" ><?php if (isset($vars['other']))  echo htmlspecialchars($vars['other']);  ?></small>
 		</div>
 		<div class="other_info_form">
 			<a href="/account/register" class="other_info_form_link">

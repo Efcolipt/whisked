@@ -41,15 +41,15 @@ return [
 		'action'=>'logout',
 	],
 
-	// 'user/{user:\w+}' => [
-	// 	'controller'=>'account',
-	// 	'action'=>'user',
-	// ],
-
-	'profile' => [
+	'user/{user:\w+}' => [
 		'controller'=>'account',
-		'action'=>'profile',
+		'action'=>'user',
 	],
+
+	// 'profile' => [
+	// 	'controller'=>'account',
+	// 	'action'=>'profile',
+	// ],
 
 
 	'watch/{q:\d+}' => [

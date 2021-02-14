@@ -5,7 +5,7 @@ return [
       'search',
       'movies',
       'anime',
-      'serial',
+      'serials',
    ],
    'guest' => [
    	//
