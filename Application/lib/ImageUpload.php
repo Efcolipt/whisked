@@ -32,6 +32,7 @@ Class ImageUpload{
 
   private function getFolder()
   {
+    debug( dirname(__DIR__,2).'\public\uploads\users\\');
     return  dirname(__DIR__,2).'\public\uploads\users\\';
   }
 
