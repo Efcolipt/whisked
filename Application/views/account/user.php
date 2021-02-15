@@ -3,7 +3,7 @@
   <div class="top_profile_index">
     <div class="side_profile_index">
       <div class="img_profile_index">
-        <img src="#" alt="">
+        <img src="/public/uploads/users/<?=$user['poster_path']?>" alt="">
       </div>
       <div class="btns_info_profile_index">
         <a class="btn_info_profile_index" href="javascript:void(0)">История</a>
@@ -20,19 +20,19 @@
           <div class="control_form">
             <label for="password">Ваш логин</label>
             <input class="input_control_form" type="text" name="login" value="<?=$user['login']?>">
-            <small class="control_form_error"><?=isset($vars['headline'])? Helper::filterString($vars['headline']):"";  ?></small>
+            <small class="control_form_error"><?php if (isset($MessageError['email']))  echo Helper::filterString($MessageError['email']);  ?></small>
           </div>
 
           <div class="control_form">
             <label for="password">Ваш email</label>
             <input class="input_control_form" type="text" name="email" value="<?=$user['email']?>">
-            <small class="control_form_error"><?=isset($vars['headline'])? Helper::filterString($vars['headline']):"";  ?></small>
+            <small class="control_form_error"><?php if (isset($MessageError['email']))  echo Helper::filterString($MessageError['email']);  ?></small>
           </div>
 
           <div class="control_form">
             <label for="password">Сменить аватарку</label>
-            <input class="input_control_form" type="file" name="poster" accept="image/*" >
-            <small class="control_form_error"><?=isset($vars['headline'])? Helper::filterString($vars['headline']):"";  ?></small>
+            <input class="input_control_form" type="file" name="poster">
+            <small class="control_form_error"><?php if (isset($MessageError['file']))  echo Helper::filterString($MessageError['file']);  ?></small>
           </div>
           <div class="control_form">
                 <input class="input_control_form" type="submit" name="send" value="Сохранить">

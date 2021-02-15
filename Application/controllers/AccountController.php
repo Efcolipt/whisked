@@ -30,14 +30,15 @@ class AccountController extends  Controller {
 	public function userAction()
 	{
 		$getInfomationPerson = new GetInfomationPerson;
+		if ($_SESSION['user']['login'] != Helper::filterString($this->route['user']) && (!$_SESSION['user']['isAdmin']))   View::errorCode(403);
 		$vars = [
+			'MessageError' => $this->model->userEditInfo(),
 			'user' => $this->model->getUser($_SESSION['user']['login'])[0],
 			'ip' => $getInfomationPerson->ip,
 			'browser' => $getInfomationPerson->browser,
 			'system' => $getInfomationPerson->operating_system,
 			'systemVer' => $getInfomationPerson->os_version,
 		];
-		if ($vars['user']['login'] != Helper::filterString($this->route['user']) && (!$vars['user']['isAdmin']))   View::errorCode(403);
 		$this->view->render("Профиль пользователя",$vars);
 	}
 }

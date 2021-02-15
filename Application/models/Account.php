@@ -3,6 +3,7 @@
 namespace Application\models;
 use Application\core\Model;
 use Application\lib\Helper;
+use Application\lib\ImageUpload;
 use Application\core\View;
 
 class Account extends Model
@@ -91,6 +92,29 @@ class Account extends Model
 		$params = ['login' => Helper::filterString($login)];
 		$user = $this->db->row('SELECT * FROM users WHERE login = :login',$params);
 		return $user;
+	}
+
+	public function userEditInfo(){
+		$data = $_POST;
+		$MessageError = [];
+		$ImageUpload = new ImageUpload;
+
+		// if (isset($data['send'])) {
+		//
+		// }
+		if (!empty($_FILES['poster']['name']) && isset($data['send']) && Helper::checkCsrf()) {
+			$filename = $ImageUpload->uploadFile($_FILES['poster'], Helper::filterString($_SESSION['user']['poster_path']));
+			if ($filename) {
+				$params = ['poster_path' => $filename, 'login' => Helper::filterString($_SESSION['user']['login'])];
+				$insertData = $this->db->query('UPDATE users SET poster_path = :poster_path WHERE login = :login',$params);
+
+				if (!$insertData)  $MessageError['file'] = "Повторите попытку позже";
+				$_SESSION['user']['poster_path'] = $filename;
+			}else{
+				$MessageError['file'] = "Выберите другое изображение";
+			}
+		}
+		return $MessageError;
 	}
 
 }
