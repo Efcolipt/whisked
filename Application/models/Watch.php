@@ -7,16 +7,16 @@ use Application\lib\Helper;
 class Watch extends Model
 {
 
-	public function rememberDataFilm($info)
+	public function rememberDataFilm($id)
 	{
 		if ( isset($_SESSION['user']) ){
-			$params = ['login' => Helper::filterString($_SESSION['user']['login'])];
-			$data = $this->db->row('SELECT content_films FROM users WHERE login = :login',$params);
+			$data = $_SESSION['user']['content_films'];
 
-			if (!empty($data)) $data = base64_encode(str_replace(":".$info['kinopoisk_id'],"",base64_decode($data[0]['content_films'])).":".$info['kinopoisk_id']);
-			else $data = base64_encode($info['kinopoisk_id']);
-
-			$params['content_films'] = $data;
+			if (!empty($data)) $data = base64_encode(str_replace(":".$id,"",base64_decode($data)).":".$id);
+			else $data = base64_encode($id);
+			
+			$_SESSION['user']['content_films'] = $data;
+			$params = ["content_films" => $data, "login" => Helper::filterString($_SESSION['user']['login']) ];
 			$this->db->row('UPDATE users SET content_films = :content_films WHERE login = :login',$params);
 		}
 	}

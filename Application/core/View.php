@@ -21,8 +21,8 @@ class View {
 	 	extract($vars);
 	 	$path = dirname(__DIR__,2).'/Application/views/'.$this->path.'.php';
 	 	if (file_exists($path)) {
-			$lastEnter = isset($_COOKIE['lastEnter']) ? $_COOKIE['lastEnter'] : "";
-			setcookie('lastEnter', date('Y-m-d H:i:s'), time()+3600*24*31, '/');
+			$lastEnter = isset($_COOKIE['lastEnter']) ? base64_decode($_COOKIE['lastEnter']) : "";
+			setcookie('lastEnter', base64_encode(date('Y-m-d H:i:s')), time()+3600*24*31, '/');
 	 		ob_start();
 	 		require $path;
 	 		$content = ob_get_clean();
