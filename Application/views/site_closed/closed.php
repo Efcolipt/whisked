@@ -9,14 +9,6 @@
 </head>
 <body>
 	<div id="error_page">
-		<div class="waitingSpin" >
-			<div class="spinner">
-				<div class="blob top"></div>
-					<div class="blob bottom"></div>
-					<div class="blob left"></div>
-					<div class="blob move-blob"></div>
-			</div>
-		</div>
 		<div class="container">
 			<div class="error_content">
   			<h1>Страница закрыта</h1>
