@@ -27,8 +27,8 @@ class Account extends Model
 							'cookie_token' => password_hash($user[0]['id'].$user[0]['password'].time(), PASSWORD_DEFAULT),
 							'login' => $user[0]['login']
 						];
-						$update_cookie_token = $this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
-						(!$update_cookie_token) ? $MessageError['other'] = "Возникла ошибка" : setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
+						$this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
+					  setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
 					}
 
 					$_SESSION['user'] = $user[0];
@@ -88,11 +88,6 @@ class Account extends Model
     View::redirect();
 	}
 
-	public function getUser($login){
-		$params = ['login' => Helper::filterString($login)];
-		$user = $this->db->row('SELECT * FROM users WHERE login = :login',$params);
-		return $user;
-	}
 
 	public function userEditInfo(){
 		$data = $_POST;
@@ -103,13 +98,13 @@ class Account extends Model
 		//
 		// }
 		if (!empty($_FILES['poster']['name']) && isset($data['send']) && Helper::checkCsrf()) {
-			$filename = $ImageUpload->uploadFile($_FILES['poster'], Helper::filterString($_SESSION['user']['poster_path']));
-			if ($filename) {
-				$params = ['poster_path' => $filename, 'login' => Helper::filterString($_SESSION['user']['login'])];
+			$file = $ImageUpload->uploadFile($_FILES['poster'], Helper::filterString($_SESSION['user']['poster_path']));
+			if ($file) {
+				$params = ['poster_path' => $file, 'login' => Helper::filterString($_SESSION['user']['login'])];
 				$insertData = $this->db->query('UPDATE users SET poster_path = :poster_path WHERE login = :login',$params);
 
 				if (!$insertData)  $MessageError['file'] = "Повторите попытку позже";
-				$_SESSION['user']['poster_path'] = $filename;
+				$_SESSION['user']['poster_path'] = $file;
 			}else{
 				$MessageError['file'] = "Выберите другое изображение";
 			}

@@ -3,7 +3,7 @@
   <div class="top_profile_index">
     <div class="side_profile_index">
       <div class="img_profile_index">
-        <img src="/public/uploads/users/<?=$user['poster_path']?>" alt="">
+        <img src="/<?=$user['poster_path']?>" alt="">
       </div>
       <div class="btns_info_profile_index">
         <a class="btn_info_profile_index" href="javascript:void(0)">История</a>

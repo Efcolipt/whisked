@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
 	});
 
 	function showDefaultImage(img) {
-		$(img).attr('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/public/images/no-img/no-img.jpg');
+		$(img).attr('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/public/images/default/collection/no-img.jpg');
 		$(img).off("error");
 	}
 

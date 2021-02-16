@@ -11,7 +11,6 @@ abstract class Controller {
 	public $route;
 	public $view;
 	public $acl;
-	public $lastEnter;
 	public $urlTokenContent  = "7250d60740fc5811592ea4fcf893239f";
 	public $urlContentMain   = "https://bazon.cc/api/json";
 	public $urlContentSearch = "https://bazon.cc/api/search";

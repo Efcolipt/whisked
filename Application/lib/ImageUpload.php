@@ -32,7 +32,7 @@ Class ImageUpload{
 
   private function getFolder()
   {
-    return  dirname(__DIR__,2).'/public/uploads/users/';
+    return  'public/uploads/users/';
   }
 
 
@@ -48,20 +48,20 @@ Class ImageUpload{
 
   private function deleteCurrentImage($currentImage)
   {
-    if ($this->fileExists($currentImage)) unlink($this->getFolder() . $currentImage);
+    if ($this->fileExists($currentImage)) unlink($currentImage);
   }
 
   private function fileExists($currentImage)
   {
     if (!empty($currentImage) && $currentImage != null)
-      return file_exists($this->getFolder() . $currentImage);
+      return file_exists($currentImage);
   }
 
   private function saveImage()
   {
     $filename = $this->generateFilename();
     if (move_uploaded_file($this->image['tmp_name'], $this->getFolder().$filename)) {
-      return $filename;
+      return $this->getFolder().$filename;
     }
     return false;
   }

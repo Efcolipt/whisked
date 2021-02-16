@@ -6,8 +6,7 @@ class Helper {
 
 	public function  __construct()
 	{
-
-		Helper::checkAuth();
+		self::checkAuth();
 	}
 
 
@@ -36,8 +35,8 @@ class Helper {
 
 	public static function getContentWithBuildQuery($url,$queryContent)
 	{
-			$url = Helper::buildQueryUrl($url,$queryContent);
-			return Helper::getContent($url);
+			$url = self::buildQueryUrl($url,$queryContent);
+			return self::getContent($url);
 	}
 
 	public static function  buildQueryUrl($url,$queryContent)
@@ -73,7 +72,7 @@ class Helper {
 
 	public static function genereteCsrf($replace = false) {
 			if ($replace || !array_key_exists('csrf', $_SESSION)) {
-				$_SESSION['csrf'] = Helper::randomString(50);
+				$_SESSION['csrf'] = self::randomString(50);
 			}
 	}
 

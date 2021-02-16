@@ -30,10 +30,11 @@ class AccountController extends  Controller {
 	public function userAction()
 	{
 		$getInfomationPerson = new GetInfomationPerson;
-		if ($_SESSION['user']['login'] != Helper::filterString($this->route['user']) && (!$_SESSION['user']['isAdmin']))   View::errorCode(403);
+		if ($_SESSION['user']['login'] != Helper::filterString($this->route['user'])) View::errorCode(403);
+		if (empty($_SESSION['user']['poster_path']))  $_SESSION['user']['poster_path'] = 'public/images/default/users/no-img.jpg';
 		$vars = [
 			'MessageError' => $this->model->userEditInfo(),
-			'user' => $this->model->getUser($_SESSION['user']['login'])[0],
+			'user' => $_SESSION['user'],
 			'ip' => $getInfomationPerson->ip,
 			'browser' => $getInfomationPerson->browser,
 			'system' => $getInfomationPerson->operating_system,
