@@ -507,19 +507,19 @@ footer{
     display: flex;
     color: #fff;
     background-color: #2323235c;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
     margin-bottom: 45px;
 }
 
-/* .collection_top_side_view_img {
-    height: 495px;
-} */
+.collection_top_side_view_img {
+	border-bottom-left-radius: 10px;
+}
 
 .collection_top_side_view_img img {
 		width: 335px;
     height: 100%;
-    border: 4px solid #000;
+		border-bottom-left-radius: 15px;
     object-fit: cover;
 }
 
@@ -586,6 +586,8 @@ footer{
 .collection_centered_side_view_tab_video{
     background-color: #2323235c;
     width: 100%;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
 }
 .collection_centered_side_view_tab_video_helper_top{
 	width: 100%;
@@ -620,7 +622,7 @@ footer{
     color: #c10808;
 }
 .collection_centered_side_view_tab_video_helper_bottom{
-	width: 100%;
+		width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
