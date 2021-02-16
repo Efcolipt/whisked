@@ -4,7 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="/public/images/favicon/favicon.png" >
-    <link rel="stylesheet" href="/public/css/error.css">
+  <link rel="stylesheet" href="/public/css/error.css">
+		<!-- Np-progress -->
+	<script src="/public/packages/np-progress/nprogress.js"></script>
+	<link rel="stylesheet" type="text/css" href="/public/packages/np-progress/nprogress.css" />
 	<title>На странице ведустя технические работы</title>
 </head>
 <body>
