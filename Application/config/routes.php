@@ -27,23 +27,31 @@ return [
 	],
 
 
-	'account/login' => [
+	'login' => [
 		'controller'=>'account',
 		'action'=>'login',
 	],
 
-	'account/register' => [
+	'register' => [
 		'controller'=>'account',
 		'action'=>'register',
 	],
-	'account/logout' => [
+
+	'logout' => [
 		'controller'=>'account',
 		'action'=>'logout',
 	],
 
-	'user/{user:\w+}' => [
+
+
+	'profile' => [
 		'controller'=>'account',
-		'action'=>'user',
+		'action'=>'profile',
+	],
+
+	'profile/history' => [
+		'controller'=>'account',
+		'action'=>'history',
 	],
 
 	// 'profile' => [

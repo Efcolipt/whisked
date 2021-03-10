@@ -1,4 +1,7 @@
 index.php
 config/db.php
-uploads/
+public/uploads/
 .htaccess
+
+composer.phar
+/vendor/

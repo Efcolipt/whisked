@@ -38,8 +38,9 @@ class CollectionController extends  Controller{
 	{
 		isset($_GET['q']) ? $query = Helper::filterString($_GET['q']) : View::errorCode(404);
 		$info = Helper::getContentWithBuildQuery($this->urlContentSearch,['token'=> $this->urlTokenContent, 'title' => $query]);
-		$vars = ['info' => $info['results']];
-		$this->view->render('Поиск по запросу '.$query,$vars);
+		$this->view->render('Поиск по запросу '.$query, $vars = [
+			'info' => $info['results']
+		]);
 	}
 
 }

@@ -11,18 +11,20 @@ abstract class Controller {
 	public $route;
 	public $view;
 	public $acl;
+
 	public $urlTokenContent  = "7250d60740fc5811592ea4fcf893239f";
 	public $urlContentMain   = "https://bazon.cc/api/json";
 	public $urlContentSearch = "https://bazon.cc/api/search";
 
 
 	public function __construct($route){
+		Helper::genereteCsrf();
+		Helper::setTimeEnter();
+		self::checkAuth();
+
 		$this->route = $route;
 		$this->view = new View($route);
-
 		if(!$this->checkAcl()) View::errorCode(403);
-		Helper::genereteCsrf();
-
 		$this->model = $this->loadModel($route['controller']);
 	}
 
@@ -31,6 +33,8 @@ abstract class Controller {
 		$path = 'Application\models\\'.ucfirst($name);
 		if (class_exists($path)) return new $path;
 	}
+
+
 
 
 
@@ -47,6 +51,17 @@ abstract class Controller {
 	public function isAcl($key)
 	{
 		return in_array($this->route['action'], $this->acl[$key]);
+	}
+
+	public static function checkAuth()
+	{
+		$db = new Db();
+		if (isset($_COOKIE['cookie_token']) && !isset($_SESSION['user'])) {
+			$user = $db->row("SELECT * FROM users WHERE cookie_token = :cookie_token",[
+				'cookie_token' => $_COOKIE['cookie_token']
+			]);
+			if($user) $_SESSION['user'] = $user[0];
+		}
 	}
 
 

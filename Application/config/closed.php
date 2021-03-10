@@ -1,7 +1,8 @@
 <?php
 
 return [
-  'account/user',
+  //'account/profile',
+  'account/history',
   //'main/index',
   //'account/login',
   //'account/register',

@@ -15,9 +15,10 @@ class Account extends Model
 
 		if (!empty($data['send'])) {
 			if (empty($data['login']) || empty($data['password'])) $MessageError['other'] = 'Неверный логин или пароль';
-			if(!preg_match("/^[a-zA-Z0-9]+$/",$data['login'])) $MessageError['other'] = "Логин может состоять только из букв английского алфавита и цифр";
 
-			$user = $this->getUser($data['login']);
+			$user = $this->db->row('SELECT * FROM users WHERE login = :login',[
+				'login' => Helper::filterString($data['login'])
+			]);
 
 			if (!empty($user) && empty($MessageError) && Helper::checkCsrf()) {
 				if(password_verify($data['password'],$user[0]['password'])){
@@ -28,16 +29,16 @@ class Account extends Model
 							'login' => $user[0]['login']
 						];
 						$this->db->query("UPDATE users SET cookie_token = :cookie_token WHERE login = :login",$params);
-					  setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
+						setcookie("cookie_token", $params['cookie_token'], (int) (time() + (1000 * 60 * 60 * 24 * 30)),"/");
 					}
 
 					$_SESSION['user'] = $user[0];
 					View::redirect();
 
 				}else
-					$MessageError['other'] = 'Неверный логин или пароль';
-			}else
 				$MessageError['other'] = 'Неверный логин или пароль';
+			}else
+			$MessageError['other'] = 'Неверный логин или пароль';
 
 		}
 		return $MessageError;
@@ -61,53 +62,52 @@ class Account extends Model
 
 			$data['login'] = Helper::filterString($data['login']);
 			$data['email'] = Helper::filterEmail($data['email']);
-			$params = ['login'=>$data['login'], 'email'=>$data['email']];
-			$similar = $this->db->row('SELECT * FROM users WHERE login = :login OR email = :email',$params);
+			$similar = $this->db->row('SELECT * FROM users WHERE login = :login OR email = :email', [
+				'login' => $data['login'],
+				'email' => $data['email']
+			]);
 			if (!empty($similar)) $MessageError['other'] = 'Такой пользователь уже существует';
 
 			if (empty($MessageError) && Helper::checkCsrf() ) {
-				$params = [
+				$insertData = $this->db->query("INSERT INTO users (login,password,email,poster_path) VALUES (:login,:password,:email,:poster_path)",[
 					'login'=> $data['login'],
 					'password'=> password_hash($data['password'], PASSWORD_DEFAULT),
 					'email'=> $data['email'],
-				];
-				$insertData = $this->db->query("INSERT INTO users (login,password,email) VALUES (:login,:password,:email)",$params);
-				$insertData ? View::redirect('account/login') : $MessageError['other'] = "Повтороите попытку позже";
+					'poster_path'=> 'public/images/default/users/no-img.jpg',
+				]);
+				$insertData ? View::redirect('login') : $MessageError['other'] = "Повтороите попытку позже";
 			}
 
 		}
-			return $MessageError;
+		return $MessageError;
 	}
 
 	public function logout()
 	{
-		$params = ['login' => Helper::filterString($_SESSION['user']['login'])];
-		$cookie_token = $this->db->query("UPDATE users SET cookie_token = '' WHERE login = :login",$params);
+		$cookie_token = $this->db->query("UPDATE users SET cookie_token = '' WHERE login = :login",[
+			'login' => Helper::filterString($_SESSION['user']['login'])
+		]);
 		if ($cookie_token) setcookie("cookie_token", "", time() - 3600,"/");
 		session_destroy();
-    View::redirect();
+		View::redirect();
 	}
 
 
-	public function getUser($login){
-		$params = ['login' => Helper::filterString($login)];
-		$user = $this->db->row('SELECT * FROM users WHERE login = :login',$params);
-		return $user;
-	}
 
-	public function userEditInfo(){
+	public function profileEditInfo()
+	{
 		$data = $_POST;
 		$MessageError = [];
 		$ImageUpload = new ImageUpload;
 
-		// if (isset($data['send'])) {
-		//
-		// }
+
 		if (!empty($_FILES['poster']['name']) && isset($data['send']) && Helper::checkCsrf()) {
 			$file = $ImageUpload->uploadFile($_FILES['poster'], Helper::filterString($_SESSION['user']['poster_path']));
 			if ($file) {
-				$params = ['poster_path' => $file, 'login' => Helper::filterString($_SESSION['user']['login'])];
-				$insertData = $this->db->query('UPDATE users SET poster_path = :poster_path WHERE login = :login',$params);
+				$insertData = $this->db->query('UPDATE users SET poster_path = :poster_path WHERE login = :login',[
+					'poster_path' => $file,
+					'login' => Helper::filterString($_SESSION['user']['login'])
+				]);
 
 				if (!$insertData)  $MessageError['file'] = "Повторите попытку позже";
 				$_SESSION['user']['poster_path'] = $file;

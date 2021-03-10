@@ -2,19 +2,17 @@
 
 return [
 
-	'all' => [
-	],
+	'all' => [],
 
-   'guest' => [
-   		'login',
-   		'register',
-   ],
-   'authorize' => [
-   		'logout',
-			'user',
-   ],
-
-
+	 'guest' => [
+	 		'login',
+	 		'register',
+	 ],
+	 'authorize' => [
+	 		'logout',
+			'history',
+			'profile',
+	 ],
 ];
 
 

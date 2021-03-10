@@ -27,20 +27,23 @@ class AccountController extends  Controller {
 	{
 		$this->model->logout();
 	}
-	public function userAction()
+
+	public function profileAction()
 	{
-		$getInfomationPerson = new GetInfomationPerson;
-		if ($_SESSION['user']['login'] != Helper::filterString($this->route['user'])) View::errorCode(403);
-		if (empty($_SESSION['user']['poster_path']))  $_SESSION['user']['poster_path'] = 'public/images/default/users/no-img.jpg';
-		$vars = [
-			'MessageError' => $this->model->userEditInfo(),
+		$infomationPerson = new GetInfomationPerson;
+		$this->view->render("Профиль пользователя",$vars = [
+			'MessageError' => $this->model->profileEditInfo(),
 			'user' => $_SESSION['user'],
-			'ip' => $getInfomationPerson->ip,
-			'browser' => $getInfomationPerson->browser,
-			'system' => $getInfomationPerson->operating_system,
-			'systemVer' => $getInfomationPerson->os_version,
-		];
-		$this->view->render("Профиль пользователя",$vars);
+			'ip' => $infomationPerson->ip,
+			'browser' => $infomationPerson->browser,
+			'os' => $infomationPerson->operating_system,
+			'osVersion' => $infomationPerson->os_version,
+		]);
+	}
+
+	public function historyAction()
+	{
+		$this->view->render("История",$vars = []);
 	}
 }
  ?>

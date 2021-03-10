@@ -6,7 +6,7 @@
         <img src="/<?=$user['poster_path']?>" alt="">
       </div>
       <div class="btns_info_profile_index">
-        <a class="btn_info_profile_index" href="javascript:void(0)">История</a>
+        <a class="btn_info_profile_index" href="/profile/history">История</a>
         <a class="btn_info_profile_index" href="javascript:void(0)">Смотрю</a>
       </div>
     </div>
@@ -52,7 +52,7 @@
             <p><small>Зарегистрирован: <span><?=$user['date_register'];?></span></small> </p>
           </div>
           <div class="small_info_about_me_profile_index">
-            <p><small>Последний вход: <span><?=$lastEnter ?></span></small> </p>
+            <p><small>Последний вход: <span><?=Helper::getTimeEnter(); ?></span></small> </p>
           </div>
           <div class="small_info_about_me_between_headline_profile_index">
             <p>Система</p>
@@ -61,7 +61,7 @@
             <p><small>IP: <span><?=$ip;  ?></span></small> </p>
           </div>
           <div class="small_info_about_me_profile_index">
-            <p><small>OS: <span><?=$systemVer;  ?> <?=$system;  ?></span></small> </p>
+            <p><small>OS: <span><?=$osVersion;  ?> <?=$os;  ?></span></small> </p>
           </div>
           <div class="small_info_about_me_profile_index">
             <p><small>Браузер: <span><?=$browser;  ?> </span></small> </p>
