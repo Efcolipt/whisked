@@ -43,7 +43,7 @@ abstract class Controller {
 		$this->acl = require dirname(__DIR__,2).'/Application/acl/'.$this->route['controller'].'.php';
 		if ($this->isAcl('all')) return true;
 		elseif(empty($_SESSION['user']['id']) and $this->isAcl('guest')) return true;
-		elseif (!empty($_SESSION['user']['isAdmin'])) return true;
+		elseif (!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 10) return true;
 		elseif(!empty($_SESSION['user']['id']) and $this->isAcl('authorize')) return true;
 		return false;
 	}
