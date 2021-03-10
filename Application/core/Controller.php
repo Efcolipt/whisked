@@ -19,7 +19,7 @@ abstract class Controller {
 
 	public function __construct($route){
 		Helper::genereteCsrf();
-		Helper::setTimeEnter();
+		Helper::setCookie('userEnter',date('Y-m-d H:i:s'),'/');
 		self::checkAuth();
 
 		$this->route = $route;

@@ -52,7 +52,7 @@
             <p><small>Зарегистрирован: <span><?=$user['date_register'];?></span></small> </p>
           </div>
           <div class="small_info_about_me_profile_index">
-            <p><small>Последний вход: <span><?=Helper::getTimeEnter(); ?></span></small> </p>
+            <p><small>Последний вход: <span><?=Helper::getCookie('userEnter'); ?></span></small> </p>
           </div>
           <div class="small_info_about_me_between_headline_profile_index">
             <p>Система</p>

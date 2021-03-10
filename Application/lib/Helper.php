@@ -4,14 +4,14 @@ namespace Application\lib;
 use Application\lib\Db;
 class Helper {
 
-	public static function setTimeEnter()
+	public static function setCookie($name,$value,$path)
 	{
-		setcookie('userEnter', base64_encode(date('Y-m-d H:i:s')), time()+3600*24*31, '/');
+		setcookie($name, gzcompress(gzcompress($value,9),9), time()+3600*24*31, $path);
 	}
 
-	public static function getTimeEnter()
+	public static function getCookie($name)
 	{
-		return isset($_COOKIE['userEnter']) ? base64_decode($_COOKIE['userEnter']) : date('Y-m-d H:i:s');
+		return isset($_COOKIE[$name]) ? gzuncompress(gzuncompress($_COOKIE[$name])) : false;
 	}
 
 	public static function filterString($value='')
