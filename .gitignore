@@ -5,3 +5,4 @@ public/uploads/
 
 composer.phar
 /vendor/
+/node_modules/
