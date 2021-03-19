@@ -37,41 +37,25 @@
 	<!-- For media app -->
 	<!-- <link rel="apple-touch-icon" sizes="57x57" href="#"> -->
 	<!-- Css -->
-	<link rel="stylesheet" href="/public/css/style.css">
-	<link rel="stylesheet" href="/public/css/media.css">
+	<link rel="stylesheet" href="/public/css/style.min.css">
+	<link rel="stylesheet" href="/public/css/media.min.css">
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/public/images/favicon/favicon.png">
 	<!-- Verification -->
 	<meta name="google-site-verification" content="8VIsXTUaNPw8A2JUq-2azZvju2-ll7OIhApGL09cT4A" />
 	<meta name="yandex-verification" content="527dd094f9d7b8fa" />
 	<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(69718450, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/69718450" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-	<!-- pixel vk -->
-	<script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?168",t.onload=function(){VK.Retargeting.Init("VK-RTRG-688666-1ykwm"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-688666-1ykwm" style="position:fixed; left:-999px;" alt=""/></noscript>
-
-	<!-- Slick carousel -->
-	<link rel="stylesheet" type="text/css" href="/public/packages/slick-carousel/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="/public/packages/slick-carousel/slick-theme.css"/>
-
 	<!-- Np-progress -->
 	<script src="/public/packages/np-progress/nprogress.js"></script>
 	<link rel="stylesheet" type="text/css" href="/public/packages/np-progress/nprogress.css" />
 </head>
 <body>
-	<div class="wrapper">
-		<!-- <div class="waitingSpin" >
-			<div class="spinner">
-				<div class="blob top"></div>
-					<div class="blob bottom"></div>
-					<div class="blob left"></div>
-					<div class="blob move-blob"></div>
-			</div>
-		</div> -->
+	<div class="wrapper" id="app">
 		<header>
 			<div class="container">
 				<div class="inner_header">
 					<div class="unite_header_burger_brand">
 						<div class="header_icon_burger">
-							<!-- <input id="burger_icon_mobile_menu_check" type="checkbox" /> -->
 							 <label class="burger_icon_mobile_menu" for="burger_icon_mobile_menu_check">
 								 <span></span>
 							 </label>
@@ -82,9 +66,6 @@
 					</div>
 					<div class="header_menu_desktop">
 						<ul class="list_header_menu_desktop">
-							<li class="list_header_menu_desktop_item">
-								<a href="/" class="list_header_menu_desktop_link">Новинки</a>
-							</li>
 							<li class="list_header_menu_desktop_item">
 								<a href="/movies" class="list_header_menu_desktop_link">Фильмы</a>
 							</li>
@@ -97,15 +78,37 @@
 						</ul>
 					</div>
 					<div class="unite_header_search_accout">
-						<div class="header_search">
-							<form action="/search" method="get">
-								<input type="text" placeholder="Найти ?" name="q" required>
-								<button class="header_search_icon">
-									<svg viewBox="0 0 18 18">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M13.9499 12.4702C15.9598 9.71455 15.6403 5.74064 13.048 3.14826C10.193 0.293337 5.66259 0.195039 2.92892 2.92871C0.195246 5.66238 0.293543 10.1928 3.14847 13.0478C5.74081 15.6401 9.71462 15.9596 12.4703 13.9498C12.5259 14.1145 12.6194 14.2692 12.7506 14.4004L15.4212 17.071C15.8768 17.5266 16.6155 17.5266 17.0711 17.071C17.5267 16.6154 17.5267 15.8767 17.0711 15.4211L14.4005 12.7505C14.2693 12.6193 14.1146 12.5259 13.9499 12.4702ZM11.7161 11.7166C13.6296 9.80299 13.5608 6.63167 11.5624 4.63322C9.56394 2.63478 6.39262 2.56597 4.47905 4.47954C2.56548 6.39311 2.63429 9.56442 4.63274 11.5629C6.63119 13.5613 9.8025 13.6301 11.7161 11.7166Z"></path>
-									</svg>
-								</button>
-							</form>
+						<div class="header_search" id="search">
+							<input type="text" placeholder="Найти ?"  v-on:keypress.enter="search" v-on:input="typeSearch" v-bind:value="valSearch"  required>
+							<!-- <div class="search__content__data__list">
+								<loader-search/>
+							</div> -->
+							<div v-cloak  v-if="searching"  class="search__content__data__list">
+								<div v-if="proxySearch">
+									<loader-search/>
+								</div>
+
+								<div v-if="searched" class="search__content__data__list__items">
+									<data-search
+									    v-for="content in contents"
+									    :title="content.title"
+									    :id="content.id"
+									    :poster="content.poster"
+										:genre="content.genre"
+										:quality="content.quality"
+										:year="content.year"
+										:rating="content.rating"
+									></data-search>
+								</div>
+								<div v-else-if="proxyError" style="text-align:center; color:#a7a7a7;padding:7px;">
+									Для просмотра ничего не найдено
+								</div>
+							</div>
+							<button class="header_search_icon" @click="search">
+								<svg viewBox="0 0 18 18">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.9499 12.4702C15.9598 9.71455 15.6403 5.74064 13.048 3.14826C10.193 0.293337 5.66259 0.195039 2.92892 2.92871C0.195246 5.66238 0.293543 10.1928 3.14847 13.0478C5.74081 15.6401 9.71462 15.9596 12.4703 13.9498C12.5259 14.1145 12.6194 14.2692 12.7506 14.4004L15.4212 17.071C15.8768 17.5266 16.6155 17.5266 17.0711 17.071C17.5267 16.6154 17.5267 15.8767 17.0711 15.4211L14.4005 12.7505C14.2693 12.6193 14.1146 12.5259 13.9499 12.4702ZM11.7161 11.7166C13.6296 9.80299 13.5608 6.63167 11.5624 4.63322C9.56394 2.63478 6.39262 2.56597 4.47905 4.47954C2.56548 6.39311 2.63429 9.56442 4.63274 11.5629C6.63119 13.5613 9.8025 13.6301 11.7161 11.7166Z"></path>
+								</svg>
+							</button>
 						</div>
 						<div class="header_account">
 							<div class="header_account_avatar">
@@ -194,9 +197,9 @@
 			</div>
 		</footer>
 	</div>
-	<script async="" src="https://kit.fontawesome.com/de8f891afd.js"></script>
+	<script async src="https://kit.fontawesome.com/de8f891afd.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
-	<script src="/public/js/main.js" type="text/javascript"></script>
-	<script src="/public/packages/slick-carousel/slick.min.js" type="text/javascript"></script>
+	<script src="https://unpkg.com/vue@next"></script>
+	<script src="/public/js/app.min.js"></script>
 </body>
 </html>

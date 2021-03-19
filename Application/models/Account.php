@@ -75,7 +75,7 @@ class Account extends Model
 					'email'=> $data['email'],
 					'poster_path'=> 'public/images/default/users/no-img.jpg',
 				]);
-				$insertData ? View::redirect('login') : $MessageError['other'] = "Повтороите попытку позже";
+				$insertData ? View::redirect('login') : $MessageError['other'] = "Повторите попытку позже";
 			}
 
 		}

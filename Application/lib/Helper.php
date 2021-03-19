@@ -29,23 +29,18 @@ class Helper {
 		return htmlspecialchars(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 	}
 
-	public static function getContent($path = '')
+	public static function getContent($url = '', $query = '')
 	{
+		$path = self::buildQueryUrl($url,$query);
 		$content = @file_get_contents($path);
-		$dataContent = json_decode($content,true);
-		if ($content != false && !is_null($dataContent)) return $dataContent;
+		$data = json_decode($content,true);
+		if ($content != false && !is_null($data)) return $data;
 		return false;
 	}
 
-	public static function getContentWithBuildQuery($url,$queryContent)
+	public static function buildQueryUrl($url,$query)
 	{
-		$url = self::buildQueryUrl($url,$queryContent);
-		return self::getContent($url);
-	}
-
-	public static function buildQueryUrl($url,$queryContent)
-	{
-		return $url."?".http_build_query($queryContent);
+		return $url."?".http_build_query($query);
 	}
 
 

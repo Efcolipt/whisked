@@ -20,14 +20,12 @@ class Main extends Model{
       $data['message'] = Helper::filterString($data['message']);
 
       if (empty($MessageError) && Helper::checkCsrf() ) {
-
-          $params = [
+          $insertData = $this->db->query("INSERT INTO questions (id_sendler,email,headline,message) VALUES (:id_sendler,:email,:headline,:message)",[
             'id_sendler' => $_SESSION['user']['id'],
             'email' => $_SESSION['user']['email'],
             'headline' => $data['headline'],
             'message' => $data['message']
-          ];
-          $insertData = $this->db->query("INSERT INTO questions (id_sendler,email,headline,message) VALUES (:id_sendler,:email,:headline,:message)",$params);
+          ]);
           if (!$insertData) return $MessageError['other'] = 'Повтороите попытку позже';
 
       }

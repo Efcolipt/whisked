@@ -2,13 +2,13 @@
 
 return [
 	'' => [
-		'controller'=>'main',
-		'action'=>'home',
+		'controller'=>'collection',
+		'action'=>'movies',
 	],
 
 	'home' => [
-		'controller'=>'main',
-		'action'=>'home',
+		'controller'=>'collection',
+		'action'=>'movies',
 	],
 
 	'rightholders' => [

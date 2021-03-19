@@ -12,15 +12,13 @@ class AccountController extends  Controller {
 
 	public function loginAction()
 	{
-		$vars = $this->model->auth();
-		$this->view->render('Авторизация',$vars);
+		$this->view->render('Авторизация',$vars = $this->model->auth());
 	}
 
 
 	public function registerAction()
 	{
-		$vars = $this->model->registration();
-		$this->view->render('Регистрация',$vars);
+		$this->view->render('Регистрация',$vars = $this->model->registration());
 	}
 
 	public function logoutAction()
