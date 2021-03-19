@@ -34,14 +34,14 @@ class CollectionController extends  Controller{
 	}
 
 
-	public function searchAction()
-	{
-		isset($_GET['q']) ? $query = Helper::filterString($_GET['q']) : View::errorCode(404);
-		$info = Helper::getContent($this->urlContentSearch,['token'=> $this->urlTokenContent, 'title' => $query]);
-		$this->view->render('Поиск по запросу '.$query, $vars = [
-			'info' => $info['results']
-		]);
-	}
+	// public function searchAction()
+	// {
+	// 	isset($_GET['q']) ? $query = Helper::filterString($_GET['q']) : View::errorCode(404);
+	// 	$info = Helper::getContent($this->urlContentSearch,['token'=> $this->urlTokenContent, 'title' => $query]);
+	// 	$this->view->render('Поиск по запросу '.$query, $vars = [
+	// 		'info' => $info['results']
+	// 	]);
+	// }
 
 }
  ?>

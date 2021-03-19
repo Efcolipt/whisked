@@ -26,7 +26,6 @@ return [
 		'action'=>'quality',
 	],
 
-
 	'login' => [
 		'controller'=>'account',
 		'action'=>'login',
@@ -42,8 +41,6 @@ return [
 		'action'=>'logout',
 	],
 
-
-
 	'profile' => [
 		'controller'=>'account',
 		'action'=>'profile',
@@ -54,12 +51,6 @@ return [
 		'action'=>'history',
 	],
 
-	// 'profile' => [
-	// 	'controller'=>'account',
-	// 	'action'=>'profile',
-	// ],
-
-
 	'watch/{q:\d+}' => [
 		'controller'=>'watch',
 		'action'=>'watching',
@@ -69,18 +60,20 @@ return [
 		'controller'=>'collection',
 		'action'=>'movies',
 	],
+
 	'anime' => [
 		'controller'=>'collection',
 		'action'=>'anime',
 	],
+
 	'serials' => [
 		'controller'=>'collection',
 		'action'=>'serials',
 	],
 
-	'search' => [
-		'controller'=>'collection',
-		'action'=>'search',
-	],
+	// 'search' => [
+	// 	'controller'=>'collection',
+	// 	'action'=>'search',
+	// ],
 ];
  ?>
