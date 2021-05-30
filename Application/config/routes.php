@@ -70,10 +70,5 @@ return [
 		'controller'=>'collection',
 		'action'=>'serials',
 	],
-
-	// 'search' => [
-	// 	'controller'=>'collection',
-	// 	'action'=>'search',
-	// ],
 ];
  ?>

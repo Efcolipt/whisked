@@ -76,14 +76,11 @@
 					<div class="unite_header_search_accout">
 						<div class="header_search" id="search">
 							<input type="text" placeholder="Найти ?"  v-on:keypress.enter="search" v-on:input="typeSearch" v-bind:value="valSearch"  required>
-							<!-- <div class="search__content__data__list">
-								<loader-search/>
-							</div> -->
+							<div v-cloak v-if="searching" @click="hideSearch" class="search__content__data__list__items__close">&times;</div>
 							<div v-cloak  v-if="searching"  class="search__content__data__list">
 								<div v-if="proxySearch">
 									<loader-search/>
 								</div>
-
 								<div v-if="searched" class="search__content__data__list__items">
 									<data-search
 									    v-for="content in contents"
@@ -97,7 +94,7 @@
 								        :translation="content.translation"
 									></data-search>
 								</div>
-								<div v-else-if="proxyError" style="text-align:center; color:#a7a7a7;padding:7px;">
+								<div v-else-if="proxyError" style="text-align:center; color:#a6a6a6;padding:7px;">
 									Для просмотра ничего не найдено
 								</div>
 							</div>

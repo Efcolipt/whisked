@@ -24,8 +24,8 @@ Class ImageUpload{
   private function validateImage(){
     if (in_array($this->image['type'],$this->rules()) &&
         is_uploaded_file($this->image['tmp_name']) &&
-        ($this->image['size'] / 1024) < 10*1024
-       ) return true;
+        ($this->image['size'] / 1024) < 10*1024) 
+        return true;
 
     return false;
   }

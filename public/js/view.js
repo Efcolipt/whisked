@@ -7,8 +7,8 @@ jQuery(document).ready(function($) {
         $('.header_account_info').stop().slideToggle();
     })
 
-        let scrollTop = 0,
-        header = $('header')
+    let scrollTop = 0,
+    header = $('header')
     if (header.offset().top > 0) {
         header.addClass('showHeader');
         $('.burger_icon_mobile_menu').removeClass('burger_icon_mobile_menu_open')
