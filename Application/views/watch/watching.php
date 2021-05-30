@@ -1,16 +1,15 @@
 <div class="collection_view">
 	<div class="collection_top_side_view">
 		<div class="collection_top_side_view_img">
-			<img data-src="<?=$info["poster"];?>"  alt="<?=$info["rus"];?>" >
+			<img src="<?=$info["poster"];?>"  alt="<?=$info["rus"];?>" >
 		</div>
 		<div class="collection_top_side_view_txt">
-			<div class="collection_top_side_view_txt_headline collection_top_side_view_txt_info">
-				<p>
-					<?=$info['rus'];?>
-					<div>
-						<span><?=$info['age'];?> +</span>
-						<span><?=$quality;?></span></p>
-					</div>
+			<div class="collection_top_side_view_txt_headline">
+				<h1><?=$info['rus'];?></h1>
+				<div>
+					<span><?=$info['age'];?> +</span>
+					<span class="collection_top_side_view_quality" data-=""><?=$quality;?></span>
+				</div>
 			</div>
 			<div class="collection_top_side_view_txt_about">
 				<div class="collection_top_side_view_txt_info ">

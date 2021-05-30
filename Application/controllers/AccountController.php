@@ -12,13 +12,13 @@ class AccountController extends  Controller {
 
 	public function loginAction()
 	{
-		$this->view->render('Авторизация',$vars = $this->model->auth());
+		$this->view->render('Авторизация | Whisked',$vars = $this->model->auth());
 	}
 
 
 	public function registerAction()
 	{
-		$this->view->render('Регистрация',$vars = $this->model->registration());
+		$this->view->render('Регистрация | Whisked',$vars = $this->model->registration());
 	}
 
 	public function logoutAction()
@@ -29,7 +29,7 @@ class AccountController extends  Controller {
 	public function profileAction()
 	{
 		$infomationPerson = new GetInfomationPerson;
-		$this->view->render("Профиль пользователя",$vars = [
+		$this->view->render("Профиль пользователя | Whisked",$vars = [
 			'MessageError' => $this->model->profileEditInfo(),
 			'user' => $_SESSION['user'],
 			'ip' => $infomationPerson->ip,
@@ -41,7 +41,7 @@ class AccountController extends  Controller {
 
 	public function historyAction()
 	{
-		$this->view->render("История",$vars = []);
+		$this->view->render("История | Whisked",$vars = []);
 	}
 }
  ?>

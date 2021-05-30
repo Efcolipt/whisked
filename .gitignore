@@ -6,3 +6,5 @@ public/uploads/
 composer.phar
 /vendor/
 /node_modules/
+/sass/
+/public/js/modules/

@@ -4,10 +4,9 @@ let sass = require('gulp-sass');
 let autoprefixer = require('gulp-autoprefixer');
 let sourcemaps = require('gulp-sourcemaps');
 let concat = require('gulp-concat');
-let uglify = require('gulp-uglify');
 
 function reCss(done){
-	gulp.src('./dev/sass/**/*.scss')
+	gulp.src('./sass/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			errorLogToConsole: true,
@@ -19,22 +18,25 @@ function reCss(done){
 			cascade: false
 		}))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('./public/css/'));
+		.pipe(gulp.dest('./public/css/'))
+	done()
 
-		done();
 }
 
 function reJs(done){
-    gulp.src('./dev/js/**/*.js')
-    .pipe(concat('app.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./public/js/'));
-    done();
+ 	gulp.src(['./public/js/modules/_base.js','./public/js/modules/*.js'])
+		.pipe(sourcemaps.init())
+	   	.pipe(concat('app.js'))
+		.pipe(sourcemaps.write())
+	   	.pipe(gulp.dest('./public/js/'))
+		done()
 }
+
+
 
 function watchFiles(){
-	gulp.watch("./dev/sass/*",reCss);
-	gulp.watch("./dev/js/*",reJs);
+	gulp.watch("./sass/*",reCss)
+	gulp.watch("./public/js/modules/*",reJs)
 }
 
-gulp.task('default', gulp.parallel(watchFiles));
+gulp.task('default', gulp.parallel(watchFiles))

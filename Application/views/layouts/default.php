@@ -1,6 +1,6 @@
 <?php use Application\lib\Helper; ?>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="UTF-8">
 	<title><?=$title; ?></title>
@@ -12,27 +12,23 @@
 	<meta name="theme-color" content="#040404e6">
 	<!-- Meta for search -->
 	<meta name="robots" content="index, follow">
-	<meta name="keywords" content="фильмы онлайн бесплатно в хорошем отличном качестве без смс кино видео смотреть без регистрации новинки кинофильмы онлайн кинотеатр 2012 2013 просмотр видеоролики">
-	<meta name="description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
-	<meta name="author" content="whisked">
-	<meta name="copyright" content="whisked">
+	<meta name="description" content="<?= isset($info["description"]) ? $info["description"] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta name="author" content="Libils Team">
+	<meta name="copyright" content="Libils Team">
 
 	<!-- Open Graph Meta -->
-	<meta property="og:title" content="<?=$title; ?> | Whisked">
+	<meta property="og:title" content="<?=$title; ?>">
 	<meta property="og:locale" content="ru_RU">
-	<meta property="og:description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
-	<meta property="og:image" content="<?= isset($vars['info']->info->poster)  ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>">
+	<meta property="og:description" content="<?= isset($info["description"]) ? $info["description"] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>">
+	<meta property="og:image" content="<?= isset($info["poster"])  ? $info["poster"] : "/public/images/logo/logo.png"  ?>">
 	<meta property="og:site_name" content="whisked">
 	<meta property="og:url" content="whisked.ru">
 	<meta property="og:type" content="website">
-	<meta property="og:image:type" content="image/png" />
-	<meta property="og:image:width" content="780" />
-	<meta property="og:image:height" content="520" />
 
 	<!-- Meta Google  -->
-	<meta itemprop="name" content="<?=$title; ?> | Whisked" />
-	<meta itemprop="description" content="<?= isset($vars['info']->info->description) ? $vars['info']->info->description : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
-	<meta itemprop="image" content="<?= isset($vars['info']->info->poster) ? $vars['info']->info->poster : "/public/images/logo/logo.png"  ?>" />
+	<meta itemprop="name" content="<?=$title; ?>" />
+	<meta itemprop="description" content="<?= isset($info["description"]) ? $info["description"] : "Устройте кинотеатр у себя дома! Смотрите онлайн фильмы хорошего качества в приятной домашней обстановке и в удобное для вас время. Для вас всегда доступны бесплатные фильмы без регистрации на любой вкус: сериалы, фильмы, мультфильмы и многое другое." ?>" />
+	<meta itemprop="image" content="<?= isset($info["poster"]) ? $info["poster"] : "/public/images/logo/logo.png"  ?>" />
 
 	<!-- For media app -->
 	<!-- <link rel="apple-touch-icon" sizes="57x57" href="#"> -->
@@ -50,7 +46,7 @@
 	<link rel="stylesheet" type="text/css" href="/public/packages/np-progress/nprogress.css" />
 </head>
 <body>
-	<div class="wrapper" id="app">
+	<div class="wrapper" data-page="<?= isset($_GET['page']) && is_numeric( $_GET['page'])? $_GET['page'] : 1; ?>" data-route="<?=$this->route['action']; ?>">
 		<header>
 			<div class="container">
 				<div class="inner_header">
@@ -91,13 +87,14 @@
 								<div v-if="searched" class="search__content__data__list__items">
 									<data-search
 									    v-for="content in contents"
-									    :title="content.title"
-									    :id="content.id"
-									    :poster="content.poster"
-										:genre="content.genre"
-										:quality="content.quality"
-										:year="content.year"
-										:rating="content.rating"
+										:title="content.info.rus"
+								        :id="content.kinopoisk_id"
+								        :poster="content.info.poster"
+								        :quality="content.quality"
+								        :year="content.info.year"
+								        :genre="content.info.genre"
+								        :rating="content.info.rating.rating_imdb"
+								        :translation="content.translation"
 									></data-search>
 								</div>
 								<div v-else-if="proxyError" style="text-align:center; color:#a7a7a7;padding:7px;">
@@ -200,6 +197,7 @@
 	<script async src="https://kit.fontawesome.com/de8f891afd.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/vue@next"></script>
-	<script src="/public/js/app.min.js"></script>
+	<script src="/public/js/app.js"></script>
+	<script src="/public/js/view.js"></script>
 </body>
 </html>

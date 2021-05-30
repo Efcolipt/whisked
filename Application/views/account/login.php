@@ -23,7 +23,7 @@
       		<small class="control_form_error" ><?php if (isset($vars['other']))  echo htmlspecialchars($vars['other']);  ?></small>
 		</div>
 		<div class="other_info_form">
-			<a href="/account/register" class="other_info_form_link">
+			<a href="/register" class="other_info_form_link">
 				<img src="/public/images/errors/arrow-back.png" alt="Перейти">
 				<span>Создать новый аккаунт</span>
 			</a>

@@ -14,7 +14,7 @@ class WatchController extends  Controller{
 		$info = Helper::getContent($this->urlContentSearch, ['token' => $this->urlTokenContent,'kp' => $this->route['q']]);
 		if (!$info) View::errorCode(404);
 		$this->model->rememberDataFilm($this->route['q']);
-		$this->view->render("Смотреть ".$this->route['q'], $info['results'][0]);
+		$this->view->render("Смотреть ".$info['results'][0]['info']['rus']." в хорошем качестве | Whisked", $info['results'][0]);
 	}
 }
  ?>

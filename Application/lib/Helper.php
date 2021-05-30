@@ -6,7 +6,12 @@ class Helper {
 
 	public static function setCookie($name,$value,$path)
 	{
-		setcookie($name, gzcompress(gzcompress($value,9),9), time()+3600*24*31, $path);
+
+		setcookie($name, gzcompress(gzcompress($value,9),9),[
+			'expires' => time()+3600*24*31,
+			'path' => $path,
+			'samesite' => 'Strict'
+		]);
 	}
 
 	public static function getCookie($name)
@@ -59,26 +64,6 @@ class Helper {
 		if ($replace || !array_key_exists('csrf', $_SESSION)) {
 			$_SESSION['csrf'] = bin2hex(random_bytes(20));
 		}
-	}
-
-
-	public static function pagination($countPages = 10,$active = 12, $countShowPages = 5,$url = '/index.php', $urlPage = 'index.php?page=')
-	{
-		if ($countPages > 1) {
-			$left = $active - 1;
-			$right = $countPages - $active;
-			if ($left < floor($countShowPages / 2)) $start = 1;
-			else $start = $active - floor($countShowPages / 2);
-			$end = $start + $countShowPages - 1;
-			if ($end > $countPages) {
-				$start -= ($end - $countPages);
-				$end = $countPages;
-				if ($start < 1) $start = 1;
-			}
-		}
-
-
-
 	}
 
 }

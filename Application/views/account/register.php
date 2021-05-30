@@ -35,7 +35,7 @@
       <small class="control_form_error"><?php  if (isset($vars['other'])) echo htmlspecialchars($vars['other']);  ?></small>
     </div>
     <div class="other_info_form">
-      <a href="/account/login" class="other_info_form_link">
+      <a href="/login" class="other_info_form_link">
         <img src="/public/images/errors/arrow-back.png" alt="Перейти">
         <span>Уже зарегистрированы ?</span>
       </a>
