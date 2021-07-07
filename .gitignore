@@ -1,8 +1,0 @@
-index.php
-config/db.php
-public/uploads/
-.htaccess
-
-composer.phar
-/vendor/
-/node_modules/
