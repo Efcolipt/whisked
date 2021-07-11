@@ -1,23 +1,21 @@
-// Create express instance
-const app = require('express')()
+const express = require("express");
+const db = require("./db");
 
+// Create express instnace
+const app = express();
 
-// Require API routes
-const users = require('./routes/users')
-const test = require('./routes/test')
+// Init body-parser options (inbuilt with express)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Import API Routes
-app.use(users)
-app.use(test)
+// Require & Import API routes
+const comments = require("./routes/comments");
 
-// Export express app
-module.exports = app
+// Use API Routes
+app.use(comments);
 
-// Start standalone server if directly running
-if (require.main === module) {
-  const port = process.env.PORT || 3001
-  app.listen(port, () => {
-    // eslint-disable-next-line no-console
-    console.log(`API server listening on port ${port}`)
-  })
-}
+// Export the server middleware
+module.exports = {
+  path: "/api",
+  handler: app
+};
