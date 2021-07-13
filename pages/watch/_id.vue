@@ -17,6 +17,7 @@ export default {
           kp: params.id,
         },
       });
+      if ('error' in movie) return error({ statusCode: 404 });
       return {
         movie: movie.results,
       };
