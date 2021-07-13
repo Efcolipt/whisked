@@ -12,7 +12,7 @@
 </script>
 
 <style >
-@import "https://fonts.googleapis.com/css?family=Montserrat|Comfortaa:wght@400;500&display=swap";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Montserrat:wght@400;500&family=Nunito&display=swap');
 
 :root {
   --main-color: #04a49c;
@@ -43,7 +43,7 @@ p,
 a,
 span,
 small {
-  font-family: "Comfortaa", "Montserrat", sans-serif;
+  font-family: "Nunito", "Montserrat", sans-serif;
   font-weight: normal;
 }
 
@@ -53,13 +53,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
 }
 
 a {
-  font-family: "Comfortaa", "Montserrat", sans-serif;
-  font-weight: normal;
   color: #fff;
   text-decoration: none;
 }

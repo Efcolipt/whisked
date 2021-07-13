@@ -69,7 +69,7 @@ footer {
   -o-transition: color 0.3s ease;
   transition: color 0.3s ease;
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   transition: color 0.3s ease;
 }
 
