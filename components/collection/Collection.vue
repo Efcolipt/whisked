@@ -1,14 +1,16 @@
 <template lang="html">
-   <div>
-      <div v-if="loading" class="collections" >
-      <SplashItemCollection v-for="n in 8" :key="n" />
-    </div>
-    <div v-if="!loading" class="collections" >
-      <CollectionItem  v-for="movie in movies" :movie="movie" :key="movie.filmId"/>
-    </div>
-    <div v-if="!loading">
-      <Download @download="$emit('download')" />
-    </div>
+   <div class="collections" >
+      <SplashCollection 
+        v-if="initLoading" 
+        v-for="n in 8" 
+        :key="n" 
+      />
+      <CollectionItem  
+        v-if="!initLoading"  
+        v-for="movie in movies" 
+        :movie="movie" 
+        :key="movie.filmId"
+      />
    </div>
 </template>
 
@@ -16,16 +18,19 @@
 export default {
   props: {
     movies: {
-      type: Array,
+      type: [Object, Array],
       default: () => [],
     },
-    loading: {
+    initLoading: {
       type: Boolean,
       default: true,
+    },
+    loadingMore: {
+      type: Boolean,
+      default: false,
     },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

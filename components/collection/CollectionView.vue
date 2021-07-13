@@ -1,8 +1,11 @@
 <template lang="html">
   <div>
-      <img :src="movie.posterUrl" :alt="movie.nameRu">
-      <h2>{{ movie.nameRu }}</h2>
-      <p>{{ movie.year }}</p>
+      <img 
+        :src="movie[defaltId]['info']['poster']" 
+        :alt="movie[defaltId]['info']['rus']"
+      />
+      <h2>{{ movie[defaltId]['info']['rus'] }}</h2>
+      <p>{{ movie[defaltId]['info']['year'] }}</p>
   </div>
 </template>
 
@@ -10,8 +13,12 @@
 export default {
   props: {
     movie: {
-      type: Object,
+      type: [Object, Array],
       required: true,
+    },
+    defaltId: {
+      type: [String,Number],
+      default: 0,
     },
   },
 };

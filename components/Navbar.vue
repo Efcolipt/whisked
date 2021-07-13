@@ -1,5 +1,5 @@
 <template lang="html">
-    <header v-scroll="headerFixed">
+    <header ref="header" v-scroll="headerFixed">
       <div class="container">
         <div class="inner-header">
           <div class="header-brand">

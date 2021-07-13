@@ -3,6 +3,7 @@
     <button class="btn-download-more">
       <span>Показать еще</span>
       <svg
+        :class="{ 'svg-load': loadingMore }"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         id="Layer_1"
@@ -25,7 +26,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    loadingMore: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -55,9 +63,19 @@ export default {};
   font-family: "Montserrat", sans-serif;
 }
 .btn-download-more svg {
-  width: 28px;
-  height: 28px;
-  margin-left: 20px;
+  width: 24px;
+  height: 24px;
+  margin-left: 14px;
   fill: #fff;
+}
+
+.svg-load{
+  animation: spin .9s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

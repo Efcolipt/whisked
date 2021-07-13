@@ -11,7 +11,7 @@ Vue.mixin({
     }
   },
   methods: {
-    async getData(url, params, page, totalPages) {
+    async getData(url, params) {
       try {
         const response = await this.$axios.$get(url, {
           params,

@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="container">
         <Collection  
-          :movies="popularMovies.films" 
+          :movies="series.films" 
           :initLoading="initLoading" 
         />
         <Download 
@@ -18,26 +18,32 @@ export default {
     return {
       page: 1,
       totalPages: 19,
-      popularMovies: [],
+      series: [],
       initLoading: true,
       loadingMore: false,
+      currentYear: 2021,
     };
   },
   async created() {
+    const date = new Date;
+    this.currentYear = date.getFullYear()
     await this.init();
   },
 
   methods: {
     async init() {
       try {
-        this.popularMovies = await this.getData(
-          process.env.urlTopFilms,
+        this.series = await this.getData(
+          process.env.urlSearchByFilters,
           {
-            type: "TOP_100_POPULAR_FILMS",
+            type: "TV_SHOW",
+            yearFrom: "2016",
+            yearTo: this.currentYear ,
+            order: "NUM_VOTE",
             page: 1,
           }
         );
-
+        this.totalPages = this.series.pagesCount
         this.initLoading = false;
       } catch (e) {
         this.$nuxt.context.error({ statusCode: 404 });
@@ -48,19 +54,19 @@ export default {
       if (this.totalPages <= ++this.page) return;
       this.loadingMore = true;
       const data = await this.getData(
-        process.env.urlTopFilms,
-        {
-          type: "TOP_100_POPULAR_FILMS",
-          page: this.page,
-        }
+        process.env.urlSearchByFilters,
+          {
+            type: "TV_SHOW",
+            yearFrom: "2016",
+            yearTo: this.currentYear,
+            order: "NUM_VOTE",
+            page: this.page,
+          }
       );
       this.loadingMore = false;
       if (data)
-        this.popularMovies.films = [...this.popularMovies.films, ...data.films];
+        this.series.films = [...this.series.films, ...data.films];
     },
   },
 };
 </script>
-
-<style scoped>
-</style>

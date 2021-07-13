@@ -1,9 +1,12 @@
 <template lang="html">
   <div class="collection">
-    <NuxtLink class="collection-link" :to="'/movies/' + movie.filmId" >
+    <NuxtLink class="collection-link" :to="'/watch/' + movie.filmId" >
       <div class="poster-collection">
         <figure>
-          <img :src="movie.posterUrlPreview" :alt="movie.nameRu">
+          <img 
+            :src="movie.posterUrlPreview" 
+            :alt="movie.nameRu"
+          />
         </figure>
       </div> 
       <div class="body-collection">
@@ -18,7 +21,7 @@
 export default {
   props: {
     movie: {
-      type: Object,
+      type: [Object, Array],
       required: true,
     },
   },
@@ -35,7 +38,7 @@ export default {
   margin: 15px 25px;
   width: 260px;
 }
-.link-collection {
+.collection-link {
   display: block;
 }
 .poster-collection {
@@ -75,5 +78,11 @@ export default {
   color: #a6a6a6;
   font-size: 14px;
   font-family: "Montserrat", serif;
+}
+
+.collection-link:hover img {
+  -webkit-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  transform: scale(1.06);
 }
 </style>

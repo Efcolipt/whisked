@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "whisked",
+    title: "Whisked",
     htmlAttrs: {
       lang: "en",
       prefix:"og: http://ogp.me/ns#"
@@ -56,7 +56,10 @@ export default {
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     apiKey: "850a24d2-f3a2-4451-b89e-1d20d8149663",
+    apiVideo:"7250d60740fc5811592ea4fcf893239f",
+    urlVideo: "https://bazon.cc/api/search",
     urlTopFilms: "https://kinopoiskapiunofficial.tech/api/v2.2/films/top",
+    urlSearchByFilters: "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-filters",
     urlDetailFilms: "https://kinopoiskapiunofficial.tech/api/v2.1/films/"
   },
 

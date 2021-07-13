@@ -2,7 +2,7 @@
   <div class="wrapper">
     <Navbar />
     <main>
-      <Nuxt />
+      <Nuxt keep-alive />
     </main>
     <Footer />
   </div>
@@ -28,7 +28,7 @@
 
 body,
 html {
-  background: #16151a;
+  background: #141213;
   font-size: 16px;
   height: 100%;
 }
@@ -81,7 +81,8 @@ main {
   margin: 0 auto;
 }
 
-#__layout, #__nuxt{
+#__layout,
+#__nuxt {
   height: 100%;
 }
 
@@ -100,9 +101,7 @@ main {
 ::-webkit-scrollbar {
   width: 6px;
 }
-::-webkit-scrollbar-button {
-  background: #333;
-}
+
 ::-webkit-scrollbar-thumb {
   background-color: #6d6d6d;
   border-radius: 5px;
