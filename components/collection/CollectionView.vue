@@ -8,15 +8,14 @@
 
 <script>
 export default {
-    props:{
-        movie:{
-            type:Object,
-            required:true,
-        }
-    }
-}
+  props: {
+    movie: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
